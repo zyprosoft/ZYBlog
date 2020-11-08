@@ -32,7 +32,7 @@ class InterfaceTest extends TestCase
                 'param' => $params
             ]
         ];
-        $this->client->json('/', $body)->assertOk();
+        $this->client->json('/', $body)->assertOk()->assertStatus(200);
     }
 
     public function testLogin()
