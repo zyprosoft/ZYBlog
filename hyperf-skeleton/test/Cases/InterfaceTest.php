@@ -2,8 +2,8 @@
 
 
 namespace HyperfTest\Cases;
-use PHPUnit\Framework\TestCase;
 use Qbhy\HyperfTesting\Client;
+use Monolog\Test\TestCase;
 
 class InterfaceTest extends TestCase
 {
