@@ -23,4 +23,9 @@ class ErrorCode extends AbstractConstants
      * @Message("Server Error！")
      */
     const SERVER_ERROR = 500;
+
+    /**
+     * @Message("用户密码错误")
+     */
+    const USER_ERROR_PASSWORD_WRONG = 10000;
 }

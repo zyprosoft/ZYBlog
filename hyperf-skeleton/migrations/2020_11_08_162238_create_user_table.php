@@ -30,6 +30,7 @@ class CreateUserTable extends Migration
             $table->string("introduce", 128)
                   ->default('这个人什么太懒了，没有自我介绍')
                   ->comment("自我介绍");
+            $table->unique('username');
 
             $table->softDeletes();
             $table->timestamps();

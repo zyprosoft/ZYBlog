@@ -29,4 +29,9 @@ class Tag extends Model
      * @var array
      */
     protected $casts = ['tag_id' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+
+    public function articles()
+    {
+        return $this->belongsToMany(Article::class)->withTimestamps();
+    }
 }

@@ -35,4 +35,9 @@ class Article extends Model
      * @var array
      */
     protected $casts = ['article_id' => 'integer', 'user_id' => 'integer', 'category_id' => 'integer', 'read_count' => 'integer', 'comment_count' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class)->withTimestamps();
+    }
 }

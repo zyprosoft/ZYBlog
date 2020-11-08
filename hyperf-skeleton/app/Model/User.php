@@ -19,7 +19,6 @@ use App\Constants\Constants;
  * @property string $deleted_at 
  * @property \Carbon\Carbon $created_at 
  * @property \Carbon\Carbon $updated_at 
- * @property-read \App\Model\Verify $role
  */
 class User extends Model implements Authenticatable
 {
