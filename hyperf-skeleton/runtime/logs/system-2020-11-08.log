@@ -33,3 +33,8 @@
 2020-11-08 16:24:54.415768 || framework || DEBUG || Event Hyperf\Framework\Event\BootApplication handled by Hyperf\Paginator\Listener\PageResolverListener listener. 
 2020-11-08 16:24:54.415823 || framework || DEBUG || Event Hyperf\Framework\Event\BootApplication handled by Hyperf\ExceptionHandler\Listener\ExceptionHandlerListener listener. 
 2020-11-08 16:24:54.416003 || framework || DEBUG || Event Hyperf\Framework\Event\BootApplication handled by Hyperf\DbConnection\Listener\RegisterConnectionResolverListener listener. 
+2020-11-08 16:27:10.027086 || framework || DEBUG || Event Hyperf\Framework\Event\BootApplication handled by Hyperf\Config\Listener\RegisterPropertyHandlerListener listener. 
+2020-11-08 16:27:10.027213 || framework || DEBUG || Event Hyperf\Framework\Event\BootApplication handled by Qbhy\HyperfMultiEnv\MultiEnvListener listener. 
+2020-11-08 16:27:10.027253 || framework || DEBUG || Event Hyperf\Framework\Event\BootApplication handled by Hyperf\Paginator\Listener\PageResolverListener listener. 
+2020-11-08 16:27:10.027308 || framework || DEBUG || Event Hyperf\Framework\Event\BootApplication handled by Hyperf\ExceptionHandler\Listener\ExceptionHandlerListener listener. 
+2020-11-08 16:27:10.027466 || framework || DEBUG || Event Hyperf\Framework\Event\BootApplication handled by Hyperf\DbConnection\Listener\RegisterConnectionResolverListener listener. 
