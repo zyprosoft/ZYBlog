@@ -8675,7 +8675,7 @@
             "source": {
                 "type": "git",
                 "url": "http://106.53.15.86:8099/zyprosoft/hyperf-common.git",
-                "reference": "345bc075c54ab6aa9a78b38ddf1582927446df14"
+                "reference": "0752dd16de0dd29809e1915c96c5edb0b589c12f"
             },
             "require": {
                 "96qbhy/hyperf-auth": "^2.2",
@@ -8736,7 +8736,7 @@
                 "hyperf",
                 "php"
             ],
-            "time": "2020-11-08T12:56:31+00:00"
+            "time": "2020-11-08T13:31:47+00:00"
         }
     ],
     "packages-dev": [
