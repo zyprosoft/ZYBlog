@@ -13,6 +13,11 @@ class CreateArticleTagTable extends Migration
     {
         Schema::create('article_tag', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer("article_id")
+                  ->comment("文章ID");
+            $table->integer("tag_id")
+                  ->comment("标签ID");
+            $table->unique(["article_id","tag_id"]);
             $table->timestamps();
         });
     }

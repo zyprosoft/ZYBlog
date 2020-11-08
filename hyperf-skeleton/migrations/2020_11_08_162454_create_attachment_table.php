@@ -12,7 +12,12 @@ class CreateAttachmentTable extends Migration
     public function up(): void
     {
         Schema::create('attachment', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->integer('attachment_id')
+                  ->comment("附件ID");
+            $table->tinyInteger("type")
+                  ->comment("附件类型0图片1语音2视频3其他");
+            $table->string("link", 500)
+                  ->comment("附件链接");
             $table->timestamps();
         });
     }

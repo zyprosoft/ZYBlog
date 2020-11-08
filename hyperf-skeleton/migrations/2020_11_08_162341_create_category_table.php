@@ -12,7 +12,14 @@ class CreateCategoryTable extends Migration
     public function up(): void
     {
         Schema::create('category', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->integerIncrements('category_id');
+            $table->string("name",10)
+                  ->comment("分类名");
+            $table->string("avatar",255)
+                  ->nullable()
+                  ->comment("头像");
+            $table->unique("name");
+
             $table->timestamps();
         });
     }

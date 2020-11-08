@@ -12,7 +12,12 @@ class CreateTagTable extends Migration
     public function up(): void
     {
         Schema::create('tag', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('tag_id')
+                  ->comment("标签ID");
+            $table->string("name", 10)
+                  ->comment("标签名");
+            $table->unique("name");
+
             $table->timestamps();
         });
     }
