@@ -54,10 +54,7 @@ class User extends Model implements Authenticatable
         }
         return null;
     }
-    public function role()
-    {
-        return $this->belongsTo(Verify::class);
-    }
+
     public function isAdmin()
     {
         return $this->role_id == Constants::USER_ROLE_ADMIN;

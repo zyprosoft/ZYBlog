@@ -19,6 +19,13 @@ class CreateUserRoleDataSeeder extends Seeder
             "role_id" => 1,
             "name" => "博主"
         ]);
+        Db::table('user')->insert([
+            'role_id' => 1,
+            'username' => 'admin',
+            'password' => password_hash('admin123'),
+            'nickname' => 'admin',
+            'email' => '1003081775@qq.com'
+        ]);
         Db::table('category')->insert([
             [
                 "name" => "经验分享"
