@@ -16,7 +16,7 @@ class CreateCommentTable extends Migration
                   ->comment("评论ID");
             $table->string("content",128)
                   ->comment("评论内容");
-            $table->bigIncrements('parent_comment_id')
+            $table->bigInteger('parent_comment_id')
                   ->nullable()
                   ->comment("父评论ID");
             $table->integer('article_id')
