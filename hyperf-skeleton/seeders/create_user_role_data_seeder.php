@@ -22,7 +22,7 @@ class CreateUserRoleDataSeeder extends Seeder
         Db::table('user')->insert([
             'role_id' => 1,
             'username' => 'admin',
-            'password' => password_hash('admin123'),
+            'password' => password_hash('admin123',PASSWORD_DEFAULT),
             'nickname' => 'admin',
             'email' => '1003081775@qq.com'
         ]);
