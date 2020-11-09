@@ -25,7 +25,7 @@ class UserController extends AbstractController
     public function login()
     {
        $this->validate([
-            'username' => 'string|max:20|exist:user,username|required',
+            'username' => 'string|max:20|exists:user,username|required',
             'password' => 'string|max:20|required',
         ]);
         $username = $this->request->param('username');

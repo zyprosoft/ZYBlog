@@ -24,6 +24,7 @@ class ArticleController extends AbstractController
     /**
      * 写文章
      * @param AdminArticleRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function create(AdminArticleRequest $request)
     {
