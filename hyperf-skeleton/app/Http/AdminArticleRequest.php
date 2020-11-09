@@ -2,9 +2,8 @@
 
 
 namespace App\Http;
-use ZYProSoft\Http\AdminRequest;
 
-class AdminArticleRequest extends AdminRequest
+class AdminArticleRequest extends AppAdminRequest
 {
     public function rules()
     {
