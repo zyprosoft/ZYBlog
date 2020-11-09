@@ -3,7 +3,6 @@
 declare (strict_types=1);
 namespace App\Model;
 
-use Hyperf\Database\Model\Events\Creating;
 use Hyperf\DbConnection\Model\Model;
 use Qbhy\HyperfAuth\Authenticatable;
 use App\Constants\Constants;
@@ -28,6 +27,9 @@ class User extends Model implements Authenticatable
      * @var string
      */
     protected $table = 'user';
+
+    protected $primaryKey = 'user_id';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -45,9 +47,9 @@ class User extends Model implements Authenticatable
     {
         return $this->user_id;
     }
-    public static function retrieveById($key) : ?Authenticatable
+    public static function retrieveById($userId) : ?Authenticatable
     {
-        $user = User::query()->select(["user_id", "role_id", "nickname", "username", "mobile", "avatar", "approved", "deleted_at"])->where("userId", $key)->first();
+        $user = User::find($userId);
         if ($user instanceof Authenticatable) {
             return $user;
         }
