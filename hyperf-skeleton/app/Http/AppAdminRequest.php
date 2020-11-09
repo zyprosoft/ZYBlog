@@ -6,8 +6,9 @@ namespace App\Http;
 
 use App\Model\User;
 use ZYProSoft\Facade\Auth;
+use ZYProSoft\Http\AdminRequest;
 
-class AppAdminRequest extends \ZYProSoft\Http\AdminRequest
+class AppAdminRequest extends AdminRequest
 {
     protected function isAdmin()
     {
