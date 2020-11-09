@@ -16,10 +16,9 @@ class UserService extends BaseService
 {
     public function login(string $username, string $password)
     {
-        $user = Db::table('user')->where('username', $username)
-                                       ->first();
+        $user = User::query()->where('username', $username)
+                             ->first();
         if (!$user instanceof User) {
-            Log::error("user class".get_class($user));
             throw new BusinessException(ZYErrorCode::RECORD_NOT_EXIST,"用户不存在!");
         }
         $verify = password_verify($password, $user->password);
