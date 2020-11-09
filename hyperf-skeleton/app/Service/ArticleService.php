@@ -17,11 +17,8 @@ class ArticleService extends BaseService
     {
         //先创建标签
         if (!empty($tags)) {
-            $saveTags = collect($tags)->mapWithKeys(function ($value, $key) {
-                return ['name' => $value];
-            })->toArray();
-            Log::info("save tags:".json_encode($saveTags));
-            Tag::query()->updateOrInsert($saveTags);
+            Log::info("save tags:".json_encode($tags));
+            Tag::query()->updateOrInsert(['name'], $tags);
         }
 
         Db::transaction(function () use ($title, $content, $categoryId, $tags) {
