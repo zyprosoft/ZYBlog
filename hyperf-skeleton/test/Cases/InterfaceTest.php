@@ -4,6 +4,7 @@
 namespace HyperfTest\Cases;
 use PHPUnit\Framework\TestCase;
 use Qbhy\HyperfTesting\Client;
+use ZYProSoft\Log\Log;
 
 class InterfaceTest extends TestCase
 {
@@ -32,7 +33,7 @@ class InterfaceTest extends TestCase
                 'param' => $params
             ]
         ];
-        $this->client->json('/', $body)->assertOk()->assertStatus(200);
+        return $this->client->json('/', $body)->assertOk()->assertStatus(200);
     }
 
     public function testLogin()
@@ -41,6 +42,24 @@ class InterfaceTest extends TestCase
         $params = [
             'username' => 'admin',
             'password' => 'admin123'
+        ];
+        $response = $this->cgwRequest($interfaceName, $params);
+        return $response['data']['token'];
+    }
+
+    public function testCreateArticle()
+    {
+        $token = $this->testLogin();
+
+        Log::info("token:$token");
+        
+        $interfaceName = 'admin.article.create';
+        $params = [
+            'token' => $token,
+            'title' => '第一篇文章',
+            'content' => '博客内容展示给大家',
+            'tags' => ['随笔','演示'],
+            'categoryId' => 0
         ];
         $this->cgwRequest($interfaceName, $params);
     }
