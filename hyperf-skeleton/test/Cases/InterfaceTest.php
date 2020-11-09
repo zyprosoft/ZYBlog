@@ -19,9 +19,10 @@ class InterfaceTest extends TestCase
         $this->client = make(Client::class);
     }
 
-    public function cgwRequest($interfaceName, $params)
+    public function cgwRequest($interfaceName, $params, $token = null)
     {
         $body = [
+            'token' => $token,
             'eventId' => time(),
             'timestamp' => time(),
             'version' => '1.0',
@@ -55,12 +56,11 @@ class InterfaceTest extends TestCase
 
         $interfaceName = 'admin.article.create';
         $params = [
-            'token' => $token,
             'title' => '第一篇文章',
             'content' => '博客内容展示给大家',
             'tags' => ['随笔','演示'],
             'categoryId' => 0
         ];
-        $this->cgwRequest($interfaceName, $params);
+        $this->cgwRequest($interfaceName, $params, $token);
     }
 }
