@@ -9,20 +9,22 @@ use App\Model\Tag;
 use Hyperf\DbConnection\Db;
 use Hyperf\Utils\Arr;
 use ZYProSoft\Facade\Auth;
+use ZYProSoft\Log\Log;
 
 class ArticleService extends BaseService
 {
     public function createArticle(string $title, string $content, array $tags, int $categoryId)
     {
-        Db::transaction(function () use ($title, $content, $categoryId, $tags) {
+        //先创建标签
+        if (!empty($tags)) {
+            $saveTags = collect($tags)->mapWithKeys(function ($value, $key) {
+                return ['name' => $value];
+            })->toArray();
+            Log::info("save tags:".json_encode($saveTags));
+            Tag::query()->updateOrInsert($saveTags);
+        }
 
-            //先创建标签
-            if (!empty($tags)) {
-                $saveTags = collect($tags)->mapWithKeys(function ($value, $key) {
-                    return ['name' => $value];
-                })->toArray();
-                Tag::query()->updateOrInsert($saveTags);
-            }
+        Db::transaction(function () use ($title, $content, $categoryId, $tags) {
 
             //获取Tags
             $tagList = Tag::query()->whereIn('name', $tags)->get();
@@ -30,7 +32,7 @@ class ArticleService extends BaseService
             $article = new Article();
             $article->title = $title;
             $article->content = $content;
-            $userId = Auth::user()->getId();
+            $userId = Auth::userId();
             $article->user_id = $userId;
             $article->category_id = $categoryId;
             $article->save();

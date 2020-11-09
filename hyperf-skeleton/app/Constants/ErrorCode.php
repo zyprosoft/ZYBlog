@@ -22,5 +22,5 @@ class ErrorCode extends AbstractConstants
     /**
      * @Message("用户密码错误")
      */
-    const USER_ERROR_PASSWORD_WRONG = 10000;
+    const USER_ERROR_PASSWORD_WRONG = 20000;
 }

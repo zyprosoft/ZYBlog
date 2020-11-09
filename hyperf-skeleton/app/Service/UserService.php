@@ -23,7 +23,7 @@ class UserService extends BaseService
         }
         $verify = password_verify($password, $user->password);
         if (!$verify) {
-            throw new BusinessException(ZYErrorCode::DB_ERROR,"密码验证错误");
+            throw new BusinessException(ErrorCode::USER_ERROR_PASSWORD_WRONG,"密码验证错误");
         }
 
         $user->token = Auth::login($user);

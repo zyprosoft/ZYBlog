@@ -21,6 +21,9 @@ class CreateCategoryTable extends Migration
             $table->unique("name");
 
             $table->timestamps();
+            $table->engine = "InnoDB";
+            $table->charset = "utf8mb4";
+            $table->collation = "utf8mb4_unicode_ci";
         });
     }
 

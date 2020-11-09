@@ -19,6 +19,9 @@ class CreateAttachmentTable extends Migration
             $table->string("link", 500)
                   ->comment("附件链接");
             $table->timestamps();
+            $table->engine = "InnoDB";
+            $table->charset = "utf8mb4";
+            $table->collation = "utf8mb4_unicode_ci";
         });
     }
 

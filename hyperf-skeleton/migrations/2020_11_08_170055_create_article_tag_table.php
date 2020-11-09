@@ -19,6 +19,9 @@ class CreateArticleTagTable extends Migration
                   ->comment("标签ID");
             $table->unique(["article_id","tag_id"]);
             $table->timestamps();
+            $table->engine = "InnoDB";
+            $table->charset = "utf8mb4";
+            $table->collation = "utf8mb4_unicode_ci";
         });
     }
 
