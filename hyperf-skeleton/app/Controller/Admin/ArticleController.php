@@ -20,7 +20,7 @@ class ArticleController extends AbstractController
      * @var ArticleService
      */
     private $articleService;
-    
+
     public function create(AdminArticleRequest $request)
     {
         $params = $request->validated();
