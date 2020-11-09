@@ -59,7 +59,7 @@ class InterfaceTest extends TestCase
             'title' => '第一篇文章',
             'content' => '博客内容展示给大家',
             'tags' => ['随笔','演示'],
-            'categoryId' => 0
+            'categoryId' => 1
         ];
         $this->cgwRequest($interfaceName, $params, $token);
     }
