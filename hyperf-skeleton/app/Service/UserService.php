@@ -5,6 +5,7 @@ namespace App\Service;
 
 
 use App\Constants\ErrorCode;
+use ZYProSoft\Constants\ErrorCode as ZYErrorCode;
 use App\Exception\BusinessException;
 use App\Model\User;
 use Hyperf\DbConnection\Db;
@@ -15,10 +16,13 @@ class UserService extends BaseService
     public function login(string $username, string $password)
     {
         $user = Db::table('user')->where('username', $username)
-                                       ->where('password', password_hash($password, PASSWORD_DEFAULT))
                                        ->first();
         if (!$user instanceof User) {
-            throw new BusinessException(ErrorCode::USER_ERROR_PASSWORD_WRONG);
+            throw new BusinessException(ZYErrorCode::RECORD_NOT_EXIST,"用户不存在!");
+        }
+        $verify = password_verify($password, $user->password);
+        if (!$verify) {
+            throw new BusinessException(ZYErrorCode::DB_ERROR,"密码验证错误");
         }
 
         $user->token = Auth::login($user);
