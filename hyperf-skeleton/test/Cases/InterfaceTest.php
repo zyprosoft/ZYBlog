@@ -43,8 +43,8 @@ class InterfaceTest extends TestCase
             'username' => 'admin',
             'password' => 'admin123'
         ];
-        $response = $this->cgwRequest($interfaceName, $params);
-        return $response['data']['token'];
+        $loginResponse = $this->cgwRequest($interfaceName, $params);
+        return json_decode($loginResponse->getContent())->data->token;
     }
 
     public function testCreateArticle()
@@ -52,7 +52,7 @@ class InterfaceTest extends TestCase
         $token = $this->testLogin();
 
         Log::info("token:$token");
-        
+
         $interfaceName = 'admin.article.create';
         $params = [
             'token' => $token,
