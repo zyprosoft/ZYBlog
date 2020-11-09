@@ -20,12 +20,7 @@ class ArticleController extends AbstractController
      * @var ArticleService
      */
     private $articleService;
-
-    /**
-     * 写文章
-     * @param AdminArticleRequest $request
-     * @return \Psr\Http\Message\ResponseInterface
-     */
+    
     public function create(AdminArticleRequest $request)
     {
         $params = $request->validated();
