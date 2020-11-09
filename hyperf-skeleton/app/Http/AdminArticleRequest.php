@@ -17,7 +17,7 @@ class AdminArticleRequest extends AdminRequest
                 'title' => 'string|max:50|required',
                 'content' => 'string|max:20000|required',
                 'tags' => 'array|max:5|required',
-                'categoryId' => 'integer|exist:category,category_id|required'
+                'categoryId' => 'integer|exists:category,category_id|required'
             ];
         }
     }
