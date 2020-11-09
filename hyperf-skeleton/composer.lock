@@ -1645,7 +1645,7 @@
         },
         {
             "name": "hyperf/database",
-            "version": "v2.0.17",
+            "version": "v2.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/database.git",
@@ -2329,16 +2329,16 @@
         },
         {
             "name": "hyperf/http-server",
-            "version": "v2.0.13",
+            "version": "v2.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/http-server.git",
-                "reference": "c124282e53bf0dfd9528e8f44f777d220b7ec9b3"
+                "reference": "aadfd385041083f04b2c6be7fd56256b457598dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyperf/http-server/zipball/c124282e53bf0dfd9528e8f44f777d220b7ec9b3",
-                "reference": "c124282e53bf0dfd9528e8f44f777d220b7ec9b3",
+                "url": "https://api.github.com/repos/hyperf/http-server/zipball/aadfd385041083f04b2c6be7fd56256b457598dd",
+                "reference": "aadfd385041083f04b2c6be7fd56256b457598dd",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2396,7 +2396,7 @@
                 "php",
                 "swoole"
             ],
-            "time": "2020-09-23T02:31:52+00:00"
+            "time": "2020-11-03T08:33:34+00:00"
         },
         {
             "name": "hyperf/logger",
@@ -2916,16 +2916,16 @@
         },
         {
             "name": "hyperf/redis",
-            "version": "v2.0.17",
+            "version": "v2.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/redis.git",
-                "reference": "f6105733d8c6816d21724f5f628148108791507e"
+                "reference": "8bc8ce34f18eacb4ecc47170a1ef5d88af6f9a35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyperf/redis/zipball/f6105733d8c6816d21724f5f628148108791507e",
-                "reference": "f6105733d8c6816d21724f5f628148108791507e",
+                "url": "https://api.github.com/repos/hyperf/redis/zipball/8bc8ce34f18eacb4ecc47170a1ef5d88af6f9a35",
+                "reference": "8bc8ce34f18eacb4ecc47170a1ef5d88af6f9a35",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2979,7 +2979,7 @@
                 "pool",
                 "redis"
             ],
-            "time": "2020-10-28T06:17:16+00:00"
+            "time": "2020-11-06T07:50:08+00:00"
         },
         {
             "name": "hyperf/server",
@@ -3241,16 +3241,16 @@
         },
         {
             "name": "hyperf/translation",
-            "version": "v2.0.13",
+            "version": "v2.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/translation.git",
-                "reference": "11bd144edcfb24d46aea8be82c7f03712cc7fbbf"
+                "reference": "988811b9278a9ca82197916f47e4230cfd3facfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyperf/translation/zipball/11bd144edcfb24d46aea8be82c7f03712cc7fbbf",
-                "reference": "11bd144edcfb24d46aea8be82c7f03712cc7fbbf",
+                "url": "https://api.github.com/repos/hyperf/translation/zipball/988811b9278a9ca82197916f47e4230cfd3facfa",
+                "reference": "988811b9278a9ca82197916f47e4230cfd3facfa",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3295,20 +3295,20 @@
                 "hyperf",
                 "translation"
             ],
-            "time": "2020-09-21T03:59:18+00:00"
+            "time": "2020-11-07T08:53:43+00:00"
         },
         {
             "name": "hyperf/utils",
-            "version": "v2.0.17",
+            "version": "v2.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/utils.git",
-                "reference": "3feac751820d291067e6e50ac6955ae52ddecba2"
+                "reference": "0619fe0ccc2101f796f2252d8d2312b47939c30e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyperf/utils/zipball/3feac751820d291067e6e50ac6955ae52ddecba2",
-                "reference": "3feac751820d291067e6e50ac6955ae52ddecba2",
+                "url": "https://api.github.com/repos/hyperf/utils/zipball/0619fe0ccc2101f796f2252d8d2312b47939c30e",
+                "reference": "0619fe0ccc2101f796f2252d8d2312b47939c30e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3367,7 +3367,7 @@
                 "swoole",
                 "utils"
             ],
-            "time": "2020-10-27T13:34:10+00:00"
+            "time": "2020-11-05T04:42:11+00:00"
         },
         {
             "name": "hyperf/validation",
@@ -4268,16 +4268,16 @@
         },
         {
             "name": "overtrue/wechat",
-            "version": "5.1.3",
+            "version": "5.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/wechat.git",
-                "reference": "4bc94ec68b73371f1dd67b6e1e2d50a4b0c51cba"
+                "reference": "a9091fe5dfa343a53b9b867697fce52bb191d180"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/wechat/zipball/4bc94ec68b73371f1dd67b6e1e2d50a4b0c51cba",
-                "reference": "4bc94ec68b73371f1dd67b6e1e2d50a4b0c51cba",
+                "url": "https://api.github.com/repos/overtrue/wechat/zipball/a9091fe5dfa343a53b9b867697fce52bb191d180",
+                "reference": "a9091fe5dfa343a53b9b867697fce52bb191d180",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4362,7 +4362,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-10-28T04:23:40+00:00"
+            "time": "2020-11-09T03:16:41+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -8675,7 +8675,7 @@
             "source": {
                 "type": "git",
                 "url": "http://106.53.15.86:8099/zyprosoft/hyperf-common.git",
-                "reference": "bcdb3ca23bc7ce136f6c2238f85527bf60327e74"
+                "reference": "d1db9b206836413dd0d173aad40e8fb3193040c9"
             },
             "require": {
                 "96qbhy/hyperf-auth": "^2.2",
@@ -8736,7 +8736,7 @@
                 "hyperf",
                 "php"
             ],
-            "time": "2020-11-08T14:51:00+00:00"
+            "time": "2020-11-09T05:09:20+00:00"
         }
     ],
     "packages-dev": [
