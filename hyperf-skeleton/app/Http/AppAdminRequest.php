@@ -7,6 +7,7 @@ namespace App\Http;
 use App\Model\User;
 use ZYProSoft\Facade\Auth;
 use ZYProSoft\Http\AdminRequest;
+use ZYProSoft\Log\Log;
 
 class AppAdminRequest extends AdminRequest
 {
@@ -19,6 +20,7 @@ class AppAdminRequest extends AdminRequest
         if (!$user instanceof User) {
             return false;
         }
+        Log::info("user is admin:".$user->isAdmin());
         return  $user->isAdmin();
     }
 }
