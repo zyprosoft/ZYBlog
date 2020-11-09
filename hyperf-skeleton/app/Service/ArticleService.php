@@ -33,8 +33,8 @@ class ArticleService extends BaseService
             $userId = Auth::user()->getId();
             $article->user_id = $userId;
             $article->category_id = $categoryId;
-            $article->tags()->saveMany($tagList);
             $article->save();
+            $article->tags()->saveMany($tagList);
 
         });
     }
