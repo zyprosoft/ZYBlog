@@ -58,4 +58,14 @@ class ArticleController extends AbstractController
         $this->commentService->create($articleId, $content, $parentCommentId);
         return $this->success();
     }
+
+    public function detail()
+    {
+        $this->validate([
+            'articleId' => 'integer|exists:article,article_id|required',
+        ]);
+        $articleId = $this->request->param('articleId');
+        $article = $this->articleService->getArticleDetail($articleId);
+        return $this->success($article);
+    }
 }

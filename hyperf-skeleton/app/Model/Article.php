@@ -53,4 +53,9 @@ class Article extends Model
     {
         return $this->hasOne(Category::class, 'category_id', 'category_id');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'comment_id', 'comment_id');
+    }
 }

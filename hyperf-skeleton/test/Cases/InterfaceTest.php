@@ -77,7 +77,7 @@ class InterfaceTest extends TestCase
     private function getOneArticle()
     {
         $response = $this->testGetArticleList();
-        return json_decode($response->getContent(), true)['data']['data'][0];
+        return json_decode($response->getContent(), true)['data'][0];
     }
 
     private function getOneComment($articleId)
@@ -97,5 +97,15 @@ class InterfaceTest extends TestCase
             'content' => $content,
         ];
         return $this->cgwRequest($interfaceName, $params, $token)->assertOk();
+    }
+
+    public function testGetArticleDetail()
+    {
+        $articleId = $this->getOneArticle()['article_id'];
+        $interfaceName = 'common.article.detail';
+        $params = [
+            'articleId' => $articleId,
+        ];
+        return $this->cgwRequest($interfaceName, $params)->assertOk();
     }
 }
