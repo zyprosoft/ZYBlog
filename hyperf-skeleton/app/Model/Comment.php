@@ -40,4 +40,14 @@ class Comment extends Model
     {
         return $this->belongsTo(Article::class,'article_id','article_id');
     }
+
+    public function author()
+    {
+        return $this->belongsTo(User::class,'user_id','user_id');
+    }
+
+    public function parentComment()
+    {
+        return $this->belongsTo(Comment::class,'comment_id','parent_comment_id');
+    }
 }
