@@ -4,6 +4,7 @@
 namespace App\Service;
 use App\Job\RefreshArticleJob;
 use App\Model\Comment;
+use ZYProSoft\Facade\Auth;
 use ZYProSoft\Log\Log;
 
 class CommentService extends BaseService
@@ -11,6 +12,7 @@ class CommentService extends BaseService
     public function create(int $articleId, string $content, int $parentCommentId = null)
     {
         $comment = new Comment();
+        $comment->user_id = Auth::userId();
         $comment->article_id = $articleId;
         $comment->content = $content;
         if (isset($parentCommentId)) {
