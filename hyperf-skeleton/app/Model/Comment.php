@@ -50,4 +50,9 @@ class Comment extends Model
     {
         return $this->belongsTo(Comment::class,'comment_id','parent_comment_id');
     }
+
+    public function replyList()
+    {
+        return $this->hasMany(Comment::class,'parent_comment_id','comment_id');
+    }
 }

@@ -68,4 +68,34 @@ class ArticleController extends AbstractController
         $article = $this->articleService->getArticleDetail($articleId);
         return $this->success($article);
     }
+
+    public function commentList()
+    {
+        $this->validate([
+            'pageIndex' => 'integer',
+            'pageSize' => 'integer|max:20',
+            'articleId' => 'integer|exists:article,article_id|required'
+        ]);
+        $pageIndex = $this->request->param('pageIndex', 0);
+        $pageSize = $this->request->param('pageSize', 20);
+        $articleId = $this->request->param('articleId');
+        $comments = $this->commentService->list($pageIndex, $pageSize, $articleId);
+        return $this->success($comments);
+    }
+
+    /**
+     * 回复某一个评论
+     * @param AuthedRequest $request
+     */
+    public function replyComment(AuthedRequest $request)
+    {
+        $this->validate([
+            'commentId' => 'integer|required',
+            'content' => 'string|max:500|required'
+        ]);
+        $commentId = $request->param('commentId');
+        $content = $request->param('content');
+        $this->commentService->reply($commentId, $content);
+        return $this->success();
+    }
 }

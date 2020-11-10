@@ -80,11 +80,6 @@ class InterfaceTest extends TestCase
         return json_decode($response->getContent(), true)['data'][0];
     }
 
-    private function getOneComment($articleId)
-    {
-
-    }
-
     public function testCreateComment()
     {
         $token = $this->testLogin();
@@ -107,5 +102,48 @@ class InterfaceTest extends TestCase
             'articleId' => $articleId,
         ];
         return $this->cgwRequest($interfaceName, $params)->assertOk();
+    }
+
+    public function testCommentList()
+    {
+        $articleId = $this->getOneArticle()['article_id'];
+        $interfaceName = 'common.article.commentList';
+        $params = [
+            'articleId' => $articleId,
+        ];
+        return $this->cgwRequest($interfaceName, $params)->assertOk();
+    }
+
+    private function getOneComment()
+    {
+        $response = $this->testCommentList();
+        return json_decode($response->getContent(), true)['data'][0];
+    }
+
+    public function testReplyComment()
+    {
+        $token = $this->testLogin();
+
+        $commentId = $this->getOneComment()['comment_id'];
+        $content = "第一条回复别人的评论";
+        $interfaceName = 'common.article.reply';
+        $params = [
+            'commentId' => $commentId,
+            'content' => $content,
+        ];
+        $this->cgwRequest($interfaceName, $params, $token)->assertOk();
+
+        //查看详情
+        $this->testGetArticleDetail();
+    }
+
+    public function testCommentDetail()
+    {
+        $commentId = $this->getOneComment()['comment_id'];
+        $interfaceName = 'common.comment.detail';
+        $params = [
+            'commentId' => $commentId,
+        ];
+        $this->cgwRequest($interfaceName, $params)->assertOk();
     }
 }

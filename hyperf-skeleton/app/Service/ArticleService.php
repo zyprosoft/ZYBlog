@@ -4,23 +4,16 @@
 namespace App\Service;
 
 
+use App\Facade\CommentServiceFacade;
 use App\Model\Article;
 use App\Model\Tag;
 use Hyperf\Database\Model\Builder;
 use Hyperf\DbConnection\Db;
 use ZYProSoft\Facade\Auth;
 use ZYProSoft\Log\Log;
-use Hyperf\Di\Annotation\Inject;
-use App\Service\CommentService;
 
 class ArticleService extends BaseService
 {
-    /**
-     * @Inject
-     * @var CommentService
-     */
-    private $commentService;
-
     public function createArticle(string $title, string $content, array $tags, int $categoryId)
     {
         //先创建标签
@@ -65,11 +58,19 @@ class ArticleService extends BaseService
     public function getArticleDetail(int $articleId)
     {
         $article = Article::query()->find($articleId)
-                               ->with(['author','category','tags'])
-                               ->limit(10)->first();
-        $commentList = $this->commentService->list(0,10, $articleId);
+                                   ->with(['author','category','tags'])
+                                   ->first();
+        $commentList = CommentServiceFacade::list(0,10, $articleId);
         $article->comments = $commentList;
         return $article;
+    }
+
+    public function getArticleSimple(int $articleId)
+    {
+        return Article::query()->select(['title','user_id','category_id'])
+                                   ->where('article_id', $articleId)
+                                   ->with(['author','category','tags'])
+                                   ->first();
     }
 
     public function deleteArticle(int $articleId)
