@@ -6,7 +6,7 @@ namespace App\Service;
 
 use App\Model\Article;
 use App\Model\Tag;
-use Hyperf\Database\Query\Builder;
+use Hyperf\Database\Model\Builder;
 use Hyperf\DbConnection\Db;
 use ZYProSoft\Facade\Auth;
 use ZYProSoft\Log\Log;
