@@ -7,6 +7,7 @@ use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\Di\Annotation\Inject;
 use ZYProSoft\Controller\AbstractController;
 use App\Service\CommentService;
+use ZYProSoft\Http\AuthedRequest;
 
 /**
  * @AutoController(prefix="/common/article")
@@ -39,16 +40,21 @@ class ArticleController extends AbstractController
         return $this->success($articleList);
     }
 
-    public function addComment()
+    /**
+     * 必须具有登录态
+     * @param AuthedRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function addComment(AuthedRequest $request)
     {
         $this->validate([
             'articleId' => 'integer|exists:article,article_id|required',
             'content' => 'string|max:500|required',
             'parentCommentId' => 'integer',
         ]);
-        $articleId = $this->request->param('articleId');
-        $parentCommentId = $this->request->param('parentCommentId');
-        $content = $this->request->param('content');
+        $articleId = $request->param('articleId');
+        $parentCommentId = $request->param('parentCommentId');
+        $content = $request->param('content');
         $this->commentService->create($articleId, $content, $parentCommentId);
         return $this->success();
     }
