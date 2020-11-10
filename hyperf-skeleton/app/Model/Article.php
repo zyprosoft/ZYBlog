@@ -43,4 +43,14 @@ class Article extends Model
     {
         return $this->belongsToMany(Tag::class,'article_tag','article_id','tag_id')->withTimestamps();
     }
+
+    public function author()
+    {
+        return $this->hasOne(User::class);
+    }
+
+    public function category()
+    {
+        return $this->hasOne(Category::class);
+    }
 }

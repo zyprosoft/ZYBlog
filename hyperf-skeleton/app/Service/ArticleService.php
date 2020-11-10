@@ -6,8 +6,8 @@ namespace App\Service;
 
 use App\Model\Article;
 use App\Model\Tag;
+use Hyperf\Database\Query\Builder;
 use Hyperf\DbConnection\Db;
-use Hyperf\Utils\Arr;
 use ZYProSoft\Facade\Auth;
 use ZYProSoft\Log\Log;
 
@@ -39,6 +39,15 @@ class ArticleService extends BaseService
             $article->tags()->saveMany($tagList);
 
         });
+    }
+
+    public function getArticleList(int $pageIndex, int $pageSize, int $categoryId = null)
+    {
+       return  Article::query()->where(function (Builder $query) use ($categoryId) {
+            if (isset($categoryId)) {
+                $query->where('category_id', $categoryId);
+            }
+        })->paginate($pageSize,['*'],'page',$pageIndex);
     }
 
     public function deleteArticle(int $articleId)

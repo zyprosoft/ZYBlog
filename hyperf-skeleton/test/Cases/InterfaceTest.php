@@ -63,4 +63,14 @@ class InterfaceTest extends TestCase
         ];
         $this->cgwRequest($interfaceName, $params, $token);
     }
+
+    public function testGetArticleList()
+    {
+        $interfaceName = 'common.article.list';
+        $params = [
+            'pageIndex' => 0,
+            'pageSize' => 10
+        ];
+        $this->cgwRequest($interfaceName, $params);
+    }
 }
