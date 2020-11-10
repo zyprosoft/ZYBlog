@@ -10,10 +10,9 @@ class CommentService extends BaseService
 {
     public function create(int $articleId, string $content, int $parentCommentId = null)
     {
-        $comment = new Comment([
-            'article_id' => $articleId,
-            'content' => $content,
-        ]);
+        $comment = new Comment();
+        $comment->article_id = $articleId;
+        $comment->content = $content;
         if (isset($parentCommentId)) {
             $comment->parent_comment_id = $parentCommentId;
         }
