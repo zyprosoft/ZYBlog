@@ -71,21 +71,4 @@ class ArticleService extends BaseService
 
         return $article;
     }
-
-    /**
-     * @param int $articleId
-     * @return Builder|\Hyperf\Database\Model\Model|object|null
-     */
-    public function getArticleSimple(int $articleId)
-    {
-        return Article::query()->select(['article_id','title','user_id','category_id'])
-                                   ->where('article_id', $articleId)
-                                   ->with(['author','category','tags'])
-                                   ->first();
-    }
-
-    public function deleteArticle(int $articleId)
-    {
-
-    }
 }
