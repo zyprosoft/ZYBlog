@@ -47,7 +47,16 @@ class ArticleService extends BaseService
             if (isset($categoryId)) {
                 $query->where('category_id', $categoryId);
             }
-        })->with(['author','tags','category'])->paginate($pageSize,['*'],'page',$pageIndex);
+        })->with(['author','tags','category'])->offset($pageIndex * $pageSize)->limit($pageSize);
+    }
+
+    /**
+     * @param int $articleId
+     * @return Builder|Builder[]|\Hyperf\Database\Model\Collection|\Hyperf\Database\Model\Model|\Hyperf\Database\Query\Builder|null
+     */
+    public function getArticleDetail(int $articleId)
+    {
+        return Article::query()->find($articleId)->with(['author','category','tags'])->with('comments')->limit(10);
     }
 
     public function deleteArticle(int $articleId)
