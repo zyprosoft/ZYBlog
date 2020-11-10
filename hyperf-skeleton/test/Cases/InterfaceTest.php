@@ -77,7 +77,7 @@ class InterfaceTest extends TestCase
     private function getOneArticle()
     {
         $response = $this->testGetArticleList();
-        return json_decode($response->getContent(),true)->data[0];
+        return json_decode($response->getContent(),true)['data'][0];
     }
 
     private function getOneComment($articleId)
