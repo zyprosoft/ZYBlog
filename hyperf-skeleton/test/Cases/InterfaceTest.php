@@ -126,15 +126,12 @@ class InterfaceTest extends TestCase
 
         $commentId = $this->getOneComment()['comment_id'];
         $content = "第一条回复别人的评论";
-        $interfaceName = 'common.article.reply';
+        $interfaceName = 'common.article.replyComment';
         $params = [
             'commentId' => $commentId,
             'content' => $content,
         ];
         $this->cgwRequest($interfaceName, $params, $token)->assertOk();
-
-        //查看详情
-        $this->testGetArticleDetail();
     }
 
     public function testCommentDetail()
