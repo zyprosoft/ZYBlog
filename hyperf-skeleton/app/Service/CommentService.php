@@ -4,6 +4,7 @@
 namespace App\Service;
 use App\Facade\ArticleServiceFacade;
 use App\Job\RefreshArticleJob;
+use App\Model\Article;
 use App\Model\Comment;
 use ZYProSoft\Facade\Auth;
 use ZYProSoft\Log\Log;
@@ -60,7 +61,10 @@ class CommentService extends BaseService
     {
         $comment = Comment::query()->find($commentId)->with('author')->firstOrFail();
         $replyList = $this->replyList($commentId);
-        $article = ArticleServiceFacade::getArticleSimple($comment->article_id);
+        $article = Article::query()->select(['article_id','title','user_id','category_id'])
+                                   ->where('article_id', $comment->article_id)
+                                   ->with(['author','category','tags'])
+                                   ->first();
         $comment->article = $article;
         $comment->replyList = $replyList;
         return $comment;
