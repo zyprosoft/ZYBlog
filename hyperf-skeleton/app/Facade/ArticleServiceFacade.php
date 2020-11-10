@@ -3,9 +3,15 @@
 
 namespace App\Facade;
 use App\Service\ArticleService;
+use Hyperf\Database\Model\Builder;
 use Hyperf\Utils\ApplicationContext;
 
-class ArticleServiceFacade extends ArticleService
+/**
+ * @method Builder|\Hyperf\Database\Model\Model|object|null getArticleSimple(int $articleId)
+ * Class ArticleServiceFacade
+ * @package App\Facade
+ */
+class ArticleServiceFacade
 {
     public static function __callStatic($name, $arguments)
     {

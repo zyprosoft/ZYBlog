@@ -24,6 +24,12 @@ class CommentService extends BaseService
         $this->jobDispatcher->push(new RefreshArticleJob($articleId));
     }
 
+    /**
+     * @param int $pageIndex
+     * @param int $pageSize
+     * @param int $articleId
+     * @return \Hyperf\Database\Model\Builder[]|\Hyperf\Database\Model\Collection
+     */
     public function list(int $pageIndex, int $pageSize, int $articleId)
     {
         return Comment::query()->where('article_id',$articleId)

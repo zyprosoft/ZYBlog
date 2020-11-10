@@ -65,6 +65,10 @@ class ArticleService extends BaseService
         return $article;
     }
 
+    /**
+     * @param int $articleId
+     * @return Builder|\Hyperf\Database\Model\Model|object|null
+     */
     public function getArticleSimple(int $articleId)
     {
         return Article::query()->select(['title','user_id','category_id'])

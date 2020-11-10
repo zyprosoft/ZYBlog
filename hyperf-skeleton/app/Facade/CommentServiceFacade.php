@@ -6,7 +6,12 @@ namespace App\Facade;
 use App\Service\CommentService;
 use Hyperf\Utils\ApplicationContext;
 
-class CommentServiceFacade extends CommentService
+/**
+ * @method \Hyperf\Database\Model\Builder[]|\Hyperf\Database\Model\Collection list(int $pageIndex, int $pageSize, int $articleId)
+ * Class CommentServiceFacade
+ * @package App\Facade
+ */
+class CommentServiceFacade
 {
     public static function __callStatic($name, $arguments)
     {
