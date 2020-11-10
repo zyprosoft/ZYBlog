@@ -2,6 +2,7 @@
 
 
 namespace App\Service;
+use App\Facade\ArticleServiceFacade;
 use App\Job\RefreshArticleJob;
 use App\Model\Comment;
 use ZYProSoft\Facade\Auth;
@@ -25,8 +26,37 @@ class CommentService extends BaseService
 
     public function list(int $pageIndex, int $pageSize, int $articleId)
     {
-        return Comment::query()->where('article_id',$articleId)->with(['author','parentComment'])
+        return Comment::query()->where('article_id',$articleId)
+                               ->with(['author','parentComment'])
                                ->offset($pageIndex * $pageSize)
                                ->limit($pageSize)->get();
+    }
+
+    public function replyList(int $commentId)
+    {
+        return Comment::query()->where('parent_comment_id', $commentId)
+                               ->with('author')
+                               ->get();
+    }
+
+    public function reply(int $commentId, string $content)
+    {
+        $comment = Comment::query()->find($commentId)->with('article')->firstOrFail();
+        $replay = new Comment();
+        $replay->article()->associate($comment->article);
+        $replay->content = $content;
+        $replay->parent_comment_id = $commentId;
+        $replay->user_id = Auth::userId();
+        $replay->saveOrFail();
+    }
+
+    public function detail(int $commentId)
+    {
+        $comment = Comment::query()->find($commentId)->with('author')->firstOrFail();
+        $replyList = $this->replyList($commentId);
+        $article = ArticleServiceFacade::getArticleSimple($comment->article_id);
+        $comment->article = $article;
+        $comment->replyList = $replyList;
+        return $comment;
     }
 }
