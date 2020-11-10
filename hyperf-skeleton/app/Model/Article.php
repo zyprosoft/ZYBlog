@@ -46,11 +46,11 @@ class Article extends Model
 
     public function author()
     {
-        return $this->hasOne(User::class, 'article_id', 'article_id');
+        return $this->hasOne(User::class, 'user_id', 'user_id');
     }
 
     public function category()
     {
-        return $this->hasOne(Category::class, 'article_id', 'article_id');
+        return $this->hasOne(Category::class, 'category_id', 'category_id');
     }
 }
