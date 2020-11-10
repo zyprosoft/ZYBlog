@@ -56,7 +56,7 @@ class ArticleService extends BaseService
      */
     public function getArticleDetail(int $articleId)
     {
-        return Article::query()->find($articleId)->with(['author','category','tags'])->with('comments')->limit(10);
+        return Article::query()->find($articleId)->with(['author','category','tags'])->with('comments')->limit(10)->first();
     }
 
     public function deleteArticle(int $articleId)
