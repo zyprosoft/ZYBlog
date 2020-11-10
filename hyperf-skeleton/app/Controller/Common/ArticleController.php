@@ -35,7 +35,8 @@ class ArticleController extends AbstractController
         if ($this->request->has('categoryId')) {
             $categoryId = $this->request->param('categoryId');
         }
-        return $this->articleService->getArticleList($pageIndex, $pageSize, $categoryId);
+        $articleList = $this->articleService->getArticleList($pageIndex, $pageSize, $categoryId);
+        return $this->success($articleList);
     }
 
     public function addComment()
