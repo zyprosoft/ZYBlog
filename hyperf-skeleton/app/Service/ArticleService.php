@@ -71,7 +71,7 @@ class ArticleService extends BaseService
      */
     public function getArticleSimple(int $articleId)
     {
-        return Article::query()->select(['title','user_id','category_id'])
+        return Article::query()->select(['article_id','title','user_id','category_id'])
                                    ->where('article_id', $articleId)
                                    ->with(['author','category','tags'])
                                    ->first();
