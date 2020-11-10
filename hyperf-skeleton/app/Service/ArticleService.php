@@ -47,7 +47,7 @@ class ArticleService extends BaseService
             if (isset($categoryId)) {
                 $query->where('category_id', $categoryId);
             }
-        })->offset($pageIndex * $pageSize)->limit($pageSize)->with(['author','tags','category']);
+        })->with(['author','tags','category']);
     }
 
     /**
