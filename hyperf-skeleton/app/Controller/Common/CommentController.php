@@ -26,5 +26,6 @@ class CommentController extends AbstractController
             'commentId' => 'integer|required'
         ]);
         $commentId = $this->request->param('commentId');
+        return $this->commentService->detail($commentId);
     }
 }
