@@ -18,6 +18,9 @@ class Category extends Model
      * @var string
      */
     protected $table = 'category';
+
+    protected $primaryKey = 'category_id';
+
     /**
      * The attributes that are mass assignable.
      *

@@ -18,6 +18,9 @@ class Attachment extends Model
      * @var string
      */
     protected $table = 'attachment';
+
+    protected $primaryKey = 'attachment_id';
+
     /**
      * The attributes that are mass assignable.
      *

@@ -23,6 +23,9 @@ class Article extends Model
      * @var string
      */
     protected $table = 'article';
+
+    protected $primaryKey = 'article_id';
+
     /**
      * The attributes that are mass assignable.
      *

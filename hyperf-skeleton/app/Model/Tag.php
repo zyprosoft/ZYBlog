@@ -17,6 +17,9 @@ class Tag extends Model
      * @var string
      */
     protected $table = 'tag';
+
+    protected $primaryKey = 'tag_id';
+
     /**
      * The attributes that are mass assignable.
      *
