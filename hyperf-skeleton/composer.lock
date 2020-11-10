@@ -4268,16 +4268,16 @@
         },
         {
             "name": "overtrue/wechat",
-            "version": "5.1.4",
+            "version": "5.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/wechat.git",
-                "reference": "a9091fe5dfa343a53b9b867697fce52bb191d180"
+                "reference": "1796f94a72210c10f600c287410d6ecab19d6dd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/wechat/zipball/a9091fe5dfa343a53b9b867697fce52bb191d180",
-                "reference": "a9091fe5dfa343a53b9b867697fce52bb191d180",
+                "url": "https://api.github.com/repos/overtrue/wechat/zipball/1796f94a72210c10f600c287410d6ecab19d6dd6",
+                "reference": "1796f94a72210c10f600c287410d6ecab19d6dd6",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4362,7 +4362,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-11-09T03:16:41+00:00"
+            "time": "2020-11-10T06:21:46+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -8675,7 +8675,7 @@
             "source": {
                 "type": "git",
                 "url": "http://106.53.15.86:8099/zyprosoft/hyperf-common.git",
-                "reference": "e76449101b4f7cbfc1934bdff36f0295adfa2d7a"
+                "reference": "0c5b2ce70963163718954fac697b7f2d75d740f2"
             },
             "require": {
                 "96qbhy/hyperf-auth": "^2.2",
@@ -8687,7 +8687,6 @@
                 "hyperf/model-cache": "~2.0.0",
                 "hyperf/session": "^2.0",
                 "hyperf/testing": "^2.0",
-                "hyperf/tracer": "~2.0.0",
                 "hyperf/validation": "^2.0",
                 "overtrue/wechat": "~5.0",
                 "qbhy/hyperf-multi-env": "^2.0",
@@ -8736,7 +8735,7 @@
                 "hyperf",
                 "php"
             ],
-            "time": "2020-11-10T05:38:24+00:00"
+            "time": "2020-11-10T12:04:17+00:00"
         }
     ],
     "packages-dev": [

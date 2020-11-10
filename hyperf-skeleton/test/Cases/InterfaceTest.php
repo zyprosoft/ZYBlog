@@ -34,7 +34,7 @@ class InterfaceTest extends TestCase
                 'param' => $params
             ]
         ];
-        return $this->client->json('/', $body)->assertOk()->assertStatus(200);
+        return $this->client->json('/', $body)->assertOk();
     }
 
     public function testLogin()
@@ -61,7 +61,7 @@ class InterfaceTest extends TestCase
             'tags' => ['随笔','演示'],
             'categoryId' => 1
         ];
-        $this->cgwRequest($interfaceName, $params, $token);
+        $this->cgwRequest($interfaceName, $params, $token)->assertOk();
     }
 
     public function testGetArticleList()
@@ -94,6 +94,6 @@ class InterfaceTest extends TestCase
             'articleId' => $articleId,
             'content' => $content,
         ];
-        return $this->cgwRequest($interfaceName, $params);
+        return $this->cgwRequest($interfaceName, $params)->assertOk();
     }
 }
