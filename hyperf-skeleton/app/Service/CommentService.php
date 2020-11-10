@@ -22,4 +22,11 @@ class CommentService extends BaseService
         $comment->saveOrFail();
         $this->jobDispatcher->push(new RefreshArticleJob($articleId));
     }
+
+    public function list(int $pageIndex, int $pageSize, int $articleId)
+    {
+        return Comment::query()->where('article_id',$articleId)->with(['author','parentComment'])
+                               ->offset($pageIndex * $pageSize)
+                               ->limit($pageSize)->get();
+    }
 }
