@@ -47,7 +47,7 @@ class ArticleService extends BaseService
             if (isset($categoryId)) {
                 $query->where('category_id', $categoryId);
             }
-        })->paginate($pageSize,['*'],'page',$pageIndex);
+        })->with(['author','tags','category'])->paginate($pageSize,['*'],'page',$pageIndex);
     }
 
     public function deleteArticle(int $articleId)
