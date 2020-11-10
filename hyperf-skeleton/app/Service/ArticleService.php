@@ -6,6 +6,7 @@ namespace App\Service;
 
 use App\Facade\CommentServiceFacade;
 use App\Model\Article;
+use App\Model\Comment;
 use App\Model\Tag;
 use Hyperf\Database\Model\Builder;
 use Hyperf\DbConnection\Db;
@@ -60,8 +61,14 @@ class ArticleService extends BaseService
         $article = Article::query()->find($articleId)
                                    ->with(['author','category','tags'])
                                    ->first();
-        $commentList = CommentServiceFacade::list(0,10, $articleId);
+        //获取一页评论列表
+        $commentList = Comment::query()->where('article_id',$articleId)
+                                       ->with(['author','parentComment'])
+                                       ->offset(0)
+                                       ->limit(10)->get();
+
         $article->comments = $commentList;
+
         return $article;
     }
 
