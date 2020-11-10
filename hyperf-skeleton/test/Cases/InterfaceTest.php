@@ -87,6 +87,8 @@ class InterfaceTest extends TestCase
 
     public function testCreateComment()
     {
+        $token = $this->testLogin();
+
         $articleId = $this->getOneArticle()['article_id'];
         $content = "第一条测试评论";
         $interfaceName = 'common.article.addComment';
@@ -94,6 +96,6 @@ class InterfaceTest extends TestCase
             'articleId' => $articleId,
             'content' => $content,
         ];
-        return $this->cgwRequest($interfaceName, $params)->assertOk();
+        return $this->cgwRequest($interfaceName, $params, $token)->assertOk();
     }
 }
