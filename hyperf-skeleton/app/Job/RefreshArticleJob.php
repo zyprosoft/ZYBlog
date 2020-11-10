@@ -3,6 +3,7 @@
 
 namespace App\Job;
 use App\Model\Article;
+use App\Model\Comment;
 use Hyperf\AsyncQueue\Job;
 use ZYProSoft\Log\Log;
 
@@ -23,11 +24,9 @@ class RefreshArticleJob extends Job
      */
     public function handle()
     {
-        $article = Article::query()->find($this->articleId)->with('comments')->count();
-        if (!$article instanceof Article) {
-            Log::info("async refresh article without find article!");
-            return;
-        }
-        Log::info("find article:".json_encode($article));
+        $commentCount = Comment::query()->where('article_id', $this->articleId)->count();
+        Log::info("find article comment count:".$commentCount);
+        Article::query()->where('article_id', $this->articleId)->update(['comment_count'=>$commentCount]);
+        Log::info("success update article comment count in async queue!");
     }
 }
