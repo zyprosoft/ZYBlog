@@ -17,10 +17,10 @@ class ArticleService extends BaseService
     {
         //先创建标签
         if (!empty($tags)) {
-            Log::info("save tags:".json_encode($tags));
-            $saveTags = collect($tags)->mapWithKeys(function ($value, $Key){
-               return ['name'=>$value];
+            $saveTags = collect($tags)->mapWithKeys(function ($value, $key){
+               return ['name' => $value];
             })->toArray();
+            Log::info("save tags:".json_encode($saveTags));
             Tag::insertOrIgnore($saveTags);
         }
 
