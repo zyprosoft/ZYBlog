@@ -35,4 +35,9 @@ class Comment extends Model
      * @var array
      */
     protected $casts = ['comment_id' => 'integer', 'parent_comment_id' => 'integer', 'article_id' => 'integer', 'user_id' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+
+    public function article()
+    {
+        return $this->belongsTo(Article::class,'article_id','article_id');
+    }
 }

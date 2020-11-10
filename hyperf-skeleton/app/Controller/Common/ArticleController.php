@@ -6,6 +6,7 @@ use App\Service\ArticleService;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\Di\Annotation\Inject;
 use ZYProSoft\Controller\AbstractController;
+use App\Service\CommentService;
 
 /**
  * @AutoController(prefix="/common/article")
@@ -20,6 +21,12 @@ class ArticleController extends AbstractController
      */
     private $articleService;
 
+    /**
+     * @Inject
+     * @var CommentService
+     */
+    private $commentService;
+
     public function list()
     {
         $pageIndex = $this->request->param('pageIndex', 0);
@@ -29,5 +36,19 @@ class ArticleController extends AbstractController
             $categoryId = $this->request->param('categoryId');
         }
         return $this->articleService->getArticleList($pageIndex, $pageSize, $categoryId);
+    }
+
+    public function addComment()
+    {
+        $this->validate([
+            'articleId' => 'integer|exists:article,article_id|required',
+            'content' => 'string|max:500|required',
+            'parentCommentId' => 'integer',
+        ]);
+        $articleId = $this->request->param('articleId');
+        $parentCommentId = $this->request->param('parentCommentId');
+        $content = $this->request->param('content');
+        $this->commentService->create($articleId, $content, $parentCommentId);
+        return $this->success();
     }
 }

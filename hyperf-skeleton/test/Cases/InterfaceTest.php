@@ -71,6 +71,29 @@ class InterfaceTest extends TestCase
             'pageIndex' => 0,
             'pageSize' => 10
         ];
-        $this->cgwRequest($interfaceName, $params);
+        return $this->cgwRequest($interfaceName, $params);
+    }
+
+    private function getOneArticle()
+    {
+        $response = $this->testGetArticleList();
+        return json_decode($response->getContent(),true)->data[0];
+    }
+
+    private function getOneComment($articleId)
+    {
+
+    }
+
+    public function testCreateComment()
+    {
+        $articleId = $this->getOneArticle()['article_id'];
+        $content = "第一条测试评论";
+        $interfaceName = 'common.article.addComment';
+        $params = [
+            'articleId' => $articleId,
+            'content' => $content,
+        ];
+        return $this->cgwRequest($interfaceName, $params);
     }
 }
