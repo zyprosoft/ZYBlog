@@ -2,21 +2,18 @@
 
 
 namespace App\Facade;
-use App\Service\ArticleService;
-use Hyperf\Database\Model\Builder;
-use Hyperf\Utils\ApplicationContext;
+use HyperfFacade\Facade;
+use HyperfFacade\Annotation\Alias;
 
 /**
- * @method Builder|\Hyperf\Database\Model\Model|object|null getArticleSimple(int $articleId)
+ * @Alias("Article")
  * Class ArticleServiceFacade
  * @package App\Facade
  */
-class ArticleServiceFacade
+class ArticleServiceFacade extends Facade
 {
-    public static function __callStatic($name, $arguments)
+    protected static function getFacadeAccessor()
     {
-        $service = ApplicationContext::getContainer()->get(ArticleService::class);
-        $callback = [$service,$name];
-        call($callback, $arguments);
+        return \App\Service\ArticleService::class;
     }
 }

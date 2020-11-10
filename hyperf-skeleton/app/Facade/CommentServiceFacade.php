@@ -3,20 +3,18 @@
 
 namespace App\Facade;
 
-use App\Service\CommentService;
-use Hyperf\Utils\ApplicationContext;
+use HyperfFacade\Facade;
+use HyperfFacade\Annotation\Alias;
 
 /**
- * @method \Hyperf\Database\Model\Builder[]|\Hyperf\Database\Model\Collection list(int $pageIndex, int $pageSize, int $articleId)
+ * @Alias("Comment")
  * Class CommentServiceFacade
  * @package App\Facade
  */
-class CommentServiceFacade
+class CommentServiceFacade extends Facade
 {
-    public static function __callStatic($name, $arguments)
+    protected static function getFacadeAccessor()
     {
-        $service = ApplicationContext::getContainer()->get(CommentService::class);
-        $callback = [$service,$name];
-        call($callback, $arguments);
+        return \App\Service\CommentService::class;
     }
 }

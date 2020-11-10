@@ -48,7 +48,8 @@
         "hyperf/metric": "^2.0",
         "hyperf/session": "^2.0",
         "overtrue/wechat": "~5.0",
-        "zyprosoft/hyperf-common": "dev-master"
+        "zyprosoft/hyperf-common": "dev-master",
+        "liuchang103/hyperf-facade": "^1.0"
     },
     "require-dev": {
         "swoole/ide-helper": "^4.5",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b2c67d200da0875c8de97a4a0f3a374",
+    "content-hash": "87b28dd373b92072e7c4b02851a7e5e8",
     "packages": [
         {
             "name": "96qbhy/hyperf-auth",
@@ -3720,6 +3720,60 @@
                 }
             ],
             "time": "2020-09-14T14:23:00+00:00"
+        },
+        {
+            "name": "liuchang103/hyperf-facade",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/liuchang103/hyperf-facade.git",
+                "reference": "9fdb43cae5b13fd60827eba7bf8b3c1ba0d344c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/liuchang103/hyperf-facade/zipball/9fdb43cae5b13fd60827eba7bf8b3c1ba0d344c8",
+                "reference": "9fdb43cae5b13fd60827eba7bf8b3c1ba0d344c8",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-swoole": ">=4.5",
+                "hyperf/di": "2.0.*",
+                "hyperf/framework": "2.0.*",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.14",
+                "hyperf/testing": "2.0.*",
+                "phpstan/phpstan": "^0.12",
+                "swoole/ide-helper": "dev-master"
+            },
+            "type": "library",
+            "extra": {
+                "hyperf": {
+                    "config": "HyperfFacade\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "HyperfFacade\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "hyperf container facade",
+            "keywords": [
+                "hyperf",
+                "php"
+            ],
+            "time": "2020-08-02T09:39:16+00:00"
         },
         {
             "name": "monolog/monolog",
