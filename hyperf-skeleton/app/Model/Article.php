@@ -56,6 +56,6 @@ class Article extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class, 'comment_id', 'comment_id');
+        return $this->hasMany(Comment::class, 'article_id', 'article_id');
     }
 }
