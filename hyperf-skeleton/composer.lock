@@ -8670,7 +8670,7 @@
             "source": {
                 "type": "git",
                 "url": "http://106.53.15.86:8099/zyprosoft/hyperf-common.git",
-                "reference": "0e1a466fbcf551fd2cd0093af702933d3bbeb08a"
+                "reference": "5fdedef3b3f8913f55224729433c357453771be5"
             },
             "require": {
                 "96qbhy/hyperf-auth": "^2.2",
@@ -8678,6 +8678,7 @@
                 "hyperf/async-queue": "~2.0.0",
                 "hyperf/constants": "~2.0.0",
                 "hyperf/crontab": "^2.0",
+                "hyperf/logger": "~2.0.0",
                 "hyperf/metric": "^2.0",
                 "hyperf/model-cache": "~2.0.0",
                 "hyperf/session": "^2.0",
@@ -8730,7 +8731,7 @@
                 "hyperf",
                 "php"
             ],
-            "time": "2020-11-11T02:14:28+00:00"
+            "time": "2020-11-11T09:23:04+00:00"
         }
     ],
     "packages-dev": [
