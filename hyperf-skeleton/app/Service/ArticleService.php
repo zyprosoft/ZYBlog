@@ -4,7 +4,6 @@
 namespace App\Service;
 
 
-use App\Facade\CommentServiceFacade;
 use App\Model\Article;
 use App\Model\Comment;
 use App\Model\Tag;
@@ -34,8 +33,7 @@ class ArticleService extends BaseService
             $article = new Article();
             $article->title = $title;
             $article->content = $content;
-            $userId = Auth::userId();
-            $article->user_id = $userId;
+            $article->user_id = $this->userId();
             $article->category_id = $categoryId;
             $article->saveOrFail();
             $article->tags()->saveMany($tagList);
