@@ -2,7 +2,6 @@
 
 
 namespace App\Service;
-use App\Facade\ArticleServiceFacade;
 use App\Job\RefreshArticleJob;
 use App\Model\Article;
 use App\Model\Comment;
@@ -14,7 +13,7 @@ class CommentService extends BaseService
     public function create(int $articleId, string $content, int $parentCommentId = null)
     {
         $comment = new Comment();
-        $comment->user_id = Auth::userId();
+        $comment->user_id = $this->userId();
         $comment->article_id = $articleId;
         $comment->content = $content;
         if (isset($parentCommentId)) {
@@ -53,7 +52,7 @@ class CommentService extends BaseService
         $replay->article()->associate($comment->article);
         $replay->content = $content;
         $replay->parent_comment_id = $commentId;
-        $replay->user_id = Auth::userId();
+        $replay->user_id = $this->userId();
         $replay->saveOrFail();
     }
 
