@@ -28,9 +28,8 @@ class InterfaceTest extends TestCase
             'version' => '1.0',
             'caller' => 'interfaceTest',
             'seqId' => rand(),
-            'spanId' => 'test:step1',
             'interface' => [
-                'interfaceName' => $interfaceName,
+                'name' => $interfaceName,
                 'param' => $params
             ]
         ];
