@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b2c67d200da0875c8de97a4a0f3a374",
+    "content-hash": "b90fce7aa6f2261fed2a86e9cf82d1ee",
     "packages": [
         {
             "name": "96qbhy/hyperf-auth",
@@ -8523,12 +8523,14 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "http://106.53.15.86:8099/zyprosoft/hyperf-common.git",
-<<<<<<< HEAD
-                "reference": "86fdbe7f2a15a1a9ecdccf3b73e27151d7bfe149"
-=======
-                "reference": "5f1d4388fc4ac08132b7dbdd32469155dda4a447"
->>>>>>> 479af94ea250ef14a7f57f3de04547d44f7fe70f
+                "url": "https://github.com/zyprosoft/hyperf-common.git",
+                "reference": "5c783faf6f59a6dd36bc184da8fb04260d95ef67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zyprosoft/hyperf-common/zipball/5c783faf6f59a6dd36bc184da8fb04260d95ef67",
+                "reference": "5c783faf6f59a6dd36bc184da8fb04260d95ef67",
+                "shasum": ""
             },
             "require": {
                 "96qbhy/hyperf-auth": "^2.2",
@@ -8566,35 +8568,20 @@
                     "ZYProSoft\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "HyperfTest\\": "tests"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "co-phpunit -c phpunit.xml --colors=always"
-                ],
-                "analyse": [
-                    "phpstan analyse --memory-limit 1024M -l 0 ./src"
-                ],
-                "cs-fix": [
-                    "php-cs-fixer fix $1"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "private"
+                "MIT"
             ],
             "description": "zyprosoft inc base hyperf adapter",
             "keywords": [
                 "hyperf",
                 "php"
             ],
-<<<<<<< HEAD
-            "time": "2020-12-03T03:25:11+00:00"
-=======
-            "time": "2020-11-11T09:26:49+00:00"
->>>>>>> 479af94ea250ef14a7f57f3de04547d44f7fe70f
+            "support": {
+                "issues": "https://github.com/zyprosoft/hyperf-common/issues",
+                "source": "https://github.com/zyprosoft/hyperf-common/tree/master"
+            },
+            "time": "2020-12-03T04:24:41+00:00"
         }
     ],
     "packages-dev": [
