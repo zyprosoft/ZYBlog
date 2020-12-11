@@ -32,5 +32,20 @@ class ArticleController extends AbstractController
         return $this->success();
     }
 
+    public function list()
+    {
+        $this->validate([
+            'pageIndex' => 'required|integer|min:0',
+            'pageSize' => 'required|integer|min:1|max:30',
+            'categoryId' => 'integer|min:0',
+        ]);
+        $pageIndex = $this->request->param('pageIndex');
+        $pageSize = $this->request->param('pageSize');
+        $categoryId = null;
+        if ($this->request->hasParam('categoryId')) {
+            $categoryId = $this->request->param('categoryId');
+        }
+        return $this->articleService->getArticleList($pageIndex, $pageSize, $categoryId);
+    }
 
 }

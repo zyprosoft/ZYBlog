@@ -8802,7 +8802,15 @@
                 "hyperf",
                 "php"
             ],
+<<<<<<< HEAD
             "time": "2020-12-11T02:38:40+00:00"
+=======
+            "support": {
+                "issues": "https://github.com/zyprosoft/hyperf-common/issues",
+                "source": "https://github.com/zyprosoft/hyperf-common/tree/master"
+            },
+            "time": "2020-12-03T04:24:41+00:00"
+>>>>>>> c7937f7211ff6de734c61fabfbd5d9a33613896a
         }
     ],
     "packages-dev": [
