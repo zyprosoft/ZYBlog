@@ -45,7 +45,8 @@ class ArticleController extends AbstractController
         if ($this->request->hasParam('categoryId')) {
             $categoryId = $this->request->param('categoryId');
         }
-        return $this->articleService->getArticleList($pageIndex, $pageSize, $categoryId);
+        $list = $this->articleService->getArticleList($pageIndex, $pageSize, $categoryId);
+        return $this->success($list);
     }
 
 }
