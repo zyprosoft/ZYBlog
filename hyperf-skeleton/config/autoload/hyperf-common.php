@@ -17,7 +17,7 @@ return [
     'cors' => [
         'enable_cross_origin' => env('ENABLE_CROSS_ORIGIN', true),
         'allow_cross_origins' => [
-            'http://127.0.0.1',
+            'http://127.0.0.1:8010',
             'http://localhost',
             'http://lulinggushi.com'
         ],
