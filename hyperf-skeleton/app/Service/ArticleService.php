@@ -5,6 +5,7 @@ namespace App\Service;
 
 
 use App\Model\Article;
+use App\Model\ArticleTag;
 use App\Model\Comment;
 use App\Model\Tag;
 use Hyperf\Database\Model\Builder;
@@ -99,7 +100,7 @@ class ArticleService extends BaseService
             //获取Tags
             if (!empty($tags)) {
                 $tagList = Tag::query()->whereIn('name', $tags)->get();
-                Tag::query()->select(['tag_id'])->where('article_id',$article->article_id)->delete();
+                ArticleTag::query()->select(['tag_id'])->where('article_id',$article->article_id)->delete();
             }
 
             $article->saveOrFail();
