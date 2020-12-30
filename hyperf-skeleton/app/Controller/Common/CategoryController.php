@@ -8,7 +8,7 @@ use Hyperf\Di\Annotation\Inject;
 use App\Service\CategoryService;
 
 /**
- * @AutoController(prefix='/common/category')
+ * @AutoController(prefix="/common/category")
  * Class CategoryController
  * @package App\Controller\Common
  */
