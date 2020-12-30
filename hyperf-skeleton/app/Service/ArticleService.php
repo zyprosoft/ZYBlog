@@ -92,15 +92,21 @@ class ArticleService extends BaseService
 
         Db::transaction(function () use ($article, $title, $content, $categoryId, $tags) {
 
-            //获取Tags
-            $tagList = Tag::query()->whereIn('name', $tags)->get();
-
             $article->title = isset($title)??$article->title;
             $article->content = isset($content)??$article->content;
             $article->category_id = isset($categoryId)??$article->category_id;
-            $article->saveOrFail();
-            $article->tags()->saveMany($tagList);
 
+            //获取Tags
+            if (!empty($tags)) {
+                $tagList = Tag::query()->whereIn('name', $tags)->get();
+                Tag::query()->select(['tag_id'])->where('article_id',$article->article_id)->delete();
+            }
+
+            $article->saveOrFail();
+
+            if (!empty($tags)) {
+                $article->tags()->saveMany($tagList);
+            }
         });
     }
 }
