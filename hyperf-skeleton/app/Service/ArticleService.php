@@ -56,8 +56,7 @@ class ArticleService extends BaseService
     public function getArticleDetail(int $articleId)
     {
         $article = Article::query()->find($articleId)
-                                   ->with(['author','category','tags'])
-                                   ->first();
+                                   ->with(['author','category','tags']);
         //获取一页评论列表
         $commentList = Comment::query()->where('article_id',$articleId)
                                        ->with(['author','parentComment'])
