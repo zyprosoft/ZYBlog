@@ -93,9 +93,9 @@ class ArticleService extends BaseService
 
         Db::transaction(function () use ($article, $title, $content, $categoryId, $tags) {
 
-            $article->title = isset($title)??$article->title;
-            $article->content = isset($content)??$article->content;
-            $article->category_id = isset($categoryId)??$article->category_id;
+            $article->title = $title??$article->title;
+            $article->content = $content??$article->content;
+            $article->category_id = $categoryId??$article->category_id;
 
             //获取Tags
             if (!empty($tags)) {
