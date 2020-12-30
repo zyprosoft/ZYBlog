@@ -2,12 +2,12 @@
 
 
 namespace App\Service;
-use App\Model\Tag;
+use App\Model\Category;
 
 class CategoryService extends BaseService
 {
     public function getAll()
     {
-        return Tag::query()->select(["name","category_id"])->get();
+        return Category::query()->select(["name","category_id"])->get();
     }
 }
