@@ -142,4 +142,12 @@ class InterfaceTest extends TestCase
         ];
         $this->cgwRequest($interfaceName, $params)->assertOk();
     }
+
+    public function testGetAllCategory()
+    {
+        $interfaceName = 'common.category.getAll';
+        $params = [
+        ];
+        $this->cgwRequest($interfaceName, $params)->assertOk();
+    }
 }

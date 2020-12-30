@@ -9,7 +9,6 @@ use App\Model\Comment;
 use App\Model\Tag;
 use Hyperf\Database\Model\Builder;
 use Hyperf\DbConnection\Db;
-use ZYProSoft\Facade\Auth;
 use ZYProSoft\Log\Log;
 
 class ArticleService extends BaseService
