@@ -57,7 +57,7 @@ class ArticleService extends BaseService
     {
         $article = Article::query()->find($articleId)
                                    ->with(['author','category'])
-                                   ->first();
+                                   ->firstWhere('article_id',$articleId);
         //获取一页评论列表
         $commentList = Comment::query()->where('article_id',$articleId)
                                        ->with(['author','parentComment'])
