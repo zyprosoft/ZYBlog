@@ -8,6 +8,6 @@ class CategoryService extends BaseService
 {
     public function getAll()
     {
-        return Tag::query()->select("name","category_id")->get();
+        return Tag::query()->select(["name","category_id"])->get();
     }
 }
