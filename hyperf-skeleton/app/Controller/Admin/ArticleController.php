@@ -32,6 +32,18 @@ class ArticleController extends AbstractController
         return $this->success();
     }
 
+    public function update(AdminArticleRequest $request)
+    {
+        $params = $request->validated();
+        $articleId = $params['articleId'];
+        $title = $params['title'];
+        $content = $params['content'];
+        $tags = $params['tags'];
+        $categoryId = $params['categoryId'];
+        $this->articleService->updateArticle($articleId, $title, $content, $tags, $categoryId);
+        return $this->success();
+    }
+
     public function list()
     {
         $this->validate([

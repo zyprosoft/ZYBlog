@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 
 namespace App\Service;
 
@@ -9,7 +9,9 @@ use App\Model\Comment;
 use App\Model\Tag;
 use Hyperf\Database\Model\Builder;
 use Hyperf\DbConnection\Db;
+use ZYProSoft\Exception\HyperfCommonException;
 use ZYProSoft\Log\Log;
+use ZYProSoft\Constants\ErrorCode;
 
 class ArticleService extends BaseService
 {
@@ -56,6 +58,7 @@ class ArticleService extends BaseService
     public function getArticleDetail(int $articleId)
     {
         $article = Article::query()->find($articleId);
+        //通过访问加载出来对应的关联属性
         $article->author;
         $article->tags;
         $article->category;
@@ -69,5 +72,35 @@ class ArticleService extends BaseService
         $article->comments = $commentList;
 
         return $article;
+    }
+
+    public function updateArticle(int $articleId, string $title = null, string $content = null, array $tags = null, int $categoryId = null)
+    {
+        $article = Article::query()->find($articleId);
+        if (!$article instanceof Article) {
+            throw new HyperfCommonException(ErrorCode::RECORD_NOT_EXIST,'文章不存在');
+        }
+
+        //先创建标签
+        if (!empty($tags)) {
+            $saveTags = collect($tags)->map(function ($value) {
+                return ['name' => $value];
+            })->toArray();
+            Log::info("save tags:".json_encode($saveTags));
+            Tag::insertOrIgnore($saveTags);
+        }
+
+        Db::transaction(function () use ($article, $title, $content, $categoryId, $tags) {
+
+            //获取Tags
+            $tagList = Tag::query()->whereIn('name', $tags)->get();
+
+            $article->title = isset($title)??$article->title;
+            $article->content = isset($content)??$article->content;
+            $article->category_id = isset($categoryId)??$article->category_id;
+            $article->saveOrFail();
+            $article->tags()->saveMany($tagList);
+
+        });
     }
 }
