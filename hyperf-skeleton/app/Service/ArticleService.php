@@ -55,8 +55,7 @@ class ArticleService extends BaseService
      */
     public function getArticleDetail(int $articleId)
     {
-        $article = Article::query()->find($articleId)
-                                   ->first();
+        $article = Article::query()->find($articleId);
         $article->author;
         $article->tags;
         $article->category;
