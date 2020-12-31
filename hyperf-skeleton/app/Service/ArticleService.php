@@ -62,11 +62,10 @@ class ArticleService extends BaseService
      */
     public function getArticleDetail(int $articleId)
     {
-        $article = Article::query()->find($articleId);
-        //通过访问加载出来对应的关联属性
-        $article->author;
-        $article->tags;
-        $article->category;
+        $article = Article::query()->select()
+                                   ->where('article_id', $articleId)
+                                   ->with(['author','tags','category'])
+                                   ->firstOrFail();
 
         //获取一页评论列表
         $commentList = Comment::query()->where('article_id',$articleId)

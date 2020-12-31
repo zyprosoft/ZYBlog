@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controller\Admin;
+use App\Http\AppAdminRequest;
 use Hyperf\HttpServer\Annotation\AutoController;
 use ZYProSoft\Controller\AbstractController;
 use App\Http\AdminArticleRequest;
@@ -61,12 +62,12 @@ class ArticleController extends AbstractController
         return $this->success($list);
     }
 
-    public function moveToTrash()
+    public function moveToTrash(AppAdminRequest $request)
     {
         $this->validate([
             'articleId' => 'required|integer|min:1',
         ]);
-        $articleId = $this->request->param('articleId');
+        $articleId = $request->param('articleId');
         $this->articleService->moveToTrash($articleId);
         return $this->success();
     }

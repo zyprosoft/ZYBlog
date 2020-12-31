@@ -33,4 +33,9 @@ class Category extends Model
      * @var array
      */
     protected $casts = ['category_id' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class,'category_id','category_id');
+    }
 }

@@ -28,4 +28,27 @@ class CommentController extends AbstractController
         $commentId = $this->request->param('commentId');
         return $this->commentService->detail($commentId);
     }
+
+    public function create()
+    {
+        $this->validate([
+            'content' => 'string|required|min:1|max:500',
+            'articleId' => 'integer|required|min:1',
+            'commentId' => 'integer|min:1'
+        ]);
+        $content = $this->request->param('content');
+        $articleId = $this->request->param('articleId');
+        $commentId = $this->request->param('commentId');
+        $this->commentService->create($articleId, $content, $commentId);
+        return $this->success();
+    }
+
+    public function userDelete()
+    {
+        $this->validate([
+            'commentId' => 'integer|required'
+        ]);
+        $commentId = $this->request->param('commentId');
+        return $this->commentService->userDelete($commentId);
+    }
 }

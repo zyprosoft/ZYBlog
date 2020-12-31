@@ -2,10 +2,12 @@
 
 
 namespace App\Service;
+use App\Constants\ErrorCode;
+use App\Exception\BusinessException;
 use App\Job\RefreshArticleJob;
 use App\Model\Article;
 use App\Model\Comment;
-use ZYProSoft\Facade\Auth;
+use Hyperf\DbConnection\Db;
 use ZYProSoft\Log\Log;
 
 class CommentService extends BaseService
@@ -30,7 +32,7 @@ class CommentService extends BaseService
      * @param int $articleId
      * @return \Hyperf\Database\Model\Builder[]|\Hyperf\Database\Model\Collection
      */
-    public function list(int $pageIndex, int $pageSize, int $articleId)
+    public function listWithArticleId(int $pageIndex, int $pageSize, int $articleId)
     {
         return Comment::query()->where('article_id',$articleId)
                                ->with(['author','parentComment'])
@@ -58,7 +60,7 @@ class CommentService extends BaseService
 
     public function detail(int $commentId)
     {
-        $comment = Comment::query()->find($commentId)->with('author')->firstOrFail();
+        $comment = Comment::query()->select()->where('comment_id', $commentId)->with(['author','replyList'])->firstOrFail();
         $replyList = $this->replyList($commentId);
         $article = Article::query()->select(['article_id','title','user_id','category_id'])
                                    ->where('article_id', $comment->article_id)
@@ -67,5 +69,39 @@ class CommentService extends BaseService
         $comment->article = $article;
         $comment->replyList = $replyList;
         return $comment;
+    }
+
+    public function list(int $pageIndex, int $pageSize)
+    {
+        $list = Comment::query()->select()
+                                ->with(['article','author'])
+                                ->orderByDesc('updated_at')
+                                ->offset($pageIndex * $pageSize)
+                                ->limit($pageSize)
+                                ->get();
+        $total = Comment::count();
+        return ['total' => $total, 'list' => $list];
+    }
+
+    public function delete(int $commentId)
+    {
+        Db::transaction(function () use ($commentId) {
+            $comment = Comment::findOrFail($commentId);
+            $comment->article()->decrement('comment_count', 1);
+            $comment->delete();
+        });
+    }
+
+    public function userDelete(int $commentId)
+    {
+        $comment = Comment::query()->select()
+                                   ->with(['author'])
+                                   ->where('comment_id', $commentId)
+                                   ->firstOrFail();
+        if ($comment->author->user_id != $this->userId()) {
+            throw new BusinessException(ErrorCode::USER_ACTION_NO_RIGHT);
+        }
+
+        Comment::find($commentId)->delete();
     }
 }
