@@ -45,11 +45,15 @@ class ArticleService extends BaseService
 
     public function getArticleList(int $pageIndex, int $pageSize, int $categoryId = null)
     {
-       return  Article::query()->where(function (Builder $query) use ($categoryId) {
+       $list =  Article::query()->where(function (Builder $query) use ($categoryId) {
             if (isset($categoryId)) {
                 $query->where('category_id', $categoryId);
             }
         })->offset($pageIndex * $pageSize)->limit($pageSize)->with(['author','tags','category'])->get();
+
+       $total = Article::count('*');
+
+       return ['total'=>$total, 'list'=>$list];
     }
 
     /**
