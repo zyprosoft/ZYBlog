@@ -61,4 +61,13 @@ class ArticleController extends AbstractController
         return $this->success($list);
     }
 
+    public function moveToTrash()
+    {
+        $this->validate([
+            'articleId' => 'required|integer|min:1',
+        ]);
+        $articleId = $this->request->param('articleId');
+        $this->articleService->moveToTrash($articleId);
+        return $this->success();
+    }
 }

@@ -114,4 +114,13 @@ class ArticleService extends BaseService
             }
         });
     }
+
+    /**
+     * 移动到回收站
+     * @param int $articleId
+     */
+    public function moveToTrash(int $articleId)
+    {
+        Article::find($articleId)->delete();
+    }
 }
