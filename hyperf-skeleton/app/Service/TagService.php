@@ -32,6 +32,6 @@ class TagService extends BaseService
 
     public function update(string $name, int $tagId)
     {
-        Tag::query()->findOrFail($tagId)->update(['name' => $name]);
+        Tag::query()->select()->where('tag_id', $tagId)->update(['name'=>$name]);
     }
 }

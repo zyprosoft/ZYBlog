@@ -42,6 +42,6 @@ class CategoryService extends BaseService
         if (empty($update)) {
             return;
         }
-        Category::query()->findOrFail($categoryId)->update($update);
+       Category::query()->select()->where('category_id', $categoryId)->update($update);
     }
 }
