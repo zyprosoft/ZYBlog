@@ -29,4 +29,19 @@ class CategoryService extends BaseService
             Article::query()->select()->where('category_id', $categoryId)->update(['category_id'=>$firstCategory->category_id]);
         });
     }
+
+    public function update(int $categoryId, string $name = null, string $avatar = null )
+    {
+        $update = [];
+        if (isset($name)) {
+            $update['name'] = $name;
+        }
+        if (isset($avatar)) {
+            $update['avatar'] = $avatar;
+        }
+        if (empty($update)) {
+            return;
+        }
+        Category::query()->findOrFail($categoryId)->update($update);
+    }
 }

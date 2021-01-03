@@ -49,7 +49,11 @@ class ArticleService extends BaseService
             if (isset($categoryId)) {
                 $query->where('category_id', $categoryId);
             }
-        })->orderByDesc('updated_at')->offset($pageIndex * $pageSize)->limit($pageSize)->with(['author','tags','category'])->get();
+        })->orderByDesc('updated_at')
+           ->offset($pageIndex * $pageSize)
+           ->limit($pageSize)
+           ->with(['author','tags','category'])
+           ->get();
 
        $total = Article::count('*');
 

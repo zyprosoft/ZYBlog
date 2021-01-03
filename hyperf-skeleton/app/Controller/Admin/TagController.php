@@ -40,4 +40,16 @@ class TagController extends AbstractController
         $this->tagService->delete($tagId);
         return $this->success();
     }
+
+    public function update(AppAdminRequest  $request)
+    {
+        $this->validate([
+            'name' => 'required|string|min:1',
+            'tagId' => 'required|int|min:1'
+        ]);
+        $tagId = $request->param('tagId');
+        $name = $request->param('name');
+        $this->tagService->update($name, $tagId);
+        return $this->success();
+    }
 }

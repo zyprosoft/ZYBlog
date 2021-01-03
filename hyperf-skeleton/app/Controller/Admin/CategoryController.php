@@ -40,4 +40,18 @@ class CategoryController extends AbstractController
         $this->categoryService->delete($categoryId);
         return $this->success();
     }
+
+    public function update(AppAdminRequest $request)
+    {
+        $this->validate([
+            'name' => 'string|min:1',
+            'avatar' => 'string|min:1',
+            'categoryId' => 'required|int|min:1'
+        ]);
+        $categoryId = $request->param('categoryId');
+        $name = $request->param('name');
+        $avatar = $request->param('avatar');
+        $this->categoryService->update($categoryId, $name, $avatar);
+        return $this->success();
+    }
 }

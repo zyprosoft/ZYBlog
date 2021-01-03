@@ -29,4 +29,9 @@ class TagService extends BaseService
             ArticleTag::query()->select()->where('tag_id', $tagId)->delete();
         });
     }
+
+    public function update(string $name, int $tagId)
+    {
+        Tag::query()->findOrFail($tagId)->update(['name' => $name]);
+    }
 }
