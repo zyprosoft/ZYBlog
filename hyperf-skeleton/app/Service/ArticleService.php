@@ -86,16 +86,20 @@ class ArticleService extends BaseService
     {
         Db::transaction(function () use ($articleId, $title, $content, $categoryId, $tags) {
 
-            $article = Article::query()->find($articleId);
-            if (!$article instanceof Article) {
-                throw new HyperfCommonException(ErrorCode::RECORD_NOT_EXIST,'文章不存在');
+            $update = [];
+            if (isset($title)) {
+                $update['title'] = $title;
+            }
+            if (isset($content)) {
+                $update['content'] = $content;
+            }
+            if (isset($categoryId)) {
+                $update['category_id'] = $categoryId;
             }
 
-            $article->title = $title??$article->title;
-            $article->content = $content??$article->content;
-            $article->category_id = $categoryId??$article->category_id;
-            $article->saveOrFail();
-            Log::info("update article:".json_encode($article));
+            Article::query()->select()
+                            ->where('article_id', $articleId)
+                            ->update($update);
 
             //获取Tags
             if (!empty($tags)) {
@@ -108,8 +112,10 @@ class ArticleService extends BaseService
 
                 $tagList = Tag::query()->whereIn('name', $tags)->get();
                 ArticleTag::query()->select(['tag_id'])
-                                   ->where('article_id',$article->article_id)
+                                   ->where('article_id', $articleId)
                                    ->delete();
+                
+                $article = Article::findOrFail($articleId);
                 $article->tags()->saveMany($tagList);
             }
 
