@@ -17,7 +17,8 @@ class TagService extends BaseService
 
     public function create(string $name)
     {
-        $tag = new Tag(['name' => $name]);
+        $tag = new Tag();
+        $tag->name = $name;
         $tag->saveOrFail();
     }
 
