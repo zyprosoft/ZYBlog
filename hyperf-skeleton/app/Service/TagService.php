@@ -17,9 +17,8 @@ class TagService extends BaseService
 
     public function create(string $name)
     {
-        Tag::insertOrIgnore([
-            'name' => $name
-        ]);
+        $tag = new Tag(['name' => $name]);
+        $tag->saveOrFail();
     }
 
     public function delete(int $tagId)

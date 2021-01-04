@@ -51,4 +51,18 @@ class CommentController extends AbstractController
         $commentId = $this->request->param('commentId');
         return $this->commentService->userDelete($commentId);
     }
+
+    public function list()
+    {
+        $this->validate([
+            'articleId' => 'integer|required|min:1',
+            'pageIndex' => 'required|integer|min:0',
+            'pageSize' => 'required|integer|min:1|max:20',
+        ]);
+        $articleId = $this->request->param('articleId');
+        $pageIndex = $this->request->param('pageIndex');
+        $pageSize = $this->request->param('pageSize');
+        $list = $this->commentService->listWithArticleId($articleId, $pageIndex, $pageSize);
+        return $this->success();
+    }
 }

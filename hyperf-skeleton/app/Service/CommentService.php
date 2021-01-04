@@ -34,10 +34,13 @@ class CommentService extends BaseService
      */
     public function listWithArticleId(int $pageIndex, int $pageSize, int $articleId)
     {
-        return Comment::query()->where('article_id',$articleId)
-                               ->with(['author','parentComment'])
+        $list = Comment::query()->where('article_id', $articleId)
+                               ->with(['author', 'parentComment'])
                                ->offset($pageIndex * $pageSize)
                                ->limit($pageSize)->get();
+        $total = Comment::query()->where('article_id', $articleId)
+                                 ->count();
+        return ['total' => $total, 'list' => $list];
     }
 
     public function replyList(int $commentId)
@@ -74,7 +77,7 @@ class CommentService extends BaseService
     public function list(int $pageIndex, int $pageSize)
     {
         $list = Comment::query()->select()
-                                ->with(['article','author'])
+                                ->with(['article','author','parentComment'])
                                 ->orderByDesc('updated_at')
                                 ->offset($pageIndex * $pageSize)
                                 ->limit($pageSize)
