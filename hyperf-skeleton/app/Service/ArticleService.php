@@ -104,6 +104,8 @@ class ArticleService extends BaseService
             $article->content = $content??$article->content;
             $article->category_id = $categoryId??$article->category_id;
 
+            Log::info("update article:".json_encode($article));
+
             //获取Tags
             if (!empty($tags)) {
                 $tagList = Tag::query()->whereIn('name', $tags)->get();
