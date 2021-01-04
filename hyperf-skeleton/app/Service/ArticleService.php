@@ -84,39 +84,35 @@ class ArticleService extends BaseService
 
     public function updateArticle(int $articleId, string $title = null, string $content = null, array $tags = null, int $categoryId = null)
     {
-        $article = Article::query()->find($articleId);
-        if (!$article instanceof Article) {
-            throw new HyperfCommonException(ErrorCode::RECORD_NOT_EXIST,'文章不存在');
-        }
+        Db::transaction(function () use ($articleId, $title, $content, $categoryId, $tags) {
 
-        //先创建标签
-        if (!empty($tags)) {
-            $saveTags = collect($tags)->map(function ($value) {
-                return ['name' => $value];
-            })->toArray();
-            Log::info("save tags:".json_encode($saveTags));
-            Tag::insertOrIgnore($saveTags);
-        }
-
-        Db::transaction(function () use ($article, $title, $content, $categoryId, $tags) {
+            $article = Article::query()->find($articleId);
+            if (!$article instanceof Article) {
+                throw new HyperfCommonException(ErrorCode::RECORD_NOT_EXIST,'文章不存在');
+            }
 
             $article->title = $title??$article->title;
             $article->content = $content??$article->content;
             $article->category_id = $categoryId??$article->category_id;
-
+            $article->saveOrFail();
             Log::info("update article:".json_encode($article));
 
             //获取Tags
             if (!empty($tags)) {
+
+                $saveTags = collect($tags)->map(function ($value) {
+                    return ['name' => $value];
+                })->toArray();
+                Log::info("save tags:".json_encode($saveTags));
+                Tag::insertOrIgnore($saveTags);
+
                 $tagList = Tag::query()->whereIn('name', $tags)->get();
-                ArticleTag::query()->select(['tag_id'])->where('article_id',$article->article_id)->delete();
-            }
-
-            $article->saveOrFail();
-
-            if (!empty($tags)) {
+                ArticleTag::query()->select(['tag_id'])
+                                   ->where('article_id',$article->article_id)
+                                   ->delete();
                 $article->tags()->saveMany($tagList);
             }
+
         });
     }
 
