@@ -25,9 +25,10 @@ class CategoryService extends BaseService
     {
         //删除分类，移动分类下文章到第一个分类
         Db::transaction(function () use ($categoryId) {
-            Category::query()->findOrFail($categoryId);
+            $article = Category::query()->findOrFail($categoryId);
             $firstCategory = Category::query()->firstOrFail();
             Article::query()->select()->where('category_id', $categoryId)->update(['category_id'=>$firstCategory->category_id]);
+            $article->delete();
         });
     }
 
