@@ -114,7 +114,7 @@ class ArticleService extends BaseService
                 ArticleTag::query()->select(['tag_id'])
                                    ->where('article_id', $articleId)
                                    ->delete();
-                
+
                 $article = Article::findOrFail($articleId);
                 $article->tags()->saveMany($tagList);
             }

@@ -24,10 +24,12 @@ class CategoryController extends AbstractController
     public function create(AppAdminRequest $request)
     {
         $this->validate([
-            'name' => 'required|string|min:2'
+            'name' => 'required|string|min:2',
+            'icon' => 'string|min:1'
         ]);
         $name = $request->param('name');
-        $this->categoryService->create($name);
+        $icon = $request->param('icon');
+        $this->categoryService->create($name, $icon);
         return $this->success();
     }
 

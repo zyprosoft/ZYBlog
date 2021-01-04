@@ -13,10 +13,11 @@ class CategoryService extends BaseService
         return Category::all();
     }
 
-    public function create(string $name)
+    public function create(string $name, string $icon = null)
     {
         $category = new Category();
         $category->name = $name;
+        $category->avatar = $icon;
         $category->saveOrFail();
     }
 
