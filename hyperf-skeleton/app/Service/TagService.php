@@ -25,8 +25,9 @@ class TagService extends BaseService
     public function delete(int $tagId)
     {
         Db::transaction(function () use ($tagId) {
-            Tag::findOrFail($tagId);
+            $tag = Tag::findOrFail($tagId);
             ArticleTag::query()->select()->where('tag_id', $tagId)->delete();
+            $tag->delete();
         });
     }
 
