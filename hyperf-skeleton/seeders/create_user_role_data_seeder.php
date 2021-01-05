@@ -37,5 +37,18 @@ class CreateUserRoleDataSeeder extends Seeder
                 "name" => "转载收藏"
             ]
         ]);
+        Db::table('about')->insertOrIgnore([
+            [
+                'username' => 'zyprosoft',
+                'nickname' => '流水青葱岁月',
+                'blog_name' => 'ZYVincent的博客',
+                'qq' => '1003081775',
+                'wx' => 'zyprosoft',
+                'sex' => 1,
+                'birthday' => '1990-12-08',
+                'github' => 'http://github.com/zyprosoft',
+                'introduce' => '寻找一盏能够指引我前进的明灯，在黑暗又孤寂的夜晚，不再思绪乱飞，踌躇和彷徨。'
+            ]
+        ]);
     }
 }
