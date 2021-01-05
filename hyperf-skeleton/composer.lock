@@ -8744,12 +8744,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zyprosoft/hyperf-common.git",
-                "reference": "a5bb070c48d41a737ac091962062e5f11277757a"
+                "reference": "5de2f19f006f4981ebf3962704216fcb786419e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zyprosoft/hyperf-common/zipball/a5bb070c48d41a737ac091962062e5f11277757a",
-                "reference": "a5bb070c48d41a737ac091962062e5f11277757a",
+                "url": "https://api.github.com/repos/zyprosoft/hyperf-common/zipball/5de2f19f006f4981ebf3962704216fcb786419e7",
+                "reference": "5de2f19f006f4981ebf3962704216fcb786419e7",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -8802,15 +8802,7 @@
                 "hyperf",
                 "php"
             ],
-<<<<<<< HEAD
-            "time": "2020-12-11T02:38:40+00:00"
-=======
-            "support": {
-                "issues": "https://github.com/zyprosoft/hyperf-common/issues",
-                "source": "https://github.com/zyprosoft/hyperf-common/tree/master"
-            },
-            "time": "2020-12-03T04:24:41+00:00"
->>>>>>> c7937f7211ff6de734c61fabfbd5d9a33613896a
+            "time": "2020-12-11T09:30:38+00:00"
         }
     ],
     "packages-dev": [
