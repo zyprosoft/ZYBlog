@@ -15,18 +15,18 @@ class CreateUserRoleDataSeeder extends Seeder
     public function run()
     {
         //
-        Db::table('user_role')->insert([
+        Db::table('user_role')->insertOrIgnore([
             "role_id" => 1,
             "name" => "博主"
         ]);
-        Db::table('user')->insert([
+        Db::table('user')->insertOrIgnore([
             'role_id' => 1,
             'username' => 'admin',
             'password' => password_hash('admin123',PASSWORD_DEFAULT),
             'nickname' => 'admin',
             'email' => '1003081775@qq.com'
         ]);
-        Db::table('category')->insert([
+        Db::table('category')->insertOrIgnore([
             [
                 "name" => "经验分享"
             ],
