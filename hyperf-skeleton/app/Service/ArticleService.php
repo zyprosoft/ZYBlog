@@ -66,20 +66,10 @@ class ArticleService extends BaseService
      */
     public function getArticleDetail(int $articleId)
     {
-        $article = Article::query()->select()
-                                   ->where('article_id', $articleId)
-                                   ->with(['author','tags','category'])
-                                   ->firstOrFail();
-
-        //获取一页评论列表
-        $commentList = Comment::query()->where('article_id',$articleId)
-                                       ->with(['author','parentComment'])
-                                       ->offset(0)
-                                       ->limit(10)->get();
-
-        $article->comments = $commentList;
-
-        return $article;
+        return Article::query()->select()
+                               ->where('article_id', $articleId)
+                               ->with(['author','tags','category','comments'])
+                               ->firstOrFail();
     }
 
     public function updateArticle(int $articleId, string $title = null, string $content = null, array $tags = null, int $categoryId = null)
@@ -170,7 +160,7 @@ class ArticleService extends BaseService
         return ['total' => $total, 'list' => $relationList];
     }
 
-    public function getArticleListByRecentPost(int $pageIndex, $pageSize)
+    public function getArticleListByRecentPost(int $pageIndex, int $pageSize)
     {
         $articleList = Article::query()->with(['author', 'category', 'tags'])
                                        ->limit($pageIndex * $pageSize)
