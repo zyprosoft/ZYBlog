@@ -161,4 +161,15 @@ class InterfaceTest extends TestCase
         ];
         $this->cgwRequest($interfaceName, $params)->assertOk();
     }
+
+    public function testGetArticleListByDate()
+    {
+        $interfaceName = 'common.article.getListByDate';
+        $params = [
+            'pageIndex' => 0,
+            'pageSize' => 10,
+            'date' => '2021-1-01'
+        ];
+        $this->cgwRequest($interfaceName, $params)->assertOk();
+    }
 }
