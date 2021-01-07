@@ -99,7 +99,7 @@ class ArticleController extends AbstractController
         return $this->success();
     }
 
-    public function getArticleListByDate()
+    public function getListByDate()
     {
         $this->validate([
             'pageIndex' => 'integer|required|min:0',
