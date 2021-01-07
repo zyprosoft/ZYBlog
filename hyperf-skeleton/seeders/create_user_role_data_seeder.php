@@ -45,6 +45,7 @@ class CreateUserRoleDataSeeder extends Seeder
                 'qq' => '1003081775',
                 'wx' => 'zyprosoft',
                 'sex' => 1,
+                'email' => '1003081775',
                 'birthday' => '1990-12-08',
                 'github' => 'http://github.com/zyprosoft',
                 'introduce' => '寻找一盏能够指引我前进的明灯，在黑暗又孤寂的夜晚，不再思绪乱飞，踌躇和彷徨。'

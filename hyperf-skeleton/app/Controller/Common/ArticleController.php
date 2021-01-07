@@ -98,4 +98,44 @@ class ArticleController extends AbstractController
         $this->commentService->reply($commentId, $content);
         return $this->success();
     }
+
+    public function getArticleListByDate()
+    {
+        $this->validate([
+            'pageIndex' => 'integer|required|min:0',
+            'pageSize' => 'integer|max:30|required',
+            'date' => 'string|date|date_format:Y-m|required'
+        ]);
+        $pageIndex = $this->request->param('pageIndex', 0);
+        $pageSize = $this->request->param('pageSize', 20);
+        $date = $this->request->param('date');
+        $articleList = $this->articleService->getArticleListByCreateTime($pageIndex, $pageSize, $date);
+        return $this->success($articleList);
+    }
+
+    public function getListByTagId()
+    {
+        $this->validate([
+            'pageIndex' => 'integer|required|min:0',
+            'pageSize' => 'integer|max:30|required',
+            'tagId' => 'integer|min:1|required'
+        ]);
+        $pageIndex = $this->request->param('pageIndex', 0);
+        $pageSize = $this->request->param('pageSize', 20);
+        $tagId = $this->request->param('tagId');
+        $articleList = $this->articleService->getArticleListByTag($pageIndex, $pageSize, $tagId);
+        return $this->success($articleList);
+    }
+
+    public function getListByRecentPost()
+    {
+        $this->validate([
+            'pageIndex' => 'integer|required|min:0',
+            'pageSize' => 'integer|max:30|required',
+        ]);
+        $pageIndex = $this->request->param('pageIndex', 0);
+        $pageSize = $this->request->param('pageSize', 20);
+        $articleList = $this->articleService->getArticleListByRecentPost($pageIndex, $pageSize);
+        return $this->success($articleList);
+    }
 }

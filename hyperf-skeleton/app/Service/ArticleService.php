@@ -130,4 +130,58 @@ class ArticleService extends BaseService
     {
         Article::find($articleId)->delete();
     }
+
+    public function getArticleListByCreateTime(int $pageIndex, int $pageSize, string $createAt)
+    {
+        $createTime = date('Y-m', strtotime($createAt));
+        $list = Article::query()->where('created_at', 'like', $createTime)
+                                ->with(['author', 'category', 'tags'])
+                                ->offset($pageIndex * $pageSize)
+                                ->limit($pageSize)
+                                ->orderByDesc('created_at')
+                                ->get();
+        $total = Article::query()->where('created_at', 'like', $createTime)
+                                 ->count();
+        return ['total' => $total, 'list' => $list];
+    }
+
+    public function getArticleListByTag(int $pageIndex, int $pageSize, int $tagId)
+    {
+        $relationList = ArticleTag::query()->where('tag_id', $tagId)
+                                   ->limit($pageSize)
+                                   ->offset($pageIndex * $pageSize)
+                                   ->orderByDesc('created_at')
+                                   ->get();
+
+        $articleIds = $relationList->pluck('article_id')->values();
+        $articleList = Article::query()->where('article_id', $articleIds)
+                                       ->with(['author', 'category', 'tags'])
+                                       ->get()
+                                       ->keyBy('article_id');
+        $tag = Tag::find($tagId)->keyBy('tag_id');
+        $relationList->map(function ($item) use ($articleList, $tag) {
+            $item['article'] = $articleList[$item['article_id']];
+            $item['tag'] = $tag;
+        });
+
+        $total = ArticleTag::query()->where('tag_id', $tagId)
+                                    ->count();
+
+        return ['total' => $total, 'list' => $relationList];
+    }
+
+    public function getArticleListByRecentPost(int $pageIndex, $pageSize)
+    {
+        $articleList = Article::query()->with(['author', 'category', 'tags'])
+                                       ->limit($pageIndex * $pageSize)
+                                       ->offset($pageSize)
+                                       ->orderByDesc('created_at')
+                                       ->get();
+        $total = Article::count();
+
+        return ['total' => $total, 'list' => $articleList];
+    }
+
+    
+
 }
