@@ -168,7 +168,7 @@ class InterfaceTest extends TestCase
         $params = [
             'pageIndex' => 0,
             'pageSize' => 10,
-            'date' => '2021-12'
+            'date' => '2020-12'
         ];
         $this->cgwRequest($interfaceName, $params)->assertOk();
     }
