@@ -140,7 +140,7 @@ class ArticleService extends BaseService
                                 ->limit($pageSize)
                                 ->orderByDesc('created_at')
                                 ->get();
-        $total = Article::query()->where('created_at', 'like', $createTime)
+        $total = Article::query()->where('created_at', 'like', "%$createTime%")
                                  ->count();
         return ['total' => $total, 'list' => $list];
     }
