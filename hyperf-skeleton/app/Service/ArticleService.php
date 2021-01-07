@@ -158,7 +158,7 @@ class ArticleService extends BaseService
                                        ->with(['author', 'category', 'tags'])
                                        ->get()
                                        ->keyBy('article_id');
-        $tag = Tag::find($tagId)->keyBy('tag_id');
+        $tag = Tag::find($tagId);
         $relationList->map(function ($item) use ($articleList, $tag) {
             $item['article'] = $articleList[$item['article_id']];
             $item['tag'] = $tag;
@@ -182,6 +182,6 @@ class ArticleService extends BaseService
         return ['total' => $total, 'list' => $articleList];
     }
 
-    
+
 
 }
