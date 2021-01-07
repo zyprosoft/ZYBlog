@@ -134,7 +134,7 @@ class ArticleService extends BaseService
     public function getArticleListByCreateTime(int $pageIndex, int $pageSize, string $createAt)
     {
         $createTime = date('Y-m', strtotime($createAt));
-        $list = Article::query()->where('created_at', 'like', $createTime)
+        $list = Article::query()->where('created_at', 'like', "%$createTime%")
                                 ->with(['author', 'category', 'tags'])
                                 ->offset($pageIndex * $pageSize)
                                 ->limit($pageSize)
