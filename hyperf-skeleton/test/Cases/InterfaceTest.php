@@ -172,4 +172,14 @@ class InterfaceTest extends TestCase
         ];
         $this->cgwRequest($interfaceName, $params)->assertOk();
     }
+
+    public function testGetArticleListByRecentComment()
+    {
+        $interfaceName = 'common.article.getListByRecentComment';
+        $params = [
+            'pageIndex' => 0,
+            'pageSize' => 10,
+        ];
+        $this->cgwRequest($interfaceName, $params)->assertOk();
+    }
 }
