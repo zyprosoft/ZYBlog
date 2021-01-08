@@ -174,11 +174,12 @@ class ArticleService extends BaseService
 
     public function getArticleListByRecentComment(int $pageIndex, int $pageSize)
     {
-        $commentList = Comment::query()->select(['distinct article_id'])
-                                         ->offset($pageIndex * $pageSize)
-                                         ->limit($pageSize)
-                                         ->latest()
-                                         ->get();
+        $commentList = Comment::query()->select(['article_id'])
+                                       ->distinct()
+                                       ->offset($pageIndex * $pageSize)
+                                       ->limit($pageSize)
+                                       ->latest()
+                                       ->get();
 
         $total = Article::count();
 
