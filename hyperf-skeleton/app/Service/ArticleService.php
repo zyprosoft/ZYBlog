@@ -174,8 +174,8 @@ class ArticleService extends BaseService
 
     public function getArticleListByRecentComment(int $pageIndex, int $pageSize)
     {
-        $commentList = Comment::query()->select(['article_id'])
-                                       ->distinct()
+        $commentList = Comment::query()->selectRaw('distinct article_id')
+                                       ->addSelect(['created_at'])
                                        ->offset($pageIndex * $pageSize)
                                        ->limit($pageSize)
                                        ->latest()
