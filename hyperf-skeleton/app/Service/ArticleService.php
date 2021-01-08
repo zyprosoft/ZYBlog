@@ -184,7 +184,7 @@ class ArticleService extends BaseService
         $total = Article::count();
 
         $articleIds = $commentList->pluck('article_id')->values();
-        $articleList = Article::query()->where('article_id', $articleIds);
+        $articleList = Article::query()->where('article_id', $articleIds)->get();
 
         return ['total' => $total, 'list' => $articleList];
     }
