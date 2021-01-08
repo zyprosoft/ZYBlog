@@ -83,22 +83,6 @@ class ArticleController extends AbstractController
         return $this->success($comments);
     }
 
-    /**
-     * 回复某一个评论
-     * @param AuthedRequest $request
-     */
-    public function replyComment(AuthedRequest $request)
-    {
-        $this->validate([
-            'commentId' => 'integer|required',
-            'content' => 'string|max:500|required'
-        ]);
-        $commentId = $request->param('commentId');
-        $content = $request->param('content');
-        $this->commentService->reply($commentId, $content);
-        return $this->success();
-    }
-
     public function getListByDate()
     {
         $this->validate([
@@ -136,6 +120,18 @@ class ArticleController extends AbstractController
         $pageIndex = $this->request->param('pageIndex', 0);
         $pageSize = $this->request->param('pageSize', 20);
         $articleList = $this->articleService->getArticleListByRecentPost($pageIndex, $pageSize);
+        return $this->success($articleList);
+    }
+
+    public function getListByRecentComment()
+    {
+        $this->validate([
+            'pageIndex' => 'integer|required|min:0',
+            'pageSize' => 'integer|max:30|required',
+        ]);
+        $pageIndex = $this->request->param('pageIndex', 0);
+        $pageSize = $this->request->param('pageSize', 20);
+        $articleList = $this->articleService->getArticleListByRecentComment($pageIndex, $pageSize);
         return $this->success($articleList);
     }
 }

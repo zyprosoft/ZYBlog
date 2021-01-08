@@ -85,7 +85,7 @@ class InterfaceTest extends TestCase
 
         $articleId = $this->getOneArticle()['article_id'];
         $content = "第一条测试评论";
-        $interfaceName = 'common.article.addComment';
+        $interfaceName = 'common.comment.create';
         $params = [
             'articleId' => $articleId,
             'content' => $content,
@@ -106,7 +106,7 @@ class InterfaceTest extends TestCase
     public function testCommentList()
     {
         $articleId = $this->getOneArticle()['article_id'];
-        $interfaceName = 'common.article.commentList';
+        $interfaceName = 'common.comment.list';
         $params = [
             'articleId' => $articleId,
         ];
@@ -125,7 +125,7 @@ class InterfaceTest extends TestCase
 
         $commentId = $this->getOneComment()['comment_id'];
         $content = "第一条回复别人的评论";
-        $interfaceName = 'common.article.replyComment';
+        $interfaceName = 'common.comment.reply';
         $params = [
             'commentId' => $commentId,
             'content' => $content,

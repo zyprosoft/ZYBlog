@@ -6,6 +6,7 @@ use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\Di\Annotation\Inject;
 use ZYProSoft\Controller\AbstractController;
 use App\Service\CommentService;
+use ZYProSoft\Http\AuthedRequest;
 
 /**
  * @AutoController(prefix="/common/comment")
@@ -29,16 +30,16 @@ class CommentController extends AbstractController
         return $this->commentService->detail($commentId);
     }
 
-    public function create()
+    public function create(AuthedRequest $request)
     {
         $this->validate([
             'content' => 'string|required|min:1|max:500',
             'articleId' => 'integer|required|min:1',
             'commentId' => 'integer|min:1'
         ]);
-        $content = $this->request->param('content');
-        $articleId = $this->request->param('articleId');
-        $commentId = $this->request->param('commentId');
+        $content = $request->param('content');
+        $articleId = $request->param('articleId');
+        $commentId = $request->param('commentId');
         $this->commentService->create($articleId, $content, $commentId);
         return $this->success();
     }
@@ -63,6 +64,18 @@ class CommentController extends AbstractController
         $pageIndex = $this->request->param('pageIndex');
         $pageSize = $this->request->param('pageSize');
         $list = $this->commentService->listWithArticleId($articleId, $pageIndex, $pageSize);
+        return $this->success($list);
+    }
+
+    public function reply(AuthedRequest $request)
+    {
+        $this->validate([
+            'commentId' => 'integer|required',
+            'content' => 'string|max:500|required'
+        ]);
+        $commentId = $request->param('commentId');
+        $content = $request->param('content');
+        $this->commentService->reply($commentId, $content);
         return $this->success();
     }
 }

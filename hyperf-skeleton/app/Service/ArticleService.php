@@ -172,6 +172,20 @@ class ArticleService extends BaseService
         return ['total' => $total, 'list' => $articleList];
     }
 
+    public function getArticleListByRecentComment(int $pageIndex, int $pageSize)
+    {
+        $commentList = Comment::query()->select(['distinct article_id'])
+                                         ->offset($pageIndex * $pageSize)
+                                         ->limit($pageSize)
+                                         ->latest()
+                                         ->get();
 
+        $total = Article::count();
+
+        $articleIds = $commentList->pluck('article_id')->values();
+        $articleList = Article::query()->where('article_id', $articleIds);
+
+        return ['total' => $total, 'list' => $articleList];
+    }
 
 }
