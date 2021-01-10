@@ -24,4 +24,9 @@ class CategoryController extends AbstractController
     {
         return $this->success($this->service->getAll());
     }
+
+    public function getAllArchiveDate()
+    {
+        return $this->success($this->service->getAllArchiveDate());
+    }
 }

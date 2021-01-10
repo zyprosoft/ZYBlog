@@ -24,6 +24,7 @@ class CreateCommentTable extends Migration
             $table->integer('user_id')
                   ->comment("作者ID");
             $table->timestamps();
+            $table->index(['created_at']);
             $table->engine = "InnoDB";
             $table->charset = "utf8mb4";
             $table->collation = "utf8mb4_unicode_ci";

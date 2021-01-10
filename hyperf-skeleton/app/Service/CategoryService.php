@@ -46,4 +46,10 @@ class CategoryService extends BaseService
         }
        Category::query()->select()->where('category_id', $categoryId)->update($update);
     }
+
+    public function getAllArchiveDate()
+    {
+        return Article::query()->selectRaw("distinct DATE_FORMAT(`created_at`,'%Y-%m')")
+                                ->get();
+    }
 }

@@ -31,6 +31,7 @@ class CreateArticleTable extends Migration
                   ->comment("评论数");
             $table->timestamps();
             $table->softDeletes();
+            $table->index(['created_at']);
             $table->engine = "InnoDB";
             $table->charset = "utf8mb4";
             $table->collation = "utf8mb4_unicode_ci";
