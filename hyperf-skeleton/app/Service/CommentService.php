@@ -76,8 +76,7 @@ class CommentService extends BaseService
 
     public function list(int $pageIndex, int $pageSize)
     {
-        $list = Comment::query()->select()
-                                ->with(['article','author','parentComment'])
+        $list = Comment::query()->with(['article','author','parentComment'])
                                 ->orderByDesc('updated_at')
                                 ->offset($pageIndex * $pageSize)
                                 ->limit($pageSize)
