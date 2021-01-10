@@ -49,7 +49,7 @@ class CategoryService extends BaseService
 
     public function getAllArchiveDate()
     {
-        return Article::query()->selectRaw("distinct DATE_FORMAT(`created_at`,'%Y-%m')")
+        return Article::query()->selectRaw("distinct DATE_FORMAT(`created_at`,'%Y-%m') as archive_month")
                                 ->get();
     }
 }
