@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Service;
@@ -10,9 +11,7 @@ use App\Model\Comment;
 use App\Model\Tag;
 use Hyperf\Database\Model\Builder;
 use Hyperf\DbConnection\Db;
-use ZYProSoft\Exception\HyperfCommonException;
 use ZYProSoft\Log\Log;
-use ZYProSoft\Constants\ErrorCode;
 
 class ArticleService extends BaseService
 {
@@ -23,7 +22,7 @@ class ArticleService extends BaseService
             $saveTags = collect($tags)->map(function ($value) {
                 return ['name' => $value];
             })->toArray();
-            Log::info("save tags:".json_encode($saveTags));
+            Log::info("save tags:" . json_encode($saveTags));
             Tag::insertOrIgnore($saveTags);
         }
 
@@ -39,25 +38,24 @@ class ArticleService extends BaseService
             $article->category_id = $categoryId;
             $article->saveOrFail();
             $article->tags()->saveMany($tagList);
-
         });
     }
 
     public function getArticleList(int $pageIndex, int $pageSize, int $categoryId = null)
     {
-       $list =  Article::query()->where(function (Builder $query) use ($categoryId) {
+        $list =  Article::query()->where(function (Builder $query) use ($categoryId) {
             if (isset($categoryId)) {
                 $query->where('category_id', $categoryId);
             }
         })->orderByDesc('updated_at')
-           ->offset($pageIndex * $pageSize)
-           ->limit($pageSize)
-           ->with(['author','tags','category'])
-           ->get();
+            ->offset($pageIndex * $pageSize)
+            ->limit($pageSize)
+            ->with(['author', 'tags', 'category'])
+            ->get();
 
-       $total = Article::count('*');
+        $total = Article::count('*');
 
-       return ['total'=>$total, 'list'=>$list];
+        return ['total' => $total, 'list' => $list];
     }
 
     /**
@@ -67,9 +65,9 @@ class ArticleService extends BaseService
     public function getArticleDetail(int $articleId)
     {
         return Article::query()->select()
-                               ->where('article_id', $articleId)
-                               ->with(['author','tags','category','comments'])
-                               ->firstOrFail();
+            ->where('article_id', $articleId)
+            ->with(['author', 'tags', 'category', 'comments'])
+            ->firstOrFail();
     }
 
     public function updateArticle(int $articleId, string $title = null, string $content = null, array $tags = null, int $categoryId = null)
@@ -88,8 +86,8 @@ class ArticleService extends BaseService
             }
 
             Article::query()->select()
-                            ->where('article_id', $articleId)
-                            ->update($update);
+                ->where('article_id', $articleId)
+                ->update($update);
 
             //获取Tags
             if (!empty($tags)) {
@@ -97,18 +95,17 @@ class ArticleService extends BaseService
                 $saveTags = collect($tags)->map(function ($value) {
                     return ['name' => $value];
                 })->toArray();
-                Log::info("save tags:".json_encode($saveTags));
+                Log::info("save tags:" . json_encode($saveTags));
                 Tag::insertOrIgnore($saveTags);
 
                 $tagList = Tag::query()->whereIn('name', $tags)->get();
                 ArticleTag::query()->select(['tag_id'])
-                                   ->where('article_id', $articleId)
-                                   ->delete();
+                    ->where('article_id', $articleId)
+                    ->delete();
 
                 $article = Article::findOrFail($articleId);
                 $article->tags()->saveMany($tagList);
             }
-
         });
     }
 
@@ -125,29 +122,29 @@ class ArticleService extends BaseService
     {
         $createTime = date('Y-m', strtotime($createAt));
         $list = Article::query()->where('created_at', 'like', "%$createTime%")
-                                ->with(['author', 'category', 'tags'])
-                                ->offset($pageIndex * $pageSize)
-                                ->limit($pageSize)
-                                ->orderByDesc('created_at')
-                                ->get();
+            ->with(['author', 'category', 'tags'])
+            ->offset($pageIndex * $pageSize)
+            ->limit($pageSize)
+            ->orderByDesc('created_at')
+            ->get();
         $total = Article::query()->where('created_at', 'like', "%$createTime%")
-                                 ->count();
+            ->count();
         return ['total' => $total, 'list' => $list];
     }
 
     public function getArticleListByTag(int $pageIndex, int $pageSize, int $tagId)
     {
         $relationList = ArticleTag::query()->where('tag_id', $tagId)
-                                   ->limit($pageSize)
-                                   ->offset($pageIndex * $pageSize)
-                                   ->orderByDesc('created_at')
-                                   ->get();
+            ->limit($pageSize)
+            ->offset($pageIndex * $pageSize)
+            ->orderByDesc('created_at')
+            ->get();
 
         $articleIds = $relationList->pluck('article_id')->values();
         $articleList = Article::query()->where('article_id', $articleIds)
-                                       ->with(['author', 'category', 'tags'])
-                                       ->get()
-                                       ->keyBy('article_id');
+            ->with(['author', 'category', 'tags'])
+            ->get()
+            ->keyBy('article_id');
         $tag = Tag::find($tagId);
         $relationList->map(function ($item) use ($articleList, $tag) {
             $item['article'] = $articleList[$item['article_id']];
@@ -155,7 +152,7 @@ class ArticleService extends BaseService
         });
 
         $total = ArticleTag::query()->where('tag_id', $tagId)
-                                    ->count();
+            ->count();
 
         return ['total' => $total, 'list' => $relationList];
     }
@@ -163,10 +160,10 @@ class ArticleService extends BaseService
     public function getArticleListByRecentPost(int $pageIndex, int $pageSize)
     {
         $articleList = Article::query()->with(['author', 'category', 'tags'])
-                                       ->limit($pageIndex * $pageSize)
-                                       ->offset($pageSize)
-                                       ->orderByDesc('created_at')
-                                       ->get();
+            ->limit($pageIndex * $pageSize)
+            ->offset($pageSize)
+            ->orderByDesc('created_at')
+            ->get();
         $total = Article::count();
 
         return ['total' => $total, 'list' => $articleList];
@@ -175,20 +172,19 @@ class ArticleService extends BaseService
     public function getArticleListByRecentComment(int $pageIndex, int $pageSize)
     {
         $commentList = Comment::query()->selectRaw('distinct article_id')
-                                       ->addSelect(['created_at'])
-                                       ->offset($pageIndex * $pageSize)
-                                       ->limit($pageSize)
-                                       ->latest()
-                                       ->get();
+            ->addSelect(['created_at'])
+            ->offset($pageIndex * $pageSize)
+            ->limit($pageSize)
+            ->latest()
+            ->get();
 
         $total = Article::count();
 
         $articleIds = $commentList->pluck('article_id')->values();
         $articleList = Article::query()->where('article_id', $articleIds)
-                                       ->with(['author','tags','category'])
-                                       ->get();
+            ->with(['author', 'tags', 'category'])
+            ->get();
 
         return ['total' => $total, 'list' => $articleList];
     }
-
 }

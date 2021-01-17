@@ -8,7 +8,6 @@ use App\Constants\ErrorCode;
 use ZYProSoft\Constants\ErrorCode as ZYErrorCode;
 use App\Exception\BusinessException;
 use App\Model\User;
-use Hyperf\DbConnection\Db;
 use ZYProSoft\Facade\Auth;
 use ZYProSoft\Log\Log;
 

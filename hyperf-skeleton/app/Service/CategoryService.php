@@ -32,6 +32,14 @@ class CategoryService extends BaseService
         });
     }
 
+    /**
+     * 更新分类
+     *
+     * @param integer $categoryId
+     * @param string $name
+     * @param string $avatar
+     * @return void
+     */
     public function update(int $categoryId, string $name = null, string $avatar = null )
     {
         $update = [];
