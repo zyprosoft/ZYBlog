@@ -1,7 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller\Admin;
+
 use App\Http\AppAdminRequest;
 use Hyperf\HttpServer\Annotation\AutoController;
 use ZYProSoft\Controller\AbstractController;

@@ -25,4 +25,10 @@ class TagController extends AbstractController
        $list = $this->tagService->getAll();
        return $this->success($list);
     }
+
+    public function getHotTags() 
+    {
+        $list = $this->tagService->getHotTags();
+        return $this->success($list);
+    }
 }

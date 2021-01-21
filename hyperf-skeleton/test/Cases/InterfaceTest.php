@@ -190,4 +190,12 @@ class InterfaceTest extends TestCase
         ];
         $this->cgwRequest($interfaceName, $params)->assertOk();
     }
+
+    public function testGetHotTags()
+    {
+        $interfaceName = 'common.tag.getHotTags';
+        $params = [
+        ];
+        $this->cgwRequest($interfaceName, $params)->assertOk();
+    }
 }
