@@ -198,4 +198,12 @@ class InterfaceTest extends TestCase
         ];
         $this->cgwRequest($interfaceName, $params)->assertOk();
     }
+
+    public function testGetArchiveDateList()
+    {
+        $interfaceName = 'common.article.getArchiveDateList';
+        $params = [
+        ];
+        $this->cgwRequest($interfaceName, $params)->assertOk();
+    }
 }

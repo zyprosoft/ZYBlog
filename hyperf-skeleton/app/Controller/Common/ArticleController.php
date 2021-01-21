@@ -134,4 +134,10 @@ class ArticleController extends AbstractController
         $articleList = $this->articleService->getArticleListByRecentComment($pageIndex, $pageSize);
         return $this->success($articleList);
     }
+
+    public function getArchiveDateList()
+    {
+        $list = $this->articleService->getAllArchivedMonth();
+        return $this->success($list);
+    }
 }
