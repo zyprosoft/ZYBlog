@@ -190,8 +190,8 @@ class ArticleService extends BaseService
 
     public function getAllArchivedMonth()
     {
-        return Article::query()->selectRaw("distinct DATE_FORMAT(created_at, '%Y年%m月') as date,created_at")
-                                ->orderByDesc('created_at')
+        return Article::query()->selectRaw("distinct DATE_FORMAT(created_at, '%Y年%m月') as date")
+                                ->orderByDesc('date')
                                 ->get();
     }
 }
