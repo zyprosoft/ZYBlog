@@ -43,6 +43,7 @@ class TagService extends BaseService
                           ->groupBy(['tag_id'])
                           ->limit(6)
                           ->orderByDesc("count")
+                          ->with(['tag'])
                           ->get();
        Log::info('tagList:'.json_encode($tagList));
 

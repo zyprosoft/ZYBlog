@@ -30,4 +30,9 @@ class ArticleTag extends Model
      * @var array
      */
     protected $casts = ['id' => 'integer', 'article_id' => 'integer', 'tag_id' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+
+    public function tag()
+    {
+        return $this->belongsTo(Tag::class, 'tag_id', 'tag_id');
+    }
 }
