@@ -188,7 +188,7 @@ class ArticleService extends BaseService
         return ['total' => $total, 'list' => $articleList];
     }
 
-    public function getAllArchivedMonth(): array
+    public function getAllArchivedMonth()
     {
         return Article::query()->selectRaw("distinct DATE_FORMAT(created_at, '%Y年%m月') as date,created_at")
                                 ->orderByDesc('created_at')
