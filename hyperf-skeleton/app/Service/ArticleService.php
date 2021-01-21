@@ -160,8 +160,8 @@ class ArticleService extends BaseService
     public function getArticleListByRecentPost(int $pageIndex, int $pageSize)
     {
         $articleList = Article::query()->with(['author', 'category', 'tags'])
-            ->limit($pageIndex * $pageSize)
-            ->offset($pageSize)
+            ->limit($pageSize)
+            ->offset($pageIndex * $pageSize)
             ->orderByDesc('created_at')
             ->get();
         $total = Article::count();
