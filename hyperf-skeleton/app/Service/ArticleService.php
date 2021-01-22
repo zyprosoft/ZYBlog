@@ -126,6 +126,13 @@ class ArticleService extends BaseService
         Article::find($articleId)->delete();
     }
 
+    /**
+     * @Cacheable(prefix="article", ttl=7200, listener="ArticleListArchiveDate")
+     * @param int $pageIndex
+     * @param int $pageSize
+     * @param int $tagId
+     * @return array
+     */
     public function getArticleListByCreateTime(int $pageIndex, int $pageSize, string $createAt)
     {
         $createTime = date('Y-m', strtotime($createAt));
