@@ -151,7 +151,7 @@ class ArticleService extends BaseService
             $article = $articleList[$item['article_id']];
             array_map(function ($key,$value) {
                $item[$key] = $value;
-            }, $article);
+            }, $article->toArray());
             $item['tag'] = $tag;
         });
 
