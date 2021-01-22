@@ -141,13 +141,13 @@ class ArticleService extends BaseService
             ->get();
 
         $articleIds = $relationList->pluck('article_id')->values();
-        Log::info('query article_id list by tag:'.json_encode($articleIds));
         $articleList = Article::query()->whereIn('article_id', $articleIds)
             ->with(['author', 'category', 'tags'])
             ->get()
             ->keyBy('article_id')
             ->toArray();
         $tag = Tag::find($tagId);
+
         $relationList->map(function ($item) use ($articleList, $tag) {
             $article = $articleList[$item['article_id']];
             array_map(function ($key, $value) {
