@@ -13,9 +13,17 @@ use Hyperf\Database\Model\Builder;
 use Hyperf\DbConnection\Db;
 use ZYProSoft\Log\Log;
 use Hyperf\Cache\Annotation\Cacheable;
+use Hyperf\Cache\Listener\DeleteListenerEvent;
+use Psr\EventDispatcher\EventDispatcherInterface;
 
 class ArticleService extends BaseService
 {
+    /**
+     * @Inject
+     * @var EventDispatcherInterface
+     */
+    protected $dispatcher;
+
     public function createArticle(string $title, string $content, array $tags, int $categoryId)
     {
         //先创建标签
@@ -39,7 +47,11 @@ class ArticleService extends BaseService
             $article->category_id = $categoryId;
             $article->saveOrFail();
             $article->tags()->saveMany($tagList);
+
         });
+
+        $this->dispatcher->dispatch(new DeleteListenerEvent('ArticleListRecent', []));
+
     }
 
     /**
