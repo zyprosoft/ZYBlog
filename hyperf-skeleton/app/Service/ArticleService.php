@@ -73,8 +73,7 @@ class ArticleService extends BaseService
      */
     public function getArticleDetail(int $articleId)
     {
-        return Article::query()->select()
-            ->where('article_id', $articleId)
+        return Article::query()->where('article_id', $articleId)
             ->with(['author', 'tags', 'category', 'comments'])
             ->firstOrFail();
     }
@@ -94,8 +93,7 @@ class ArticleService extends BaseService
                 $update['category_id'] = $categoryId;
             }
 
-            Article::query()->select()
-                ->where('article_id', $articleId)
+            Article::query()->where('article_id', $articleId)
                 ->update($update);
 
             //获取Tags
