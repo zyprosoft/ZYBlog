@@ -146,14 +146,12 @@ class ArticleService extends BaseService
             ->get()
             ->keyBy('article_id')
             ->toArray();
-        $tag = Tag::find($tagId);
 
         $relationList->map(function ($item) use ($articleList, $tag) {
             $article = $articleList[$item['article_id']];
             array_map(function ($key, $value) {
-               Log::info('each key:'.$key.' value:'.$value);
+               $item[$key] = $value;
             }, array_keys($article), $article);
-            $item['tag'] = $tag;
         });
 
         $total = ArticleTag::query()->where('tag_id', $tagId)
