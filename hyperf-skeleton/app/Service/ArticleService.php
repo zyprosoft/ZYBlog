@@ -142,7 +142,7 @@ class ArticleService extends BaseService
 
         $articleIds = $relationList->pluck('article_id')->values();
         Log::info('query article_id list by tag:'.json_encode($articleIds));
-        $articleList = Article::query()->where('article_id', $articleIds)
+        $articleList = Article::query()->whereIn('article_id', $articleIds)
             ->with(['author', 'category', 'tags'])
             ->get()
             ->keyBy('article_id');
