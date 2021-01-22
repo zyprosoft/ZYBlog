@@ -137,6 +137,7 @@ class ArticleService extends BaseService
         $relationList = ArticleTag::query()
             ->leftJoin('article','article_tag.article_id','=','article.article_id')
             ->where('tag_id', $tagId)
+            ->whereNull('article.deleted_at')
             ->whereNotNull('article.article_id')
             ->limit($pageSize)
             ->offset($pageIndex * $pageSize)
