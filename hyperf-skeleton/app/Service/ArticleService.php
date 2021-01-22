@@ -149,8 +149,8 @@ class ArticleService extends BaseService
         $tag = Tag::find($tagId);
         $relationList->map(function ($item) use ($articleList, $tag) {
             $article = $articleList[$item['article_id']];
-            array_map(function ($key,$value) {
-               $item[$key] = $value;
+            array_map(function ($property) {
+               Log::info('each property:'.$property);
             }, $article->toArray());
             $item['tag'] = $tag;
         });
