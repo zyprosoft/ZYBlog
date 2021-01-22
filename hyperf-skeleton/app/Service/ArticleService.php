@@ -149,9 +149,9 @@ class ArticleService extends BaseService
         $tag = Tag::find($tagId);
         $relationList->map(function ($item) use ($articleList, $tag) {
             $article = $articleList[$item['article_id']];
-            $article->map(function ($key,$value) {
+            array_map(function ($key,$value) {
                $item[$key] = $value;
-            });
+            }, $article);
             $item['tag'] = $tag;
         });
 
