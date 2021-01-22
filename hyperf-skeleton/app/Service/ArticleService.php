@@ -67,6 +67,7 @@ class ArticleService extends BaseService
     }
 
     /**
+     * @Cacheable (prefix="article", ttl=7200, listener="ArticleDetail")
      * @param int $articleId
      * @return Builder|Builder[]|\Hyperf\Database\Model\Collection|\Hyperf\Database\Model\Model|\Hyperf\Database\Query\Builder|null
      */
