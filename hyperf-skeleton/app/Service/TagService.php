@@ -40,6 +40,9 @@ class TagService extends BaseService
     public function getHotTags()
     {
        $tagList =  ArticleTag::query()->selectRaw("count('distinct article_id') as count, tag_id")
+                          ->leftJoin('article','article_tag.article_id','=','article.article_id')
+                          ->whereNull('article.deleted_at')
+                          ->whereNotNull('article.article_id')
                           ->groupBy(['tag_id'])
                           ->limit(6)
                           ->orderByDesc("count")
