@@ -159,7 +159,14 @@ class ArticleService extends BaseService
             ->orderByDesc('article_tag.created_at')
             ->get();
 
+        $total = ArticleTag::query()->where('tag_id', $tagId)
+            ->count();
+
         $articleIds = $relationList->pluck('article_id')->values();
+        if (empty($articleIds)) {
+            return ['total' => $total, 'list' => []];
+        }
+
         $articleList = Article::query()->whereIn('article_id', $articleIds)
             ->with(['author', 'category', 'tags'])
             ->get()
@@ -172,9 +179,6 @@ class ArticleService extends BaseService
                $item[$key] = $value;
             }, array_keys($article), $article);
         });
-
-        $total = ArticleTag::query()->where('tag_id', $tagId)
-            ->count();
 
         return ['total' => $total, 'list' => $relationList];
     }
