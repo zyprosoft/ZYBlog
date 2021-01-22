@@ -149,7 +149,7 @@ class ArticleService extends BaseService
 
         $relationList->map(function ($item) use ($articleList) {
             $article = $articleList[$item['article_id']];
-            array_map(function ($key, $value) {
+            array_map(function ($key, $value) use ($item) {
                $item[$key] = $value;
             }, array_keys($article), $article);
         });
