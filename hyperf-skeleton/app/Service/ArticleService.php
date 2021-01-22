@@ -134,7 +134,10 @@ class ArticleService extends BaseService
 
     public function getArticleListByTag(int $pageIndex, int $pageSize, int $tagId)
     {
-        $relationList = ArticleTag::query()->where('tag_id', $tagId)
+        $relationList = ArticleTag::query()
+            ->leftJoin('article','article_tag.article_id','=','article.article_id')
+            ->where('tag_id', $tagId)
+            ->whereNotNull('article.article_id')
             ->limit($pageSize)
             ->offset($pageIndex * $pageSize)
             ->orderByDesc('created_at')
