@@ -42,6 +42,13 @@ class ArticleService extends BaseService
         });
     }
 
+    /**
+     * @Cacheable(prefix="article", ttl=7200, listener="ArticleListCategory")
+     * @param int $pageIndex
+     * @param int $pageSize
+     * @param int|null $categoryId
+     * @return array
+     */
     public function getArticleList(int $pageIndex, int $pageSize, int $categoryId = null)
     {
         $list =  Article::query()->where(function (Builder $query) use ($categoryId) {
@@ -133,6 +140,13 @@ class ArticleService extends BaseService
         return ['total' => $total, 'list' => $list];
     }
 
+    /**
+     * @Cacheable(prefix="article", ttl=7200, listener="ArticleListTag")
+     * @param int $pageIndex
+     * @param int $pageSize
+     * @param int $tagId
+     * @return array
+     */
     public function getArticleListByTag(int $pageIndex, int $pageSize, int $tagId)
     {
         $relationList = ArticleTag::query()
@@ -166,7 +180,7 @@ class ArticleService extends BaseService
     }
 
     /**
-     * @Cacheable(prefix="articleList", ttl=7200, listener="ListRecent")
+     * @Cacheable(prefix="article", ttl=7200, listener="ArticleListRecent")
      * @param int $pageIndex
      * @param int $pageSize
      * @return array
@@ -183,6 +197,12 @@ class ArticleService extends BaseService
         return ['total' => $total, 'list' => $articleList];
     }
 
+    /**
+     * @Cacheable(prefix="article", ttl=7200, listener="ArticleListComment")
+     * @param int $pageIndex
+     * @param int $pageSize
+     * @return array
+     */
     public function getArticleListByRecentComment(int $pageIndex, int $pageSize)
     {
         $commentList = Comment::query()->selectRaw('distinct article_id')
@@ -202,6 +222,10 @@ class ArticleService extends BaseService
         return ['total' => $total, 'list' => $articleList];
     }
 
+    /**
+     * @Cacheable(prefix="article", ttl=72000, listener="ArticleListArchivedMonth")
+     * @return array
+     */
     public function getAllArchivedMonth()
     {
         return Article::query()->selectRaw("distinct DATE_FORMAT(created_at, '%Y年%m月') as date")
