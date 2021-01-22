@@ -12,6 +12,7 @@ use App\Model\Tag;
 use Hyperf\Database\Model\Builder;
 use Hyperf\DbConnection\Db;
 use ZYProSoft\Log\Log;
+use Hyperf\Cache\Annotation\Cacheable;
 
 class ArticleService extends BaseService
 {
@@ -164,6 +165,12 @@ class ArticleService extends BaseService
         return ['total' => $total, 'list' => $relationList];
     }
 
+    /**
+     * @Cacheable(prefix="articleList", ttl=7200, listener="ListRecent")
+     * @param int $pageIndex
+     * @param int $pageSize
+     * @return array
+     */
     public function getArticleListByRecentPost(int $pageIndex, int $pageSize)
     {
         $articleList = Article::query()->with(['author', 'category', 'tags'])
