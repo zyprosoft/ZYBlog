@@ -157,7 +157,7 @@ class InterfaceTest extends TestCase
         $params = [
             'pageIndex' => 0,
             'pageSize' => 10,
-            'tagId' => 43
+            'tagId' => 11
         ];
         $this->cgwRequest($interfaceName, $params)->assertOk();
     }
