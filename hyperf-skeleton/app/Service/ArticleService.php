@@ -12,6 +12,7 @@ use App\Model\Tag;
 use Hyperf\Database\Model\Builder;
 use Hyperf\DbConnection\Db;
 use ZYProSoft\Log\Log;
+use Hyperf\Di\Annotation\Inject;
 use Hyperf\Cache\Annotation\Cacheable;
 use Hyperf\Cache\Listener\DeleteListenerEvent;
 use Psr\EventDispatcher\EventDispatcherInterface;
