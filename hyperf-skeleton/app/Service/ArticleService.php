@@ -141,7 +141,7 @@ class ArticleService extends BaseService
             ->whereNotNull('article.article_id')
             ->limit($pageSize)
             ->offset($pageIndex * $pageSize)
-            ->orderByDesc('created_at')
+            ->orderByDesc('article_tag.created_at')
             ->get();
 
         $articleIds = $relationList->pluck('article_id')->values();
