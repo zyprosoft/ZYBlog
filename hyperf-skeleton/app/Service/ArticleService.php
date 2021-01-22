@@ -147,7 +147,7 @@ class ArticleService extends BaseService
             ->keyBy('article_id')
             ->toArray();
 
-        $relationList->map(function ($item) use ($articleList, $tag) {
+        $relationList->map(function ($item) use ($articleList) {
             $article = $articleList[$item['article_id']];
             array_map(function ($key, $value) {
                $item[$key] = $value;
