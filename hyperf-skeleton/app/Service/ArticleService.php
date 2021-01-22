@@ -47,7 +47,7 @@ class ArticleService extends BaseService
             if (isset($categoryId)) {
                 $query->where('category_id', $categoryId);
             }
-        })->orderByDesc('updated_at')
+        })->orderByDesc('created_at')
             ->offset($pageIndex * $pageSize)
             ->limit($pageSize)
             ->with(['author', 'tags', 'category'])

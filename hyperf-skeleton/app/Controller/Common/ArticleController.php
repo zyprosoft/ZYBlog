@@ -33,7 +33,7 @@ class ArticleController extends AbstractController
         $pageIndex = $this->request->param('pageIndex', 0);
         $pageSize = $this->request->param('pageSize', 20);
         $categoryId = null;
-        if ($this->request->has('categoryId')) {
+        if ($this->request->hasParam('categoryId')) {
             $categoryId = $this->request->param('categoryId');
         }
         $articleList = $this->articleService->getArticleList($pageIndex, $pageSize, $categoryId);
