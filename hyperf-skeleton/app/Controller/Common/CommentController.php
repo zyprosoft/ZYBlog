@@ -40,8 +40,8 @@ class CommentController extends AbstractController
         $content = $request->param('content');
         $articleId = $request->param('articleId');
         $commentId = $request->param('commentId');
-        $this->commentService->create($articleId, $content, $commentId);
-        return $this->success();
+        $comment = $this->commentService->create($articleId, $content, $commentId);
+        return $this->success($comment);
     }
 
     public function userDelete()
