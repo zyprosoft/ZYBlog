@@ -27,6 +27,7 @@ class CommentService extends BaseService
         }
         Log::info("will save comment:".$comment->toJson());
         $comment->saveOrFail();
+        $comment->author();
         $this->push(new RefreshArticleJob($articleId));
         //清空这个文章的评论缓存
         $this->clearListCacheWithMaxPage('CommentListForEach', [$articleId], $this->clearListPageSize);
