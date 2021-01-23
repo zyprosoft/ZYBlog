@@ -32,6 +32,8 @@ class CommentService extends BaseService
         $this->push(new RefreshArticleJob($articleId));
         //清空这个文章的评论缓存
         $this->clearListCacheWithMaxPage('CommentListForEach', [$articleId], $this->clearListPageSize);
+        //清除按照最新回复排列的文章列表缓存
+        $this->clearCachePrefix('article-list:comment');
         return $comment;
     }
 
