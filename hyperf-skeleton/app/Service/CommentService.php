@@ -8,10 +8,14 @@ use App\Job\RefreshArticleJob;
 use App\Model\Article;
 use App\Model\Comment;
 use Hyperf\DbConnection\Db;
+use Psr\Container\ContainerInterface;
 use ZYProSoft\Log\Log;
+use Hyperf\Cache\Annotation\Cacheable;
 
 class CommentService extends BaseService
 {
+    private $clearListPageSize = 10;
+
     public function create(int $articleId, string $content, int $parentCommentId = null)
     {
         $comment = new Comment();
@@ -23,10 +27,13 @@ class CommentService extends BaseService
         }
         Log::info("will save comment:".$comment->toJson());
         $comment->saveOrFail();
-        $this->jobDispatcher->push(new RefreshArticleJob($articleId));
+        $this->push(new RefreshArticleJob($articleId));
+        //清空这个文章的评论缓存
+        $this->clearListCacheWithMaxPage('CommentListForEach', [$articleId], $this->clearListPageSize);
     }
 
     /**
+     * @Cacheable (prefix="comment-list-each", ttl=7200, listener="CommentListForEach")
      * @param int $pageIndex
      * @param int $pageSize
      * @param int $articleId
@@ -34,6 +41,11 @@ class CommentService extends BaseService
      */
     public function listWithArticleId(int $pageIndex, int $pageSize, int $articleId)
     {
+        //清除缓存要用,只能设置成这个值
+        if (isset($this->clearListPageSize)) {
+            $pageSize = $this->clearListPageSize;
+        }
+
         $list = Comment::query()->where('article_id', $articleId)
                                ->with(['author', 'parentComment'])
                                ->offset($pageIndex * $pageSize)
