@@ -2,6 +2,8 @@
 
 declare (strict_types=1);
 namespace App\Model;
+use Hyperf\ModelCache\Cacheable;
+use Hyperf\ModelCache\CacheableInterface;
 
 /**
  * @property int $article_id 
@@ -17,6 +19,17 @@ namespace App\Model;
  */
 class Article extends Model
 {
+    use Cacheable;
+
+    /**
+     * 缓存一小时
+     * @return int|null
+     */
+    public function getCacheTTL(): ?int
+    {
+        return 3600;
+    }
+
     /**
      * The table associated with the model.
      *
