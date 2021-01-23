@@ -58,7 +58,7 @@ class CommentController extends AbstractController
         $this->validate([
             'articleId' => 'integer|required|min:1',
             'pageIndex' => 'required|integer|min:0',
-            'pageSize' => 'required|integer|min:1|max:20',
+            'pageSize' => 'integer|min:1|max:20',
         ]);
         $articleId = $this->request->param('articleId');
         $pageIndex = $this->request->param('pageIndex');
