@@ -8708,7 +8708,6 @@
                         "preferred": true
                     }
                 ]
-                "shasum": ""
             },
             "require": {
                 "96qbhy/hyperf-auth": "^2.2",
