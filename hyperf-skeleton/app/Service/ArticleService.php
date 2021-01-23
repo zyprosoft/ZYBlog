@@ -12,19 +12,10 @@ use App\Model\Tag;
 use Hyperf\Database\Model\Builder;
 use Hyperf\DbConnection\Db;
 use ZYProSoft\Log\Log;
-use Hyperf\Di\Annotation\Inject;
 use Hyperf\Cache\Annotation\Cacheable;
-use Hyperf\Cache\Listener\DeleteListenerEvent;
-use Psr\EventDispatcher\EventDispatcherInterface;
 
 class ArticleService extends BaseService
 {
-    /**
-     * @Inject
-     * @var EventDispatcherInterface
-     */
-    protected $dispatcher;
-
     public function createArticle(string $title, string $content, array $tags, int $categoryId)
     {
         //先创建标签
@@ -51,12 +42,11 @@ class ArticleService extends BaseService
 
         });
 
-        $this->dispatcher->dispatch(new DeleteListenerEvent('ArticleListRecent', []));
-
+        $this->clearCachePrefix('article-list:');
     }
 
     /**
-     * @Cacheable(prefix="article", ttl=7200, listener="ArticleListCategory")
+     * @Cacheable(prefix="article-list:category", ttl=7200, listener="ArticleListCategory")
      * @param int $pageIndex
      * @param int $pageSize
      * @param int|null $categoryId
@@ -80,7 +70,7 @@ class ArticleService extends BaseService
     }
 
     /**
-     * @Cacheable (prefix="article", ttl=7200, listener="ArticleDetail")
+     * @Cacheable (prefix="article:detail", ttl=7200, listener="ArticleDetail")
      * @param int $articleId
      * @return Builder|Builder[]|\Hyperf\Database\Model\Collection|\Hyperf\Database\Model\Model|\Hyperf\Database\Query\Builder|null
      */
@@ -139,7 +129,7 @@ class ArticleService extends BaseService
     }
 
     /**
-     * @Cacheable(prefix="article", ttl=7200, listener="ArticleListArchiveDate")
+     * @Cacheable(prefix="article-list:date", ttl=7200, listener="ArticleListArchiveDate")
      * @param int $pageIndex
      * @param int $pageSize
      * @param int $tagId
@@ -160,7 +150,7 @@ class ArticleService extends BaseService
     }
 
     /**
-     * @Cacheable(prefix="article", ttl=7200, listener="ArticleListTag")
+     * @Cacheable(prefix="article-list:tag", ttl=7200, listener="ArticleListTag")
      * @param int $pageIndex
      * @param int $pageSize
      * @param int $tagId
@@ -203,7 +193,7 @@ class ArticleService extends BaseService
     }
 
     /**
-     * @Cacheable(prefix="article", ttl=7200, listener="ArticleListRecent")
+     * @Cacheable(prefix="article-list:recent", ttl=7200, listener="ArticleListRecent")
      * @param int $pageIndex
      * @param int $pageSize
      * @return array
@@ -221,7 +211,7 @@ class ArticleService extends BaseService
     }
 
     /**
-     * @Cacheable(prefix="article", ttl=7200, listener="ArticleListComment")
+     * @Cacheable(prefix="article-list:comment", ttl=7200, listener="ArticleListComment")
      * @param int $pageIndex
      * @param int $pageSize
      * @return array
@@ -250,7 +240,7 @@ class ArticleService extends BaseService
     }
 
     /**
-     * @Cacheable(prefix="article", ttl=72000, listener="ArticleListArchivedMonth")
+     * @Cacheable(prefix="article:archive", ttl=72000, listener="ArticleListArchivedMonth")
      * @return array
      */
     public function getAllArchivedMonth()
