@@ -7,6 +7,7 @@ use App\Exception\BusinessException;
 use App\Job\RefreshArticleJob;
 use App\Model\Article;
 use App\Model\Comment;
+use App\Model\User;
 use Hyperf\DbConnection\Db;
 use Psr\Container\ContainerInterface;
 use ZYProSoft\Log\Log;
@@ -27,7 +28,7 @@ class CommentService extends BaseService
         }
         Log::info("will save comment:".$comment->toJson());
         $comment->saveOrFail();
-        $comment->author();
+        $comment->author = User::find($comment->user_id);
         $this->push(new RefreshArticleJob($articleId));
         //清空这个文章的评论缓存
         $this->clearListCacheWithMaxPage('CommentListForEach', [$articleId], $this->clearListPageSize);
