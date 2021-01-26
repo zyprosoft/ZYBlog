@@ -20,6 +20,8 @@ use Qbhy\HyperfAuth\Authenticatable;
  */
 class User extends Model implements Authenticatable
 {
+    const ROLE_ADMIN = 1;
+
     /**
      * The table associated with the model.
      *
@@ -39,8 +41,13 @@ class User extends Model implements Authenticatable
      */
     protected $casts = ['user_id' => 'integer', 'role_id' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
 
-    public function getId(){
+    public function getId() {
         return $this->user_id;
+    }
+
+    public function isAdmin()
+    {
+        return $this->role_id == self::ROLE_ADMIN;
     }
 
     public static function retrieveById($key): ?Authenticatable
