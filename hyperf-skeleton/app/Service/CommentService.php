@@ -33,13 +33,15 @@ class CommentService extends BaseService
                 'site' => $site
             ]);
             $comment->user_id = $user->user_id;
-            $comment->author = $user;
 
             if (isset($parentCommentId)) {
                 $comment->parent_comment_id = $parentCommentId;
             }
             Log::info("will save comment:".$comment->toJson());
             $comment->saveOrFail();
+
+            //绑定作者信息
+            $comment->author = $user;
 
         });
 
