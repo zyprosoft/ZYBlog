@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 
+use App\Http\AppAdminRequest;
 use ZYProSoft\Controller\AbstractController;
 use App\Service\UserService;
 use Hyperf\Di\Annotation\Inject;
@@ -32,5 +33,11 @@ class UserController extends AbstractController
         $password = $this->request->param('password');
         $userInfo = $this->userService->login($username, $password);
         return $this->success($userInfo);
+    }
+
+    public function logout(AppAdminRequest $request)
+    {
+        $this->userService->logout();
+        return $this->success();
     }
 }

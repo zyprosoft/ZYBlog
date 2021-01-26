@@ -29,4 +29,9 @@ class UserService extends BaseService
 
         return $user;
     }
+
+    public function logout()
+    {
+        return Auth::logout();
+    }
 }
