@@ -17,23 +17,41 @@ class CommentService extends BaseService
 {
     private $clearListPageSize = 10;
 
-    public function create(int $articleId, string $content, int $parentCommentId = null)
+    public function create(int $articleId, string $content, string $nickname, string $email, string $site = null, int $parentCommentId = null)
     {
         $comment = new Comment();
-        $comment->user_id = $this->userId();
         $comment->article_id = $articleId;
         $comment->content = $content;
-        if (isset($parentCommentId)) {
-            $comment->parent_comment_id = $parentCommentId;
-        }
-        Log::info("will save comment:".$comment->toJson());
-        $comment->saveOrFail();
-        $comment->author = User::find($comment->user_id);
+
+        Db::transaction(function () use ($comment, $nickname, $email, $site, $parentCommentId){
+
+            //查找用户是否存在
+            $user = User::query()->firstOrCreate([
+                'email' => $email
+            ], [
+                'nickname' => $nickname,
+                'site' => $site
+            ]);
+            $comment->user_id = $user->user_id;
+            $comment->author = $user;
+
+            if (isset($parentCommentId)) {
+                $comment->parent_comment_id = $parentCommentId;
+            }
+            Log::info("will save comment:".$comment->toJson());
+            $comment->saveOrFail();
+
+        });
+
+        //刷新文章评论总数
         $this->push(new RefreshArticleJob($articleId));
+
         //清空这个文章的评论缓存
         $this->clearListCacheWithMaxPage('CommentListForEach', [$articleId], $this->clearListPageSize);
+
         //清除按照最新回复排列的文章列表缓存
         $this->clearCachePrefix('article-list:comment');
+
         return $comment;
     }
 
@@ -80,7 +98,9 @@ class CommentService extends BaseService
 
     public function detail(int $commentId)
     {
-        $comment = Comment::query()->select()->where('comment_id', $commentId)->with(['author','replyList'])->firstOrFail();
+        $comment = Comment::query()->where('comment_id', $commentId)
+                                   ->with(['author','replyList'])
+                                   ->firstOrFail();
         $replyList = $this->replyList($commentId);
         $article = Article::query()->select(['article_id','title','user_id','category_id'])
                                    ->where('article_id', $comment->article_id)
@@ -113,8 +133,7 @@ class CommentService extends BaseService
 
     public function userDelete(int $commentId)
     {
-        $comment = Comment::query()->select()
-                                   ->with(['author'])
+        $comment = Comment::query()->with(['author'])
                                    ->where('comment_id', $commentId)
                                    ->firstOrFail();
         if ($comment->author->user_id != $this->userId()) {

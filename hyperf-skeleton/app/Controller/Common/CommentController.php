@@ -30,17 +30,23 @@ class CommentController extends AbstractController
         return $this->commentService->detail($commentId);
     }
 
-    public function create(AuthedRequest $request)
+    public function create()
     {
         $this->validate([
             'content' => 'string|required|min:1|max:500',
             'articleId' => 'integer|required|min:1',
-            'commentId' => 'integer|min:1'
+            'commentId' => 'integer|min:1',
+            'nickname' => 'string|required|min:1|max:30',
+            'email' => 'string|required|min:1|max:30',
+            'site' => 'string|min:1|max:120'
         ]);
-        $content = $request->param('content');
-        $articleId = $request->param('articleId');
-        $commentId = $request->param('commentId');
-        $comment = $this->commentService->create($articleId, $content, $commentId);
+        $content = $this->request->param('content');
+        $articleId = $this->request->param('articleId');
+        $commentId = $this->request->param('commentId');
+        $nickname = $this->request->param('nickname');
+        $email = $this->request->param('email');
+        $site = $this->request->param('site');
+        $comment = $this->commentService->create($articleId, $content, $nickname, $email, $site, $commentId);
         return $this->success($comment);
     }
 

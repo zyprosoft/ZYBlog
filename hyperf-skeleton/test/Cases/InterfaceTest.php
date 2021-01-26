@@ -89,6 +89,9 @@ class InterfaceTest extends TestCase
         $params = [
             'articleId' => $articleId,
             'content' => $content,
+            'nickname' => 'mike5262705',
+            'email' => '1003081775@qq.com',
+            'site' => 'http://www.github.com/zyprosoft'
         ];
         return $this->cgwRequest($interfaceName, $params, $token)->assertOk();
     }

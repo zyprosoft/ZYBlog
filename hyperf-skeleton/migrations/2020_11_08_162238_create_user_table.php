@@ -16,8 +16,10 @@ class CreateUserTable extends Migration
             $table->string("nickname", 50)
                   ->comment("用户昵称");
             $table->string("username")
+                  ->nullable()
                   ->comment("账号");
             $table->string("password", 255)
+                  ->nullable()
                   ->comment("密码");
             $table->string("email", 50)
                   ->comment("邮箱");
@@ -31,6 +33,7 @@ class CreateUserTable extends Migration
                   ->default('这个人什么太懒了，没有自我介绍')
                   ->comment("自我介绍");
             $table->unique('username');
+            $table->unique('email');
 
             $table->softDeletes();
             $table->timestamps();
