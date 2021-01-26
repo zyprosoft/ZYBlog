@@ -69,7 +69,7 @@ class CommentController extends AbstractController
         $articleId = $this->request->param('articleId');
         $pageIndex = $this->request->param('pageIndex');
         $pageSize = $this->request->param('pageSize');
-        $list = $this->commentService->listWithArticleId($articleId, $pageIndex, $pageSize);
+        $list = $this->commentService->listWithArticleId($pageIndex, $pageSize, $articleId);
         return $this->success($list);
     }
 

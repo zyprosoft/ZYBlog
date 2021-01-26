@@ -77,7 +77,8 @@ class CommentService extends BaseService
         $list = Comment::query()->where('article_id', $articleId)
                                ->with(['author', 'parentComment'])
                                ->offset($pageIndex * $pageSize)
-                               ->limit($pageSize)->get();
+                               ->limit($pageSize)
+                               ->get();
         $total = Comment::query()->where('article_id', $articleId)
                                  ->count();
         return ['total' => $total, 'list' => $list];
