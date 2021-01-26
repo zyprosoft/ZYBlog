@@ -52,7 +52,10 @@ class CommentService extends BaseService
         $this->clearListCacheWithMaxPage('CommentListForEach', [$articleId], $this->clearListPageSize);
 
         //清除按照最新回复排列的文章列表缓存
-        $this->clearCachePrefix('article-list:comment');
+        ArticleService::clearArticleListCachePrefix('article-list:comment');
+
+        //清除文章详情缓存
+        ArticleService::clearArticleDetailCache($articleId);
 
         return $comment;
     }

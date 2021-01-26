@@ -11,6 +11,7 @@ use App\Model\Comment;
 use App\Model\Tag;
 use Hyperf\Database\Model\Builder;
 use Hyperf\DbConnection\Db;
+use Hyperf\Utils\ApplicationContext;
 use ZYProSoft\Log\Log;
 use Hyperf\Cache\Annotation\Cacheable;
 
@@ -249,5 +250,28 @@ class ArticleService extends BaseService
         return Article::query()->selectRaw("distinct DATE_FORMAT(created_at, '%Y年%m月') as date")
                                 ->orderByDesc('date')
                                 ->get();
+    }
+
+    public static function service()
+    {
+        return ApplicationContext::getContainer()->get(ArticleService::class);
+    }
+
+    /**
+     * 清除文章详情缓存
+     */
+    public static function clearArticleDetailCache(int $articleId)
+    {
+        ArticleService::service()->clearCache('ArticleDetail', [$articleId]);
+    }
+
+    /**
+     * 清除带前缀的缓存列表
+     * @param string $prefix
+     */
+    public static function clearArticleListCachePrefix(string $prefix)
+    {
+        $service = ArticleService::service();
+        $service->clearCachePrefix($prefix);
     }
 }
