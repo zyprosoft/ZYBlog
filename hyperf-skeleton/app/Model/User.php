@@ -3,6 +3,8 @@
 declare (strict_types=1);
 namespace App\Model;
 
+use Qbhy\HyperfAuth\Authenticatable;
+
 /**
  * @property int $user_id 
  * @property string $nickname 
@@ -16,7 +18,7 @@ namespace App\Model;
  * @property \Carbon\Carbon $created_at 
  * @property \Carbon\Carbon $updated_at 
  */
-class User extends Model
+class User extends Model implements Authenticatable
 {
     /**
      * The table associated with the model.
@@ -36,4 +38,14 @@ class User extends Model
      * @var array
      */
     protected $casts = ['user_id' => 'integer', 'role_id' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+
+    public function getId(){
+        return $this->user_id;
+    }
+
+    public static function retrieveById($key): ?Authenticatable
+    {
+        return  User::find($key);
+    }
+
 }
