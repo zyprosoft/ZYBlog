@@ -225,7 +225,7 @@ class ArticleService extends BaseService
             ->latest()
             ->get();
 
-        if (empty($commentList)) {
+        if ($commentList->isEmpty()) {
             return ['total' => 0, 'list' => []];
         }
 
