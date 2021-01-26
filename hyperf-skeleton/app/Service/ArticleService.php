@@ -225,12 +225,12 @@ class ArticleService extends BaseService
             ->latest()
             ->get();
 
-        $total = Article::count();
-
-        $articleIds = $commentList->pluck('article_id')->values();
-        if (empty($articleIds)) {
-            return ['total' => $total, 'list' => []];
+        if (empty($commentList)) {
+            return ['total' => 0, 'list' => []];
         }
+
+        $total = Article::count();
+        $articleIds = $commentList->pluck('article_id')->values();
 
         $articleList = Article::query()->where('article_id', $articleIds)
             ->with(['author', 'tags', 'category'])
