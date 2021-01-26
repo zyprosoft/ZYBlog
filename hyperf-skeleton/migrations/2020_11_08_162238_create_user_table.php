@@ -23,6 +23,9 @@ class CreateUserTable extends Migration
                   ->comment("密码");
             $table->string("email", 50)
                   ->comment("邮箱");
+            $table->string("site", 120)
+                  ->nullable()
+                  ->comment("个人站点");
             $table->string("avatar", 128)
                   ->nullable()
                   ->comment("头像");
