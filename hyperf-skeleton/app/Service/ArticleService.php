@@ -43,6 +43,7 @@ class ArticleService extends BaseService
         });
 
         $this->clearCachePrefix('article-list:');
+        $this->clearCachePrefix('article:archive');
     }
 
     /**
