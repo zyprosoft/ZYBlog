@@ -27,6 +27,9 @@ class User extends Model implements Authenticatable
      * @var string
      */
     protected $table = 'user';
+
+    protected $primaryKey = 'user_id';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -53,11 +56,6 @@ class User extends Model implements Authenticatable
 
     public static function retrieveById($key): ?Authenticatable
     {
-        $user =  User::find($key);
-        if ($user instanceof Authenticatable) {
-            return $user;
-        }
-        return  null;
+        return User::find($key);
     }
-
 }
