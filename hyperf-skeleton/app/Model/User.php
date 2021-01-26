@@ -53,7 +53,11 @@ class User extends Model implements Authenticatable
 
     public static function retrieveById($key): ?Authenticatable
     {
-        return  User::find($key);
+        $user =  User::find($key);
+        if ($user instanceof Authenticatable) {
+            return $user;
+        }
+        return  null;
     }
 
 }
