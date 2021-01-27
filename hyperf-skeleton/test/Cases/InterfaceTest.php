@@ -209,4 +209,12 @@ class InterfaceTest extends TestCase
         ];
         $this->cgwRequest($interfaceName, $params)->assertOk();
     }
+
+    public function testGetCaptcha()
+    {
+        $interfaceName = 'common.captcha.get';
+        $params = [
+        ];
+        $this->cgwRequest($interfaceName, $params)->assertOk();
+    }
 }
