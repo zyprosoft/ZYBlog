@@ -38,4 +38,9 @@ class ErrorCode extends AbstractConstants
      * @Message ("验证码输入错误")
      */
     const SYSTEM_ERROR_CAPTCHA_INVALIDATE = 30001;
+
+    /**
+     * @Message ("创建验证码文件夹出错")
+     */
+    const SYSTEM_ERROR_CAPTCHA_DIR_CREATE_FAIL = 30002;
 }
