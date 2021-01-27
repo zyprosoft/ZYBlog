@@ -5,6 +5,7 @@ namespace App\Service;
 use App\Constants\ErrorCode;
 use App\Exception\BusinessException;
 use Carbon\Carbon;
+use ZYProSoft\Log\Log;
 use ZYProSoft\Service\AbstractService;
 use Gregwar\Captcha\CaptchaBuilder;
 
@@ -43,8 +44,10 @@ class CaptchaService extends AbstractService
            if (!$isSuccess) {
                throw new BusinessException(ErrorCode::SYSTEM_ERROR_CAPTCHA_DIR_CREATE_FAIL);
            }
+            Log::info("create captcha dir success!");
         }
         $savePath = $this->savePath($cacheKey);
+        Log::info("will save captcha path:$savePath");
         $builder->save($savePath);
         $this->cache->set($cacheKey, $phrase, self::CAPTCHA_TTL);
         return [
