@@ -37,7 +37,7 @@ class CaptchaService extends AbstractService
         $builder = new CaptchaBuilder();
         $builder->build();
         $phrase = $builder->getPhrase();
-        $time = Carbon::now()->millisecond;
+        $time = Carbon::now()->timestamp;
         $cacheKey = self::CAPTCHA_CACHE_PREFIX.$time;
         if ($this->fileLocal()->has($this->saveDir()) == false) {
            $isSuccess = $this->fileLocal()->createDir($this->saveDir());
