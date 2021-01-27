@@ -29,7 +29,7 @@ class CaptchaService extends AbstractService
         $time = Carbon::now()->millisecond;
         $cacheKey = self::CAPTCHA_CACHE_PREFIX.$time;
         $savePath = $this->savePath($cacheKey);
-        $this->fileLocal()->write($savePath, $builder->getContents());
+        $builder->save($savePath);
         $this->cache->set($cacheKey, $phrase, self::CAPTCHA_TTL);
         return [
             'path' => $savePath,

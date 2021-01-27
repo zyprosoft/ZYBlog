@@ -19,7 +19,7 @@ class InterfaceTest extends TestCase
         $this->client = make(Client::class);
     }
 
-    public function cgwRequest($interfaceName, $params, $token = null)
+    public function zgwRequest($interfaceName, $params, $token = null)
     {
         $body = [
             'token' => $token,
@@ -43,7 +43,7 @@ class InterfaceTest extends TestCase
             'username' => 'admin',
             'password' => 'admin123'
         ];
-        $loginResponse = $this->cgwRequest($interfaceName, $params);
+        $loginResponse = $this->zgwRequest($interfaceName, $params);
         return json_decode($loginResponse->getContent())->data->token;
     }
 
@@ -60,7 +60,7 @@ class InterfaceTest extends TestCase
             'tags' => ['随笔','演示'],
             'categoryId' => 1
         ];
-        $this->cgwRequest($interfaceName, $params, $token)->assertOk();
+        $this->zgwRequest($interfaceName, $params, $token)->assertOk();
     }
 
     public function testGetArticleList()
@@ -70,7 +70,7 @@ class InterfaceTest extends TestCase
             'pageIndex' => 0,
             'pageSize' => 10
         ];
-        return $this->cgwRequest($interfaceName, $params);
+        return $this->zgwRequest($interfaceName, $params);
     }
 
     private function getOneArticle()
@@ -93,7 +93,7 @@ class InterfaceTest extends TestCase
             'email' => '1003081775@qq.com',
             'site' => 'http://www.github.com/zyprosoft'
         ];
-        return $this->cgwRequest($interfaceName, $params, $token)->assertOk();
+        return $this->zgwRequest($interfaceName, $params, $token)->assertOk();
     }
 
     public function testGetArticleDetail()
@@ -103,7 +103,7 @@ class InterfaceTest extends TestCase
         $params = [
             'articleId' => $articleId,
         ];
-        return $this->cgwRequest($interfaceName, $params)->assertOk();
+        return $this->zgwRequest($interfaceName, $params)->assertOk();
     }
 
     public function testCommentList()
@@ -113,7 +113,7 @@ class InterfaceTest extends TestCase
         $params = [
             'articleId' => $articleId,
         ];
-        return $this->cgwRequest($interfaceName, $params)->assertOk();
+        return $this->zgwRequest($interfaceName, $params)->assertOk();
     }
 
     private function getOneComment()
@@ -133,7 +133,7 @@ class InterfaceTest extends TestCase
             'commentId' => $commentId,
             'content' => $content,
         ];
-        $this->cgwRequest($interfaceName, $params, $token)->assertOk();
+        $this->zgwRequest($interfaceName, $params, $token)->assertOk();
     }
 
     public function testCommentDetail()
@@ -143,7 +143,7 @@ class InterfaceTest extends TestCase
         $params = [
             'commentId' => $commentId,
         ];
-        $this->cgwRequest($interfaceName, $params)->assertOk();
+        $this->zgwRequest($interfaceName, $params)->assertOk();
     }
 
     public function testGetAllCategory()
@@ -151,7 +151,7 @@ class InterfaceTest extends TestCase
         $interfaceName = 'common.category.getAll';
         $params = [
         ];
-        $this->cgwRequest($interfaceName, $params)->assertOk();
+        $this->zgwRequest($interfaceName, $params)->assertOk();
     }
 
     public function testGetArticleListByTagId()
@@ -162,7 +162,7 @@ class InterfaceTest extends TestCase
             'pageSize' => 10,
             'tagId' => 11
         ];
-        $this->cgwRequest($interfaceName, $params)->assertOk();
+        $this->zgwRequest($interfaceName, $params)->assertOk();
     }
 
     public function testGetArticleListByDate()
@@ -173,7 +173,7 @@ class InterfaceTest extends TestCase
             'pageSize' => 10,
             'date' => '2021-01'
         ];
-        $this->cgwRequest($interfaceName, $params)->assertOk();
+        $this->zgwRequest($interfaceName, $params)->assertOk();
     }
 
     public function testGetArticleListByRecentComment()
@@ -183,7 +183,7 @@ class InterfaceTest extends TestCase
             'pageIndex' => 0,
             'pageSize' => 10,
         ];
-        $this->cgwRequest($interfaceName, $params)->assertOk();
+        $this->zgwRequest($interfaceName, $params)->assertOk();
     }
 
     public function testGetAllArchiveDate()
@@ -191,7 +191,7 @@ class InterfaceTest extends TestCase
         $interfaceName = 'common.category.getAllArchiveDate';
         $params = [
         ];
-        $this->cgwRequest($interfaceName, $params)->assertOk();
+        $this->zgwRequest($interfaceName, $params)->assertOk();
     }
 
     public function testGetHotTags()
@@ -199,7 +199,7 @@ class InterfaceTest extends TestCase
         $interfaceName = 'common.tag.getHotTags';
         $params = [
         ];
-        $this->cgwRequest($interfaceName, $params)->assertOk();
+        $this->zgwRequest($interfaceName, $params)->assertOk();
     }
 
     public function testGetArchiveDateList()
@@ -207,7 +207,7 @@ class InterfaceTest extends TestCase
         $interfaceName = 'common.article.getArchiveDateList';
         $params = [
         ];
-        $this->cgwRequest($interfaceName, $params)->assertOk();
+        $this->zgwRequest($interfaceName, $params)->assertOk();
     }
 
     public function testGetCaptcha()
@@ -215,6 +215,6 @@ class InterfaceTest extends TestCase
         $interfaceName = 'common.captcha.get';
         $params = [
         ];
-        $this->cgwRequest($interfaceName, $params)->assertOk();
+        $this->zgwRequest($interfaceName, $params)->assertOk();
     }
 }
