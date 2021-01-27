@@ -2,10 +2,8 @@
 
 
 namespace App\Controller\Common;
-use App\Service\CaptchaService;
 use ZYProSoft\Controller\AbstractController;
 use Hyperf\HttpServer\Annotation\AutoController;
-use Hyperf\Di\Annotation\Inject;
 
 /**
  * @AutoController (prefix="/common/captcha")
@@ -14,25 +12,17 @@ use Hyperf\Di\Annotation\Inject;
  */
 class CaptchaController extends AbstractController
 {
-    /**
-     * @Inject
-     * @var CaptchaService
-     */
-    private $service;
-
     public function get()
     {
-        return $this->success($this->service->get());
+        return $this->success($this->captchaService->get());
     }
 
-    public function check()
+    public function refresh()
     {
         $this->validate([
-            'key' => 'string|required|min:1',
-            'code' => 'string|required|min:1',
+            'key' => 'string|required|min:1'
         ]);
-        $key = $this->request->param('key');
-        $code = $this->request->param('code');
-        return $this->service->validate($key, $code);
+        $cacheKey = $this->request->param('key');
+        return $this->captchaService->refresh($cacheKey);
     }
 }

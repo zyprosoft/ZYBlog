@@ -38,8 +38,14 @@ class CommentController extends AbstractController
             'commentId' => 'integer|min:1',
             'nickname' => 'string|required|min:1|max:30',
             'email' => 'string|required|min:1|max:30',
-            'site' => 'string|min:1|max:120'
+            'site' => 'string|min:1|max:120',
+            'captcha.key' => 'string|required|min:1',
+            'captcha.code' => 'string|required|min:1'
         ]);
+        //先校验验证码是否正确
+        $key = $this->request->param('captcha.key');
+        $code = $this->request->param('captcha.code');
+        $this->captchaService->validate($key, $code);
         $content = $this->request->param('content');
         $articleId = $this->request->param('articleId');
         $commentId = $this->request->param('commentId');

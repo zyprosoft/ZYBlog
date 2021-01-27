@@ -8964,18 +8964,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zyprosoft/hyperf-common.git",
-                "reference": "dc680ed2a065f2807fb087116018adcb8705aca9"
+                "reference": "35505ceb0fc1d03109c392d6545e4f2fdde540ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zyprosoft/hyperf-common/zipball/dc680ed2a065f2807fb087116018adcb8705aca9",
-                "reference": "dc680ed2a065f2807fb087116018adcb8705aca9",
+                "url": "https://api.github.com/repos/zyprosoft/hyperf-common/zipball/35505ceb0fc1d03109c392d6545e4f2fdde540ec",
+                "reference": "35505ceb0fc1d03109c392d6545e4f2fdde540ec",
                 "shasum": ""
             },
             "require": {
                 "96qbhy/hyperf-auth": "^2.2",
                 "doctrine/dbal": "^3.0",
                 "ext-json": "*",
+                "gregwar/captcha": "1.*",
                 "hyperf/async-queue": "~2.1.0",
                 "hyperf/config": "~2.1.0",
                 "hyperf/constants": "~2.1.0",
@@ -8986,6 +8987,7 @@
                 "hyperf/model-cache": "~2.1.0",
                 "hyperf/session": "~2.1.0",
                 "hyperf/testing": "~2.1.0",
+                "hyperf/utils": "~2.1.0",
                 "hyperf/validation": "~2.1.0",
                 "overtrue/flysystem-qiniu": "^1.0",
                 "overtrue/wechat": "~5.0",
@@ -9020,7 +9022,7 @@
                 "hyperf",
                 "php"
             ],
-            "time": "2021-01-27T10:54:07+00:00"
+            "time": "2021-01-27T13:14:07+00:00"
         }
     ],
     "packages-dev": [
