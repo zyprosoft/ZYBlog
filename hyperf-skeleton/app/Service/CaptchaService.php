@@ -24,7 +24,7 @@ class CaptchaService extends AbstractService
 
     protected function root()
     {
-        return config('server.setting.document_root');
+        return config('server.settings.document_root');
     }
 
     protected function savePath($cacheKey)
