@@ -18,7 +18,12 @@ class CaptchaService extends AbstractService
 
     protected function saveDir()
     {
-        return self::CAPTCHA_SAVE_DIR.DIRECTORY_SEPARATOR;
+        return $this->root().DIRECTORY_SEPARATOR.self::CAPTCHA_SAVE_DIR.DIRECTORY_SEPARATOR;
+    }
+
+    protected function root()
+    {
+        return config('server.setting.document_root');
     }
 
     protected function savePath($cacheKey)
@@ -40,7 +45,7 @@ class CaptchaService extends AbstractService
            }
         }
         $savePath = $this->savePath($cacheKey);
-        $this->fileLocal()->writeStream($savePath,$builder->getContents());
+        $builder->save($savePath);
         $this->cache->set($cacheKey, $phrase, self::CAPTCHA_TTL);
         return [
             'path' => $savePath,
