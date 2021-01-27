@@ -19,12 +19,7 @@ class CaptchaService extends AbstractService
 
     protected function saveDir()
     {
-        return $this->root().self::CAPTCHA_SAVE_DIR.DIRECTORY_SEPARATOR;
-    }
-
-    protected function root()
-    {
-        return config('server.settings.document_root');
+        return self::CAPTCHA_SAVE_DIR.DIRECTORY_SEPARATOR;
     }
 
     protected function savePath($cacheKey)
