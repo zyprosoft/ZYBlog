@@ -24,7 +24,7 @@ class CaptchaService extends AbstractService
 
     protected function savePath($cacheKey)
     {
-        return $this->saveDir().$cacheKey;
+        return config('file.local.root').$this->saveDir().$cacheKey;
     }
 
     public function get()
