@@ -8964,12 +8964,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zyprosoft/hyperf-common.git",
-                "reference": "9dbfe831263bffe0f59cd0463eb5b98fb9d5e34a"
+                "reference": "dc680ed2a065f2807fb087116018adcb8705aca9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zyprosoft/hyperf-common/zipball/9dbfe831263bffe0f59cd0463eb5b98fb9d5e34a",
-                "reference": "9dbfe831263bffe0f59cd0463eb5b98fb9d5e34a",
+                "url": "https://api.github.com/repos/zyprosoft/hyperf-common/zipball/dc680ed2a065f2807fb087116018adcb8705aca9",
+                "reference": "dc680ed2a065f2807fb087116018adcb8705aca9",
                 "shasum": ""
             },
             "require": {
@@ -8977,6 +8977,7 @@
                 "doctrine/dbal": "^3.0",
                 "ext-json": "*",
                 "hyperf/async-queue": "~2.1.0",
+                "hyperf/config": "~2.1.0",
                 "hyperf/constants": "~2.1.0",
                 "hyperf/crontab": "~2.1.0",
                 "hyperf/filesystem": "~2.1.0",
@@ -9019,7 +9020,7 @@
                 "hyperf",
                 "php"
             ],
-            "time": "2021-01-27T05:31:38+00:00"
+            "time": "2021-01-27T10:54:07+00:00"
         }
     ],
     "packages-dev": [

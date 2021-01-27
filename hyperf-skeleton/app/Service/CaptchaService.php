@@ -22,9 +22,18 @@ class CaptchaService extends AbstractService
         return self::CAPTCHA_SAVE_DIR.DIRECTORY_SEPARATOR;
     }
 
+    protected function subDirPath($cacheKey)
+    {
+        $result = $this->publicFileService->createPublicSubDirIfNotExist($this->saveDir());
+        if (!$result) {
+            return  null;
+        }
+        return $this->saveDir().$cacheKey;
+    }
+
     protected function savePath($cacheKey)
     {
-        return config('file.storage.local.root').$this->saveDir().$cacheKey;
+        return $this->publicFileService->publicPath($this->subDirPath($cacheKey));
     }
 
     public function get()
@@ -34,19 +43,13 @@ class CaptchaService extends AbstractService
         $phrase = $builder->getPhrase();
         $time = Carbon::now()->timestamp;
         $cacheKey = self::CAPTCHA_CACHE_PREFIX.$time;
-        if ($this->fileLocal()->has($this->saveDir()) == false) {
-           $isSuccess = $this->fileLocal()->createDir($this->saveDir());
-           if (!$isSuccess) {
-               throw new BusinessException(ErrorCode::SYSTEM_ERROR_CAPTCHA_DIR_CREATE_FAIL);
-           }
-            Log::info("create captcha dir success!");
-        }
+        $subDirPath = $this->subDirPath($cacheKey);
         $savePath = $this->savePath($cacheKey);
         Log::info("will save captcha path:$savePath");
         $builder->save($savePath);
         $this->cache->set($cacheKey, $phrase, self::CAPTCHA_TTL);
         return [
-            'path' => $savePath,
+            'path' => $subDirPath,
             'key' => $cacheKey,
         ];
     }
@@ -55,10 +58,8 @@ class CaptchaService extends AbstractService
     {
         $phrase = $this->cache->get($cacheKey);
         if (is_null($phrase)) {
-            $savePath = $this->savePath($cacheKey);
-            if ($this->fileLocal()->has($savePath)) {
-                $this->fileLocal()->delete($savePath);
-            }
+            $savePath = $this->subDirPath($cacheKey);
+            $this->publicFileService->deletePublicPath($savePath);
             throw new BusinessException(ErrorCode::SYSTEM_ERROR_CAPTCHA_EXPIRED);
         }
 
@@ -66,8 +67,8 @@ class CaptchaService extends AbstractService
             throw new BusinessException(ErrorCode::SYSTEM_ERROR_CAPTCHA_INVALIDATE);
         }
 
-        $savePath = $this->savePath($cacheKey);
-        $this->fileLocal()->delete($savePath);
+        $savePath = $this->subDirPath($cacheKey);
+        $this->publicFileService->deletePublicPath($savePath);
 
         return $this->success();
     }
