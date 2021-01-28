@@ -15,7 +15,7 @@ class CreateUserTable extends Migration
             $table->integerIncrements('user_id');
             $table->string("nickname", 50)
                   ->comment("用户昵称");
-            $table->string("username")
+            $table->string("username", 50)
                   ->nullable()
                   ->comment("账号");
             $table->string("password", 255)
