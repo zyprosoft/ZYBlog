@@ -2,9 +2,11 @@
 
 
 namespace HyperfTest\Cases;
+use Hyperf\Utils\ApplicationContext;
 use PHPUnit\Framework\TestCase;
 use Qbhy\HyperfTesting\Client;
 use ZYProSoft\Log\Log;
+use ZYProSoft\Service\CaptchaService;
 
 class InterfaceTest extends TestCase
 {
@@ -216,5 +218,11 @@ class InterfaceTest extends TestCase
         $params = [
         ];
         $this->zgwRequest($interfaceName, $params)->assertOk();
+    }
+
+    public function testClearCaptcha()
+    {
+        $service = ApplicationContext::getContainer()->get(CaptchaService::class);
+        $service->clearExpireCaptcha();
     }
 }
