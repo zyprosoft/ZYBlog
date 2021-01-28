@@ -84,13 +84,6 @@ class CommentService extends BaseService
         return ['total' => $total, 'list' => $list];
     }
 
-    public function replyList(int $commentId)
-    {
-        return Comment::query()->where('parent_comment_id', $commentId)
-                               ->with('author')
-                               ->get();
-    }
-
     public function reply(int $commentId, string $content)
     {
         $comment = Comment::query()->find($commentId)->with('article')->firstOrFail();
@@ -107,13 +100,11 @@ class CommentService extends BaseService
         $comment = Comment::query()->where('comment_id', $commentId)
                                    ->with(['author','replyList'])
                                    ->firstOrFail();
-        $replyList = $this->replyList($commentId);
         $article = Article::query()->select(['article_id','title','user_id','category_id'])
                                    ->where('article_id', $comment->article_id)
                                    ->with(['author','category','tags'])
                                    ->first();
         $comment->article = $article;
-        $comment->replyList = $replyList;
         return $comment;
     }
 

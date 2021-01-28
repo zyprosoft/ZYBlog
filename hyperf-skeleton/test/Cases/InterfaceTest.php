@@ -244,4 +244,14 @@ class InterfaceTest extends TestCase
         ];
         return $this->zgwRequest($interfaceName, $params)->assertOk();
     }
+
+    public function testCommentDetailWithCommentId()
+    {
+        $commentId = 1;
+        $interfaceName = 'common.comment.detail';
+        $params = [
+            'commentId' => $commentId,
+        ];
+        $this->zgwRequest($interfaceName, $params)->assertOk();
+    }
 }
