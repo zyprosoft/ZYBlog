@@ -239,6 +239,8 @@ class InterfaceTest extends TestCase
         $interfaceName = 'common.comment.list';
         $params = [
             'articleId' => $articleId,
+            'pageIndex' => 0,
+            'pageSize' => 10
         ];
         return $this->zgwRequest($interfaceName, $params)->assertOk();
     }
