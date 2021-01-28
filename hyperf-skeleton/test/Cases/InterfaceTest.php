@@ -232,4 +232,14 @@ class InterfaceTest extends TestCase
         $service = ApplicationContext::getContainer()->get(LogService::class);
         $service->clearExpireLog();
     }
+
+    public function testCommentListWithArticleId()
+    {
+        $articleId = 1;
+        $interfaceName = 'common.comment.list';
+        $params = [
+            'articleId' => $articleId,
+        ];
+        return $this->zgwRequest($interfaceName, $params)->assertOk();
+    }
 }
