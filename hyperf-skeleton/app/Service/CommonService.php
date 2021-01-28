@@ -10,4 +10,9 @@ class CommonService extends BaseService
     {
         return About::first();
     }
+
+    public function clearSystemCache()
+    {
+        $this->clearAllCache();
+    }
 }

@@ -237,7 +237,7 @@ class InterfaceTest extends TestCase
 
     public function testCommentListWithArticleId()
     {
-        $service = ApplicationContext::getContainer()->get(CommentService::class);
+        $service = ApplicationContext::getContainer()->get(CommonService::class);
         $service->clearSystemCache();
         $articleId = 1;
         $interfaceName = 'common.comment.list';
