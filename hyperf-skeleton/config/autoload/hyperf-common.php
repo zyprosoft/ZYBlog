@@ -17,7 +17,8 @@ return [
     'allow_cross_origins' => [
         'http://127.0.0.1',
         'http://localhost',
-        'http://www.lulinggushi.com'
+        'http://www.lulinggushi.com',
+        'http://dev.blog.lulinggushi.com'
     ],
     'rate_limit' => [
         'access_rate_limit' => 10, //每分钟访问限制次数
