@@ -24,7 +24,8 @@ return [
         ],
     ],
     'rate_limit' => [
-        'access_rate_limit' => 10, //每分钟访问限制次数
+        'access_rate_limit' => 10, //频率限制次数
+        'access_rate_ttl' => 20, //频率限制秒，两者组合为每20秒内最多允许10次请求单一接口
         'white_list' => [
             '/weixin'
         ],
