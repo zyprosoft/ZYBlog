@@ -83,7 +83,7 @@ class CommentService extends BaseService
                                ->get();
 
         //给parent_comment获取用户信息
-        $userIds = $list->pluck('parent_comment.user_id')->where('parent_comment_id','!==', null);
+        $userIds = $list->where('parent_comment_id','!==', null)->pluck('parent_comment.user_id');
         Log::info("all parent comment userIds:".$userIds->toJson());
         $userList = User::findMany($userIds)->keyBy('user_id');
         $list->map(function (Comment $comment) use ($userList) {
