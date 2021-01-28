@@ -48,7 +48,7 @@ class Comment extends Model
 
     public function parentComment()
     {
-        return $this->hasOne(Comment::class,'parent_comment_id','comment_id');
+        return $this->hasOne(Comment::class,'comment_id','parent_comment_id');
     }
 
     public function replyList()
