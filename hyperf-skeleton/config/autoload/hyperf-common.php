@@ -13,12 +13,14 @@ return [
         'prefix' => 'cpt',
         'dirname' => '/captcha'
     ],
-    'enable_cross_origin' => env('ENABLE_CROSS_ORIGIN', true),
-    'allow_cross_origins' => [
-        'http://127.0.0.1',
-        'http://localhost',
-        'http://www.lulinggushi.com',
-        'http://dev.blog.lulinggushi.com'
+    'cors' => [
+        'enable_cross_origin' => env('ENABLE_CROSS_ORIGIN', true),
+        'allow_cross_origins' => [
+            'http://127.0.0.1',
+            'http://localhost',
+            'http://lulinggushi.com',
+            'http://dev.blog.lulinggushi.com'
+        ],
     ],
     'rate_limit' => [
         'access_rate_limit' => 10, //每分钟访问限制次数
