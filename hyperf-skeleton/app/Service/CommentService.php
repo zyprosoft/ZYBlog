@@ -2,6 +2,7 @@
 
 
 namespace App\Service;
+use _HumbugBox5d215ba2066e\phpDocumentor\Reflection\Types\Array_;
 use App\Constants\ErrorCode;
 use App\Exception\BusinessException;
 use App\Job\RefreshArticleJob;
@@ -9,6 +10,7 @@ use App\Model\Article;
 use App\Model\Comment;
 use App\Model\User;
 use Hyperf\DbConnection\Db;
+use Hyperf\Utils\Arr;
 use Psr\Container\ContainerInterface;
 use ZYProSoft\Log\Log;
 use Hyperf\Cache\Annotation\Cacheable;
@@ -81,9 +83,10 @@ class CommentService extends BaseService
                                ->get();
 
         //给parent_comment获取用户信息
-        $list->map(function (Comment $item) {
-            Log::info("each comment:".$item->toJson());
-            $item->author;
+        $userIds = $list->pluck('parent_comment.user_id')->where('parent_comment_id','!==', null);
+        $userList = User::findMany($userIds)->keyBy('user_id');
+        $list->map(function (Comment $comment) use ($userList) {
+            $comment->parent_comment->author = Arr::get($userList, $comment->parent_comment->user_id);
         });
 
         $total = Comment::query()->where('article_id', $articleId)
