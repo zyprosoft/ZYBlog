@@ -139,4 +139,9 @@ class CommentService extends BaseService
 
         Comment::find($commentId)->delete();
     }
+
+    public function clearSystemCache()
+    {
+        $this->clearAllCache();
+    }
 }

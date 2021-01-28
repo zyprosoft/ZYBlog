@@ -2,6 +2,8 @@
 
 
 namespace HyperfTest\Cases;
+use App\Service\CommentService;
+use App\Service\CommonService;
 use Hyperf\Utils\ApplicationContext;
 use PHPUnit\Framework\TestCase;
 use Qbhy\HyperfTesting\Client;
@@ -235,6 +237,8 @@ class InterfaceTest extends TestCase
 
     public function testCommentListWithArticleId()
     {
+        $service = ApplicationContext::getContainer()->get(CommentService::class);
+        $service->clearSystemCache();
         $articleId = 1;
         $interfaceName = 'common.comment.list';
         $params = [
