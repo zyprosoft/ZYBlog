@@ -23,6 +23,6 @@ class CaptchaController extends AbstractController
             'key' => 'string|min:1'
         ]);
         $cacheKey = $this->request->param('key');
-        return $this->captchaService->refresh($cacheKey);
+        return $this->success($this->captchaService->refresh($cacheKey));
     }
 }
