@@ -82,6 +82,7 @@ class CommentService extends BaseService
 
         //给parent_comment获取用户信息
         $list->map(function (Comment $item) {
+            Log::info("each comment:".$item->toJson());
             $item->author;
         });
 
