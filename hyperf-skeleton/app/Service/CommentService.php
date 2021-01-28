@@ -79,10 +79,10 @@ class CommentService extends BaseService
                                ->offset($pageIndex * $pageSize)
                                ->limit($pageSize)
                                ->get();
-        
+
         //给parent_comment获取用户信息
         $list->map(function (Comment $item) {
-            $item->author();
+            $item->author;
         });
 
         $total = Comment::query()->where('article_id', $articleId)
