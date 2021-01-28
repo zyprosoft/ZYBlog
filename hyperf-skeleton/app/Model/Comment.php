@@ -48,7 +48,7 @@ class Comment extends Model
 
     public function parentComment()
     {
-        return Comment::find($this->parent_comment_id);
+        return $this->belongsTo(Comment::class,'parent_comment_id','comment_id');
     }
 
     public function replyList()
