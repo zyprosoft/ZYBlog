@@ -46,12 +46,12 @@ class Comment extends Model
         return $this->belongsTo(User::class,'user_id','user_id');
     }
 
-    public function parentComment()
+    public function parent_comment()
     {
         return $this->hasOne(Comment::class,'comment_id','parent_comment_id');
     }
 
-    public function replyList()
+    public function reply_list()
     {
         return $this->belongsTo(Comment::class,'comment_id','parent_comment_id');
     }
