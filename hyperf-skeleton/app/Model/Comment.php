@@ -53,6 +53,6 @@ class Comment extends Model
 
     public function replyList()
     {
-        return $this->belongsTo(Comment::class,'parent_comment_id','comment_id');
+        return $this->belongsTo(Comment::class,'comment_id','parent_comment_id');
     }
 }
