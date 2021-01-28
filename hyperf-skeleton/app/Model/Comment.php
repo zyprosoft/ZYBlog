@@ -48,11 +48,11 @@ class Comment extends Model
 
     public function parentComment()
     {
-        return $this->belongsTo(Comment::class,'comment_id','parent_comment_id');
+        return $this->belongsTo(Comment::class, 'parent_comment_id','comment_id');
     }
 
     public function replyList()
     {
-        return $this->hasMany(Comment::class,'parent_comment_id','comment_id');
+        return $this->hasMany(Comment::class,'comment_id','parent_comment_id');
     }
 }
