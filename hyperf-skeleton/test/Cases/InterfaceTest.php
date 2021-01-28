@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 use Qbhy\HyperfTesting\Client;
 use ZYProSoft\Log\Log;
 use ZYProSoft\Service\CaptchaService;
+use ZYProSoft\Service\LogService;
 
 class InterfaceTest extends TestCase
 {
@@ -224,5 +225,11 @@ class InterfaceTest extends TestCase
     {
         $service = ApplicationContext::getContainer()->get(CaptchaService::class);
         $service->clearExpireCaptcha();
+    }
+
+    public function testClearLog()
+    {
+        $service = ApplicationContext::getContainer()->get(LogService::class);
+        $service->clearExpireLog();
     }
 }

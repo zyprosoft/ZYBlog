@@ -1,6 +1,7 @@
 <?php
 use Hyperf\Crontab\Crontab;
 use ZYProSoft\Task\ClearExpireCaptchaTask;
+use ZYProSoft\Task\ClearLogFileTask;
 
 return [
     // 是否开启定时任务
@@ -10,5 +11,9 @@ return [
                        ->setRule('*/10 * * * *')
                        ->setCallback([ClearExpireCaptchaTask::class, 'execute'])
                        ->setMemo('定时清除过期的验证码'),
+        (new Crontab())->setName('clearLog')
+            ->setRule('0 0 1 * *')
+            ->setCallback([ClearLogFileTask::class, 'execute'])
+            ->setMemo('定时清除过期的日志文件'),
     ]
 ];
