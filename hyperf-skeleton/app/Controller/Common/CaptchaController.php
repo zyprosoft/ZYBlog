@@ -20,7 +20,7 @@ class CaptchaController extends AbstractController
     public function refresh()
     {
         $this->validate([
-            'key' => 'string|required|min:1'
+            'key' => 'string|min:1'
         ]);
         $cacheKey = $this->request->param('key');
         return $this->captchaService->refresh($cacheKey);
