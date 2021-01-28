@@ -75,7 +75,7 @@ class CommentService extends BaseService
         }
 
         $list = Comment::query()->where('article_id', $articleId)
-                               ->with(['author', 'parentComment'])
+                               ->with(['author', 'parent_comment'])
                                ->offset($pageIndex * $pageSize)
                                ->limit($pageSize)
                                ->get();
@@ -98,7 +98,7 @@ class CommentService extends BaseService
     public function detail(int $commentId)
     {
         $comment = Comment::query()->where('comment_id', $commentId)
-                                   ->with(['author','replyList'])
+                                   ->with(['author','reply_list'])
                                    ->firstOrFail();
         $article = Article::query()->select(['article_id','title','user_id','category_id'])
                                    ->where('article_id', $comment->article_id)
@@ -110,7 +110,7 @@ class CommentService extends BaseService
 
     public function list(int $pageIndex, int $pageSize)
     {
-        $list = Comment::query()->with(['article','author','parentComment'])
+        $list = Comment::query()->with(['article','author','parent_comment'])
                                 ->orderByDesc('updated_at')
                                 ->offset($pageIndex * $pageSize)
                                 ->limit($pageSize)
