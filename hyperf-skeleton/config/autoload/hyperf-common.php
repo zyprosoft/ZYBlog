@@ -4,6 +4,7 @@ declare(strict_types=1);
 return [
     'zgw' => [
         'force_auth' => env('FORCE_AUTH', false),//强制校验签名,开启后ZGW协议必须带签名参数访问
+        'sign_ttl' => 10,
         'config_list' => [
             "test" => "abcdefg",
         ]
