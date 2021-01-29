@@ -39,7 +39,7 @@ return [
             'auth' => true,
             'username' => '1003081775@qq.com',
             'password' => 'kavphdirftxubcig',
-            'port' => '465'
+            'port' => '587'
         ]
     ],
 ];
