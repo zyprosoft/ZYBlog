@@ -37,7 +37,7 @@ return [
         'smtp' => [
             'host' => 'smtp.qq.com',
             'auth' => true,
-            'username' => '1003081775@qq.com',
+            'username' => '1003081775',
             'password' => 'kavphdirftxubcig',
 //            'password' => 'zhongyue1314520',
             'port' => '587'
