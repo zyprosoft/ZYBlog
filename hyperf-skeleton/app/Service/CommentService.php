@@ -52,7 +52,7 @@ class CommentService extends BaseService
         });
 
         $user = User::query()->where('email', $email)->first();
-        $article = Article::first($articleId);
+        $article = Article::find($articleId);
 
         //给作者发邮件
         $emailToAuthor = new EmailEntry();
