@@ -64,16 +64,21 @@ class CommentService extends BaseService
         $content = "用户<".$user->nickname.">评论了你的文章《".$articleTitle."》:".$comment->content;
         $emailToAuthor->body = $content."</br>".$checkDetail."</br>".$autoSendTip;
         $author = User::find($article->user_id);
-        $emailToAuthor->receivers[] = new EmailAddressEntry($author->email,$author->nickname);
+        $authorAddress = new EmailAddressEntry($author->email,$author->nickname);
+        $emailToAuthor->receivers[] = $authorAddress;
+        $emailToAuthor->replyTo = $authorAddress;
         $this->asyncSendEmail($emailToAuthor);
 
         //给收到回复的人发邮件
         if (isset($parentCommentId)) {
             $emailToReplyUser = new EmailEntry();
-            $parentComment = Comment::find($parentCommentId);
+            $parentComment = Comment::query()->where('comment_id', $parentCommentId)->with(['author'])->first();
             $emailToReplyUser->subject = "【ZYProSoft博客】你收到了新的评论回复!";
             $content = "你在文章《".$articleTitle."》的评论《".$parentComment->content."》收到了新的回复:</br>".$user->nickname."说:".$content;
             $emailToReplyUser->body = $content."</br>".$checkDetail."</br>".$autoSendTip;
+            $replyAddress = new EmailAddressEntry($parentComment->author->email, $parentComment->author->nickname);
+            $emailToReplyUser->replyTo = $replyAddress;
+            $emailToReplyUser->receivers[] = $replyAddress;
             $this->asyncSendEmail($emailToReplyUser);
         }
 
