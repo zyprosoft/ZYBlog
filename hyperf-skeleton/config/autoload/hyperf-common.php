@@ -35,7 +35,6 @@ return [
     ],
     'mail' => [
         'smtp' => [
-            'enable_debug' => false,
             'host' => 'smtp.qq.com',
             'auth' => true,
             'username' => 'mailteam@qq.com',
