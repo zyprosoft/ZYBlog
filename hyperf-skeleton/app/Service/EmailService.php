@@ -21,7 +21,7 @@ class EmailService
     {
         $mail = new PHPMailer(true);
         $config = config('hyperf-common.mail.smtp');
-        $mail->SMTPDebug = SMTP::DEBUG_OFF;                      // Enable verbose debug output
+        $mail->SMTPDebug = SMTP::DEBUG_LOWLEVEL;                      // Enable verbose debug output
         $mail->isSMTP();                                            // Send using SMTP
         $mail->Host       = $config['host'];                    // Set the SMTP server to send through
         $mail->SMTPAuth   = $config['auth'];                                   // Enable SMTP authentication
