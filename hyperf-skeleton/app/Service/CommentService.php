@@ -61,8 +61,8 @@ class CommentService extends BaseService
         $articleUrl = 'http://'.env('HOST').'/article/'.$articleId;
         $checkDetail = "<a href=\"$articleUrl\">点击查看详情</a>";
         $autoSendTip = "本邮件由ZYVincent代发，如有疑问请联系QQ:1003081775，谢谢!";
-        $content = "用户<".$user->nickname.">评论了你的文章《".$articleTitle."》:".$comment->content;
-        $emailToAuthor->body = $content."</br>".$checkDetail."</br>".$autoSendTip;
+        $toAuthorContent = "用户<".$user->nickname.">评论了你的文章《".$articleTitle."》:".$comment->content;
+        $emailToAuthor->body = $toAuthorContent."</br>".$checkDetail."</br>".$autoSendTip;
         $author = User::find($article->user_id);
         $authorAddress = new EmailAddressEntry($author->email,$author->nickname);
         $emailToAuthor->receivers[] = $authorAddress;
@@ -78,8 +78,8 @@ class CommentService extends BaseService
             $emailToReplyUser = new EmailEntry();
             $parentComment = Comment::query()->where('comment_id', $parentCommentId)->with(['author'])->first();
             $emailToReplyUser->subject = "【ZYProSoft博客】你收到了新的评论回复!";
-            $content = "你在文章《".$articleTitle."》的评论《".$parentComment->content."》收到了新的回复:</br>".$user->nickname."说:".$content;
-            $emailToReplyUser->body = $content."</br>".$checkDetail."</br>".$autoSendTip;
+            $toReplyUserContent = "你在文章《".$articleTitle."》的评论(".$parentComment->content.")收到了新的回复，</br>用户(".$user->nickname.")说:".$content;
+            $emailToReplyUser->body = $toReplyUserContent."</br>".$checkDetail."</br>".$autoSendTip;
             $replyAddress = new EmailAddressEntry($parentComment->author->email, $parentComment->author->nickname);
             $emailToReplyUser->replyTo = $replyAddress;
             $emailToReplyUser->receivers[] = $replyAddress;
