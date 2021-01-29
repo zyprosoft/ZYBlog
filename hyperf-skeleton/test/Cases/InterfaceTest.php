@@ -264,7 +264,7 @@ class InterfaceTest extends TestCase
     public function testSendEmail()
     {
         $email = new EmailEntry();
-        $email->from = new EmailAddressEntry('zyvincent@zyprosoft.cn', 'zyprosoft');
+        $email->from = new EmailAddressEntry('1003081775@qq.com', 'zyprosoft');
         $email->receivers = [
             new EmailAddressEntry('1003081775@qq.com', '冰泪')
         ];
