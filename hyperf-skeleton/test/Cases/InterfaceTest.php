@@ -266,6 +266,9 @@ class InterfaceTest extends TestCase
     {
         $email = new EmailEntry();
         $email->from = new EmailAddressEntry('280852828@qq.com', 'zyprosoft');
+        $email->receivers = [
+            new EmailAddressEntry('1003081775@qq.com', '冰泪')
+        ];
         $email->replyTo = new EmailAddressEntry('1003081775@qq.com', '冰泪');
         $email->subject = "测试邮件发送";
         $email->body = "测试邮件发送内容";
