@@ -2,17 +2,16 @@
 
 
 namespace HyperfTest\Cases;
-use App\Model\EmailAddressEntry;
-use App\Model\EmailEntry;
-use App\Service\CommentService;
 use App\Service\CommonService;
-use App\Service\EmailService;
 use Hyperf\Utils\ApplicationContext;
 use PHPUnit\Framework\TestCase;
 use Qbhy\HyperfTesting\Client;
 use ZYProSoft\Log\Log;
 use ZYProSoft\Service\CaptchaService;
 use ZYProSoft\Service\LogService;
+use ZYProSoft\Entry\EmailEntry;
+use ZYProSoft\Entry\EmailAddressEntry;
+use ZYProSoft\Service\EmailService;
 
 class InterfaceTest extends TestCase
 {
@@ -265,7 +264,7 @@ class InterfaceTest extends TestCase
     public function testSendEmail()
     {
         $email = new EmailEntry();
-        $email->from = new EmailAddressEntry('1003081775@qq.com', 'zyprosoft');
+        $email->from = new EmailAddressEntry('zyvincent@zyprosoft.cn', 'zyprosoft');
         $email->receivers = [
             new EmailAddressEntry('1003081775@qq.com', '冰泪')
         ];
