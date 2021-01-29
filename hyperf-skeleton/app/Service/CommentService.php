@@ -12,6 +12,8 @@ use App\Model\User;
 use Hyperf\DbConnection\Db;
 use Hyperf\Utils\Arr;
 use Psr\Container\ContainerInterface;
+use ZYProSoft\Entry\EmailAddressEntry;
+use ZYProSoft\Entry\EmailEntry;
 use ZYProSoft\Log\Log;
 use Hyperf\Cache\Annotation\Cacheable;
 
@@ -25,7 +27,7 @@ class CommentService extends BaseService
         $comment->article_id = $articleId;
         $comment->content = $content;
 
-        Db::transaction(function () use ($comment, $nickname, $email, $site, $parentCommentId){
+        Db::transaction(function () use ($articleId, $comment, $nickname, $email, $site, $parentCommentId){
 
             //查找用户是否存在
             $user = User::query()->firstOrCreate([
@@ -34,6 +36,9 @@ class CommentService extends BaseService
                 'nickname' => $nickname,
                 'site' => $site
             ]);
+            if (! $user instanceof User) {
+                throw new BusinessException(ErrorCode::COMMENT_USER_CREATE_NEW_FAIL);
+            }
             $comment->user_id = $user->user_id;
 
             if (isset($parentCommentId)) {
@@ -41,9 +46,31 @@ class CommentService extends BaseService
             }
             Log::info("will save comment:".$comment->toJson());
             $comment->saveOrFail();
-
             //绑定作者信息
             $comment->author = $user;
+
+            $article = Article::find($articleId);
+
+            //给作者发邮件
+            $emailToAuthor = new EmailEntry();
+            $articleTitle = $article->title;
+            $emailToAuthor->subject = "【ZYProSoft博客】"."你的文章《".$articleTitle."》收到了新的评论!";
+            $articleUrl = 'http://'.env('HOST').'/article/'.$articleId;
+            $checkDetail = "<a href=\"$articleUrl\">点击查看详情</a>";
+            $autoSendTip = "本邮件由ZYVincent代发，如有疑问请联系QQ:1003081775，谢谢!";
+            $content = "用户<".$user->nickname.">评论了你的文章《".$articleTitle."》:".$comment->content;
+            $emailToAuthor->body = $content."</br>".$checkDetail."</br>".$autoSendTip;
+            $author = User::find($article->user_id);
+            $emailToAuthor->receivers[] = new EmailAddressEntry($author->email,$author->nickname);
+            $this->asyncSendEmail($emailToAuthor);
+
+            //给收到回复的人发邮件
+            $emailToReplyUser = new EmailEntry();
+            $parentComment = Comment::find($parentCommentId);
+            $emailToReplyUser->subject = "【ZYProSoft博客】你收到了新的评论回复!";
+            $content = "你在文章《".$articleTitle."》的评论《".$parentComment->content."》收到了新的回复:</br>".$user->nickname."说:".$content;
+            $emailToReplyUser->body = $content."</br>".$checkDetail."</br>".$autoSendTip;
+            $this->asyncSendEmail($emailToReplyUser);
 
         });
 
