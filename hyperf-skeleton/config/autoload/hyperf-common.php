@@ -35,12 +35,11 @@ return [
     ],
     'mail' => [
         'smtp' => [
-            'host' => 'newxmesmtplogicsvrszc8.qq.com',
+            'host' => 'smtp.qq.com',
             'auth' => true,
-            'username' => '1003081775',
+            'username' => '1003081775@qq.com',
             'password' => 'kavphdirftxubcig',
-//            'password' => 'zhongyue1314520',
-            'port' => '587'
+            'port' => '465'
         ]
     ],
 ];
