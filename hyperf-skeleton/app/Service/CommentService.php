@@ -67,6 +67,10 @@ class CommentService extends BaseService
         $authorAddress = new EmailAddressEntry($author->email,$author->nickname);
         $emailToAuthor->receivers[] = $authorAddress;
         $emailToAuthor->replyTo = $authorAddress;
+        $from = config('hyperf-common.mail.smtp.username');
+        $fromName = env('MAIL_FROM_NAME', 'zyprosoft');
+        $fromAddress = new EmailAddressEntry($from, $fromName);
+        $emailToAuthor->from = $fromAddress;
         $this->asyncSendEmail($emailToAuthor);
 
         //给收到回复的人发邮件
@@ -79,6 +83,7 @@ class CommentService extends BaseService
             $replyAddress = new EmailAddressEntry($parentComment->author->email, $parentComment->author->nickname);
             $emailToReplyUser->replyTo = $replyAddress;
             $emailToReplyUser->receivers[] = $replyAddress;
+            $emailToReplyUser->from = $fromAddress;
             $this->asyncSendEmail($emailToReplyUser);
         }
 
