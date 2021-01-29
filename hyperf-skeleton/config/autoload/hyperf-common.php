@@ -35,7 +35,7 @@ return [
     ],
     'mail' => [
         'smtp' => [
-            'host' => 'smtp.qq.com',
+            'host' => 'newxmesmtplogicsvrszc8.qq.com',
             'auth' => true,
             'username' => '1003081775',
             'password' => 'kavphdirftxubcig',
