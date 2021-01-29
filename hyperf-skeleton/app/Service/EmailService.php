@@ -72,7 +72,9 @@ class EmailService
             $mail->isHTML($emailEntry->isHtml);
             $mail->Subject = $emailEntry->subject;
             $mail->Body = $emailEntry->body;
-            $mail->AltBody = $emailEntry->altBody;
+            if (isset($emailEntry->altBody)) {
+                $mail->AltBody = $emailEntry->altBody;
+            }
             $mail->send();
             $logger->info("did send email with info:".json_encode($emailEntry));
         }catch (Exception $exception) {
