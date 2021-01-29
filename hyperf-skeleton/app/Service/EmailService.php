@@ -27,7 +27,7 @@ class EmailService
         $mail->SMTPAuth   = $config['auth'];                                   // Enable SMTP authentication
         $mail->Username   = $config['username'];                     // SMTP username
         $mail->Password   = $config['password'];                               // SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
         $mail->Port       = $config['port'];
         return $mail;
     }
