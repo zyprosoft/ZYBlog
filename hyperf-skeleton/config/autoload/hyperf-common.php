@@ -39,7 +39,7 @@ return [
             'auth' => true,
             'username' => '1003081775@qq.com',
             'password' => 'kavphdirftxubcig',
-            'port' => '465',
+            'port' => '465', //qq邮箱经测试是465端口+ssl协议有效果
             'secure' => 'ssl'
         ]
     ],
