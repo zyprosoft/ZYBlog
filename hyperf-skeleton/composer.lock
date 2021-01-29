@@ -9885,12 +9885,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zyprosoft/hyperf-common.git",
-                "reference": "11614725cc0465648c3f678f6be8a75694abb7d4"
+                "reference": "8e114663b4d89e2570e5c417a0f3a9e18c4ebe3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zyprosoft/hyperf-common/zipball/11614725cc0465648c3f678f6be8a75694abb7d4",
-                "reference": "11614725cc0465648c3f678f6be8a75694abb7d4",
+                "url": "https://api.github.com/repos/zyprosoft/hyperf-common/zipball/8e114663b4d89e2570e5c417a0f3a9e18c4ebe3c",
+                "reference": "8e114663b4d89e2570e5c417a0f3a9e18c4ebe3c",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -9918,6 +9918,7 @@
                 "hyperf/validation": "~2.1.0",
                 "overtrue/flysystem-qiniu": "^1.0",
                 "overtrue/wechat": "~5.0",
+                "phpmailer/phpmailer": "^6.2",
                 "qbhy/hyperf-multi-env": "^2.0",
                 "qbhy/hyperf-testing": "^1.0"
             },
@@ -9949,7 +9950,7 @@
                 "hyperf",
                 "php"
             ],
-            "time": "2021-01-29T04:51:06+00:00"
+            "time": "2021-01-29T07:35:25+00:00"
         }
     ],
     "packages-dev": [
