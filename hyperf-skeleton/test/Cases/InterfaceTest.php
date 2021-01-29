@@ -274,4 +274,10 @@ class InterfaceTest extends TestCase
         $service = ApplicationContext::getContainer()->get(EmailService::class);
         $service->sendEmail($email);
     }
+
+    public function testJsonEncode()
+    {
+        $param = "<p>我是中国人</p>";
+        echo json_encode($param);
+    }
 }
