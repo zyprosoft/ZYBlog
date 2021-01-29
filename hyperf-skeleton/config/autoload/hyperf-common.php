@@ -33,4 +33,14 @@ return [
     'clear_log' => [
         'days' => 3, // 只保留三天的日志，三天以前的自动清除,设置成-1表示不执行清除任务
     ],
+    'mail' => [
+        'smtp' => [
+            'enable_debug' => false,
+            'host' => 'smtp.qq.com',
+            'auth' => true,
+            'username' => 'mailteam@qq.com',
+            'password' => 'kavphdirftxubcig',
+            'port' => '465'
+        ]
+    ],
 ];

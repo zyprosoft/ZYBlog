@@ -2,8 +2,11 @@
 
 
 namespace HyperfTest\Cases;
+use App\Model\EmailAddressEntry;
+use App\Model\EmailEntry;
 use App\Service\CommentService;
 use App\Service\CommonService;
+use App\Service\EmailService;
 use Hyperf\Utils\ApplicationContext;
 use PHPUnit\Framework\TestCase;
 use Qbhy\HyperfTesting\Client;
@@ -257,5 +260,16 @@ class InterfaceTest extends TestCase
             'commentId' => $commentId,
         ];
         $this->zgwRequest($interfaceName, $params)->assertOk();
+    }
+
+    public function testSendEmail()
+    {
+        $email = new EmailEntry();
+        $email->from = new EmailAddressEntry('280852828@qq.com', 'zyprosoft');
+        $email->replyTo = new EmailAddressEntry('1003081775@qq.com', '冰泪');
+        $email->subject = "测试邮件发送";
+        $email->body = "测试邮件发送内容";
+        $service = ApplicationContext::getContainer()->get(EmailService::class);
+        $service->sendEmail($email);
     }
 }

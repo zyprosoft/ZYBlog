@@ -43,6 +43,7 @@
         "hyperf/validation": "~2.1.0",
         "overtrue/flysystem-qiniu": "^1.0",
         "overtrue/wechat": "~5.0",
+        "phpmailer/phpmailer": "^6.2",
         "qbhy/hyperf-multi-env": "^2.0",
         "qbhy/hyperf-testing": "^1.0",
         "zyprosoft/hyperf-common": "dev-master"
