@@ -28,4 +28,9 @@ class ErrorCode extends AbstractConstants
      * @Message("用户无权进行此操作")
      */
     const USER_ACTION_NO_RIGHT = 20001;
+
+    /**
+     * @Message("创建评论用户失败")
+     */
+    const COMMENT_USER_CREATE_NEW_FAIL = 20002;
 }
