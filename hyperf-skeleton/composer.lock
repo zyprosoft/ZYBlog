@@ -4425,16 +4425,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.43.0",
+            "version": "2.44.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "d32c57d8389113742f4a88725a170236470012e2"
+                "reference": "e6ef33cb1f67a4bed831ed6d0f7e156739a5d8cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d32c57d8389113742f4a88725a170236470012e2",
-                "reference": "d32c57d8389113742f4a88725a170236470012e2",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e6ef33cb1f67a4bed831ed6d0f7e156739a5d8cd",
+                "reference": "e6ef33cb1f67a4bed831ed6d0f7e156739a5d8cd",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4456,7 +4456,7 @@
                 "phpmd/phpmd": "^2.9",
                 "phpstan/extension-installer": "^1.0",
                 "phpstan/phpstan": "^0.12.54",
-                "phpunit/phpunit": "^7.5 || ^8.0",
+                "phpunit/phpunit": "^7.5.20 || ^8.5.14",
                 "squizlabs/php_codesniffer": "^3.4"
             },
             "bin": [
@@ -4516,7 +4516,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-17T20:55:32+00:00"
+            "time": "2021-01-26T20:46:41+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -9885,12 +9885,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zyprosoft/hyperf-common.git",
-                "reference": "0e622fdc317407a36cb885126979a1624034aeda"
+                "reference": "11614725cc0465648c3f678f6be8a75694abb7d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zyprosoft/hyperf-common/zipball/0e622fdc317407a36cb885126979a1624034aeda",
-                "reference": "0e622fdc317407a36cb885126979a1624034aeda",
+                "url": "https://api.github.com/repos/zyprosoft/hyperf-common/zipball/11614725cc0465648c3f678f6be8a75694abb7d4",
+                "reference": "11614725cc0465648c3f678f6be8a75694abb7d4",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -9949,7 +9949,7 @@
                 "hyperf",
                 "php"
             ],
-            "time": "2021-01-28T12:46:09+00:00"
+            "time": "2021-01-29T04:51:06+00:00"
         }
     ],
     "packages-dev": [
