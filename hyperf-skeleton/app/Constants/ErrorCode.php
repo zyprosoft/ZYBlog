@@ -33,9 +33,4 @@ class ErrorCode extends AbstractConstants
      * @Message("创建评论用户失败")
      */
     const COMMENT_USER_CREATE_NEW_FAIL = 20002;
-
-    /**
-     * @Message("七牛上传配置未设置完整")
-     */
-    const QINIU_UPLOAD_CONFIG_NOT_SET = 20003;
 }

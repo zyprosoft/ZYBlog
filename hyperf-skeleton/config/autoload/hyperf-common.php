@@ -45,8 +45,11 @@ return [
     ],
     'upload' => [
         'system_type' => env('UPLOAD_TYPE', 'local'), //使用上传的类型，对应下面的配置的key，如本地使用local,七牛云使用qiniu
+        'max_file_size' => env('UPLOAD_MAX_FILE_SIZE', 1024*5),//单位字节，默认5M
+        'file_type_limit' => env('UPLOAD_TYPE_LIMIT', "*"),//用英文分号进行分割的image/jpeg;image/jpg;image/*全匹配图片,*为全匹配
         'local' => [
-            'image_dir' => env('LOCAL_IMAGE_DIR', '/image'),//本地图片路径，位于server.settings.document_root配置目录之下
+            'common_dir' => env('LOCAL_COMMON_DIR', '/upload/common'),//通用的文件上传目录
+            'image_dir' => env('LOCAL_IMAGE_DIR', '/upload/image'),//本地图片路径，位于server.settings.document_root配置目录之下
             'url_prefix' => env('LOCAL_IMAGE_URL_PREFIX',''),//当上传到本地的时候，拼接的图片路径
         ],
         'qiniu' => [
