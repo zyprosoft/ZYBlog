@@ -47,10 +47,10 @@ return [
         'system_type' => env('UPLOAD_TYPE', 'local'), //使用上传的类型，对应下面的配置的key，如本地使用local,七牛云使用qiniu
         'local' => [
             'image_dir' => env('LOCAL_IMAGE_DIR', '/image'),//本地图片路径，位于server.settings.document_root配置目录之下
-            'url_prefix' => env('LOCAL_IMAGE_URL_PREFIX'),//当上传到本地的时候，拼接的图片路径
+            'url_prefix' => env('LOCAL_IMAGE_URL_PREFIX',''),//当上传到本地的时候，拼接的图片路径
         ],
         'qiniu' => [
-            'token_ttl' => 3600,
+            'token_ttl' => env('QINIU_TOKEN_TTL', 3600),
         ],
     ]
 ];
