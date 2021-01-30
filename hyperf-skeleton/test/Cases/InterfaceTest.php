@@ -275,9 +275,8 @@ class InterfaceTest extends TestCase
         $service->sendEmail($email);
     }
 
-    public function testJsonEncode()
+    public function testGetUploadToken()
     {
-        $param = "<p>我是中国人</p>";
-        echo json_encode($param);
+
     }
 }
