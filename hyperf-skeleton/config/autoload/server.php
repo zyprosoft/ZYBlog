@@ -38,7 +38,7 @@ return [
         'buffer_output_size' => 2 * 1024 * 1024,
         // 将 public 替换为上传目录
         'document_root' => BASE_PATH . '/public',
-        'enable_static_handler' => true,
+        'enable_static_handler' => false, //走nginx直接代理访问这个公开目录就好了
     ],
     'callbacks' => [
         Event::ON_WORKER_START => [Hyperf\Framework\Bootstrap\WorkerStartCallback::class, 'onWorkerStart'],
