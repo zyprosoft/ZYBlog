@@ -38,12 +38,12 @@ class UploadController extends AbstractController
         if ($systemType == Constants::UPLOAD_SYSTEM_TYPE_LOCAL) {
             $localImageDir = config('hyperf-common.upload.local.image_dir');
             $localImagePublicUrl = config('hyperf-common.upload.local.url_prefix');
-            $destinationPath = $localImageDir.DIRECTORY_SEPARATOR.Carbon::now()->getTimestamp().'.'.$file->getExtension();
-            $result = $this->moveFileToPublic('upload', $destinationPath);
+            $fileRename = Carbon::now()->getTimestamp().'.'.$file->getExtension();
+            $result = $this->moveFileToPublic('upload', $localImageDir, $fileRename);
             if (!$result) {
                 throw new HyperfCommonException(444,'upload image fail!');
             }
-            $publicImageUrl = $localImagePublicUrl.$destinationPath;
+            $publicImageUrl = $localImagePublicUrl.$localImageDir.DIRECTORY_SEPARATOR.$fileRename;
             return  $this->success([
                 'url' => $publicImageUrl
             ]);
