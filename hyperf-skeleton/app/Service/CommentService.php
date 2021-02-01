@@ -34,8 +34,10 @@ class CommentService extends BaseService
             if (! $user instanceof User) {
                 $user = new User([
                    'email' => $email,
-                   'nickname' => $nickname,
                 ]);
+            }
+            if (isset($nickname)) {
+                $user->nickname = $nickname;
             }
             if (isset($site)) {
                 $user->site = $site;
