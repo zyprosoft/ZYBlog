@@ -11,7 +11,8 @@ use Qbhy\HyperfAuth\Authenticatable;
  * @property string $nickname 
  * @property string $username 
  * @property string $password 
- * @property string $email 
+ * @property string $email
+ * @property string $site
  * @property string $avatar 
  * @property int $role_id 
  * @property string $introduce 

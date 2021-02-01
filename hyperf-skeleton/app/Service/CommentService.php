@@ -30,16 +30,20 @@ class CommentService extends BaseService
         Db::transaction(function () use ($articleId, $comment, $nickname, $email, $avatar, $site, $parentCommentId){
 
             //查找用户是否存在
-            $user = User::query()->firstOrCreate([
-                'email' => $email
-            ], [
-                'nickname' => $nickname,
-                'site' => $site,
-                'avatar' => $avatar
-            ]);
+            $user = User::query()->where('email', $email)->first();
             if (! $user instanceof User) {
-                throw new BusinessException(ErrorCode::COMMENT_USER_CREATE_NEW_FAIL);
+                $user = new User([
+                   'email' => $email,
+                   'nickname' => $nickname,
+                ]);
             }
+            if (isset($site)) {
+                $user->site = $site;
+            }
+            if (isset($avatar)) {
+                $user->avatar = $avatar;
+            }
+            $user->saveOrFail();
             $comment->user_id = $user->user_id;
 
             if (isset($parentCommentId)) {
