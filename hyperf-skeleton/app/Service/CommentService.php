@@ -120,6 +120,7 @@ class CommentService extends BaseService
                                ->with(['author', 'parent_comment'])
                                ->offset($pageIndex * $pageSize)
                                ->limit($pageSize)
+                               ->latest()
                                ->get();
 
         //给parent_comment获取用户信息
