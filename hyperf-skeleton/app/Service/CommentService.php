@@ -21,20 +21,21 @@ class CommentService extends BaseService
 {
     private $clearListPageSize = 10;
 
-    public function create(int $articleId, string $content, string $nickname, string $email, string $site = null, int $parentCommentId = null)
+    public function create(int $articleId, string $content, string $nickname, string $email, string $avatar = null, string $site = null, int $parentCommentId = null)
     {
         $comment = new Comment();
         $comment->article_id = $articleId;
         $comment->content = $content;
 
-        Db::transaction(function () use ($articleId, $comment, $nickname, $email, $site, $parentCommentId){
+        Db::transaction(function () use ($articleId, $comment, $nickname, $email, $avatar, $site, $parentCommentId){
 
             //查找用户是否存在
             $user = User::query()->firstOrCreate([
                 'email' => $email
             ], [
                 'nickname' => $nickname,
-                'site' => $site
+                'site' => $site,
+                'avatar' => $avatar
             ]);
             if (! $user instanceof User) {
                 throw new BusinessException(ErrorCode::COMMENT_USER_CREATE_NEW_FAIL);

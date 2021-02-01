@@ -38,6 +38,7 @@ class CommentController extends AbstractController
             'commentId' => 'integer|min:1',
             'nickname' => 'string|required|min:1|max:30',
             'email' => 'string|required|min:1|max:30',
+            'avatar' => 'string|min:1|max:200',
             'site' => 'string|min:1|max:120',
             'captcha.key' => 'string|required|min:1',
             'captcha.code' => 'string|required|min:1'
@@ -51,8 +52,9 @@ class CommentController extends AbstractController
         $commentId = $this->request->param('commentId');
         $nickname = $this->request->param('nickname');
         $email = $this->request->param('email');
+        $avatar = $this->request->param('avatar');
         $site = $this->request->param('site');
-        $comment = $this->commentService->create($articleId, $content, $nickname, $email, $site, $commentId);
+        $comment = $this->commentService->create($articleId, $content, $nickname, $email, $avatar, $site, $commentId);
         return $this->success($comment);
     }
 
