@@ -26,7 +26,7 @@ class CreateUserTable extends Migration
             $table->string("site", 120)
                   ->nullable()
                   ->comment("个人站点");
-            $table->string("avatar", 128)
+            $table->string("avatar", 500)
                   ->nullable()
                   ->comment("头像");
             $table->integer("role_id")

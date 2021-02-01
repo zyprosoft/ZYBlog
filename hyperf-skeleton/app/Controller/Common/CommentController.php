@@ -38,7 +38,7 @@ class CommentController extends AbstractController
             'commentId' => 'integer|min:1',
             'nickname' => 'string|required|min:1|max:30',
             'email' => 'string|required|min:1|max:30',
-            'avatar' => 'string|min:1|max:128',
+            'avatar' => 'string|min:1|max:500',
             'site' => 'string|min:1|max:120',
             'captcha.key' => 'string|required|min:1',
             'captcha.code' => 'string|required|min:1'
