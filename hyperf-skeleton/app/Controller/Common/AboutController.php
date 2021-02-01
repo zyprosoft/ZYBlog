@@ -2,6 +2,7 @@
 
 
 namespace App\Controller\Common;
+use App\Component\OneSentenceComponent;
 use ZYProSoft\Controller\AbstractController;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\Di\Annotation\Inject;
@@ -23,5 +24,12 @@ class AboutController extends AbstractController
     public function info()
     {
         return $this->success($this->service->getAboutInfo());
+    }
+
+    public function getOneSentence()
+    {
+        $component = make(OneSentenceComponent::class);
+        $result = $component->getOneSentence();
+        return $result->successOrFailException();
     }
 }
