@@ -7,7 +7,7 @@ use ZYProSoft\Component\BaseComponent;
 
 class OneSentenceComponent extends BaseComponent
 {
-    protected $options = [
+    protected array $options = [
         "base_uri" => "http://api.youngam.cn/",
         "timeout" => 3,
     ];
