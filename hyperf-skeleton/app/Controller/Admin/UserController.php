@@ -25,16 +25,12 @@ class UserController extends AbstractController
 
     public function login()
     {
-       $this->validate([
-            'username' => 'string|max:20|exists:user,username|required',
-            'password' => 'string|max:20|required',
-           'captcha.key' => 'string|required|min:1',
-           'captcha.code' => 'string|required|min:1'
-        ]);
         //先校验验证码是否正确
-        $key = $this->request->param('captcha.key');
-        $code = $this->request->param('captcha.code');
-        $this->captchaService->validate($key, $code);
+        $this->validateCaptcha();
+        $this->validate([
+           'username' => 'string|max:20|exists:user,username|required',
+           'password' => 'string|max:20|required',
+        ]);
         $username = $this->request->param('username');
         $password = $this->request->param('password');
         $userInfo = $this->userService->login($username, $password);

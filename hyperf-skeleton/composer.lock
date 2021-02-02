@@ -2068,16 +2068,16 @@
         },
         {
             "name": "hyperf/database",
-            "version": "v2.1.4",
+            "version": "v2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/database.git",
-                "reference": "ba72fdde2e00fa27bc819260bd77c7a9f4b12787"
+                "reference": "89c34e013646ef3c59f4efaca4b4122f2b46c0d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyperf/database/zipball/ba72fdde2e00fa27bc819260bd77c7a9f4b12787",
-                "reference": "ba72fdde2e00fa27bc819260bd77c7a9f4b12787",
+                "url": "https://api.github.com/repos/hyperf/database/zipball/89c34e013646ef3c59f4efaca4b4122f2b46c0d7",
+                "reference": "89c34e013646ef3c59f4efaca4b4122f2b46c0d7",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2125,7 +2125,7 @@
                 "hyperf",
                 "php"
             ],
-            "time": "2021-01-22T05:03:40+00:00"
+            "time": "2021-01-29T06:33:59+00:00"
         },
         {
             "name": "hyperf/db-connection",
@@ -2192,16 +2192,16 @@
         },
         {
             "name": "hyperf/di",
-            "version": "v2.1.2",
+            "version": "v2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/di.git",
-                "reference": "4d2d03f16b217fa998e9e6dd8f0f1ba6488d4d50"
+                "reference": "96b20c47bbfd3acb5afba0ada5dd3f58e9203c75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyperf/di/zipball/4d2d03f16b217fa998e9e6dd8f0f1ba6488d4d50",
-                "reference": "4d2d03f16b217fa998e9e6dd8f0f1ba6488d4d50",
+                "url": "https://api.github.com/repos/hyperf/di/zipball/96b20c47bbfd3acb5afba0ada5dd3f58e9203c75",
+                "reference": "96b20c47bbfd3acb5afba0ada5dd3f58e9203c75",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2250,7 +2250,7 @@
                 "php",
                 "swoole"
             ],
-            "time": "2021-01-09T13:19:28+00:00"
+            "time": "2021-01-27T02:10:06+00:00"
         },
         {
             "name": "hyperf/dispatcher",
@@ -3574,16 +3574,16 @@
         },
         {
             "name": "hyperf/tracer",
-            "version": "v2.1.3",
+            "version": "v2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/tracer.git",
-                "reference": "1eab6c578f5f36a257087f73abc817ea1bf0e7e9"
+                "reference": "032a5988f6d7fee3fa316b871ba12644a654bbc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyperf/tracer/zipball/1eab6c578f5f36a257087f73abc817ea1bf0e7e9",
-                "reference": "1eab6c578f5f36a257087f73abc817ea1bf0e7e9",
+                "url": "https://api.github.com/repos/hyperf/tracer/zipball/032a5988f6d7fee3fa316b871ba12644a654bbc0",
+                "reference": "032a5988f6d7fee3fa316b871ba12644a654bbc0",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3640,7 +3640,7 @@
                 "php",
                 "zipkin"
             ],
-            "time": "2021-01-17T11:45:57+00:00"
+            "time": "2021-01-30T11:47:11+00:00"
         },
         {
             "name": "hyperf/translation",
@@ -3702,16 +3702,16 @@
         },
         {
             "name": "hyperf/utils",
-            "version": "v2.1.4",
+            "version": "v2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/utils.git",
-                "reference": "fcc6aae07aaab2466ee17549202a97706e0265bf"
+                "reference": "c26995ccaae02b1f41a8249cc13418b51bcb521b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyperf/utils/zipball/fcc6aae07aaab2466ee17549202a97706e0265bf",
-                "reference": "fcc6aae07aaab2466ee17549202a97706e0265bf",
+                "url": "https://api.github.com/repos/hyperf/utils/zipball/c26995ccaae02b1f41a8249cc13418b51bcb521b",
+                "reference": "c26995ccaae02b1f41a8249cc13418b51bcb521b",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3771,7 +3771,7 @@
                 "swoole",
                 "utils"
             ],
-            "time": "2021-01-25T02:17:05+00:00"
+            "time": "2021-01-30T08:08:16+00:00"
         },
         {
             "name": "hyperf/validation",
@@ -9912,12 +9912,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zyprosoft/hyperf-common.git",
-                "reference": "df8f10eb4b85691d485fac4ec9000f23b20b18b3"
+                "reference": "74dbfa59140ccfa684fd96a4c0eb80a345cc892d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zyprosoft/hyperf-common/zipball/df8f10eb4b85691d485fac4ec9000f23b20b18b3",
-                "reference": "df8f10eb4b85691d485fac4ec9000f23b20b18b3",
+                "url": "https://api.github.com/repos/zyprosoft/hyperf-common/zipball/74dbfa59140ccfa684fd96a4c0eb80a345cc892d",
+                "reference": "74dbfa59140ccfa684fd96a4c0eb80a345cc892d",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -9977,7 +9977,7 @@
                 "hyperf",
                 "php"
             ],
-            "time": "2021-01-30T09:01:19+00:00"
+            "time": "2021-02-02T11:29:57+00:00"
         }
     ],
     "packages-dev": [
@@ -10483,16 +10483,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.70",
+            "version": "0.12.71",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "07f0ef37f5f876e8cee44cc8ea0ec3fe80d499ee"
+                "reference": "d508fa3b0ecc5fc91ac70c6c7ac2862f968ba2b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/07f0ef37f5f876e8cee44cc8ea0ec3fe80d499ee",
-                "reference": "07f0ef37f5f876e8cee44cc8ea0ec3fe80d499ee",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/d508fa3b0ecc5fc91ac70c6c7ac2862f968ba2b5",
+                "reference": "d508fa3b0ecc5fc91ac70c6c7ac2862f968ba2b5",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -10541,7 +10541,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-27T17:06:47+00:00"
+            "time": "2021-02-01T18:24:00+00:00"
         },
         {
             "name": "swoole/ide-helper",
