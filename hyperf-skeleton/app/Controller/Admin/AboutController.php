@@ -31,7 +31,7 @@ class AboutController extends AbstractController
             'wx' => 'string|min:1',
             'qq' => 'string|min:1',
             'wb' => 'string|min:1',
-            'star' => 'string|min:1',
+            'constellation' => 'string|min:1',
             'hobby' => 'string|min:1',
             'job' => 'string|min:1',
             'company' => 'string|min:1',
