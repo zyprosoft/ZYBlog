@@ -26,6 +26,11 @@ class CreateUserRoleDataSeeder extends Seeder
             'nickname' => 'admin',
             'email' => '1003081775@qq.com'
         ]);
+        Db::table('about')->insertOrIgnore([
+            'email' => '1003081775@qq.com',
+            'nickname' => 'admin',
+            'username' => 'admin',
+        ]);
         Db::table('category')->insertOrIgnore([
             [
                 "name" => "经验分享"
