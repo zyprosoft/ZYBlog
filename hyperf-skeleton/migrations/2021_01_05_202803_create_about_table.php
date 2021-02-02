@@ -25,8 +25,11 @@ class CreateAboutTable extends Migration
             $table->string('mobile', 11);
             $table->string('facebook', 100);
             $table->string('twitter', 100);
-            $table->string('avatar', 300);
             $table->string('blog_name', 30);
+            $table->string('job', 30);
+            $table->string('hobby', 128);
+            $table->string('work_history', 500);
+            $table->string('company', 50);
             $table->tinyInteger('sex');
             $table->string('constellation', 5);
             $table->timestamps();
