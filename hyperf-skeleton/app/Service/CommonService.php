@@ -4,6 +4,7 @@
 namespace App\Service;
 use App\Model\About;
 use Hyperf\Utils\Arr;
+use Hyperf\Utils\Str;
 
 class CommonService extends BaseService
 {
@@ -23,7 +24,8 @@ class CommonService extends BaseService
         $about = About::query()->where('email', Arr::get($aboutInfo, 'email'))->firstOrFail();
         array_map(function ($key,$value) use ($about) {
             if (isset($value)) {
-                $about->$key = $value;
+                $column = Str::snake($key);
+                $about->$column = $value;
             }
         }, array_keys($aboutInfo), $aboutInfo);
         $about->save();
