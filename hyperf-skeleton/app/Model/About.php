@@ -17,8 +17,11 @@ namespace App\Model;
  * @property string $mobile 
  * @property string $facebook 
  * @property string $twitter 
- * @property string $avatar 
  * @property string $blog_name 
+ * @property string $job 
+ * @property string $hobby 
+ * @property string $work_history 
+ * @property string $company 
  * @property int $sex 
  * @property string $constellation 
  * @property \Carbon\Carbon $created_at 
