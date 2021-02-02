@@ -26,7 +26,7 @@ class AboutController extends AbstractController
         $params = $this->validate([
             'email' => 'required|string|min:1',
             'nickname' => 'string|min:1',
-            'blogName' => 'string|min:1',
+            'blog_name' => 'string|min:1',
             'birthday' => 'date',
             'wx' => 'string|min:1',
             'qq' => 'string|min:1',
@@ -36,13 +36,13 @@ class AboutController extends AbstractController
             'job' => 'string|min:1',
             'company' => 'string|min:1',
             'github' => 'string|min:1',
-            'Facebook' => 'string|min:1',
-            'Twitter' => 'string|min:1',
+            'facebook' => 'string|min:1',
+            'twitter' => 'string|min:1',
             'icp' => 'string|min:1',
             'music' => 'string|min:1',
-            'qqCode' => 'string|min:1',
-            'wxCode' => 'string|min:1',
-            'workHistory' => 'string|min:1',
+            'qq_code' => 'string|min:1',
+            'wx_code' => 'string|min:1',
+            'work_history' => 'string|min:1',
             'introduce' => 'string|min:1',
         ]);
         return $this->success($this->service->commitAboutInfo($params));
