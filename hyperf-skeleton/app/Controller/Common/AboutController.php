@@ -30,6 +30,6 @@ class AboutController extends AbstractController
     {
         $component = make(OneSentenceComponent::class);
         $result = $component->getOneSentence();
-        return $result->successOrFailException();
+        return $this->success($result->successOrFailException());
     }
 }
