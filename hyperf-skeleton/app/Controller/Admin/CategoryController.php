@@ -21,6 +21,11 @@ class CategoryController extends AbstractController
      */
     private $categoryService;
 
+    public function getAll()
+    {
+        return $this->success($this->categoryService->getAll());
+    }
+
     public function create(AppAdminRequest $request)
     {
         $this->validate([
