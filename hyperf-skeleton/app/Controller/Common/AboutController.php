@@ -29,7 +29,7 @@ class AboutController extends AbstractController
     public function getOneSentence()
     {
         $component = make(OneSentenceComponent::class);
-        $result = $component->getOneSentence();
-        return $this->success($result->successOrFailException());
+        $result = $component->getOneSentence()->successOrFailException();
+        return $this->success($result);
     }
 }
