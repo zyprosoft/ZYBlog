@@ -11,3 +11,4 @@ runtime/
 .DS_Store
 *.lock
 .phpunit*
+public/
