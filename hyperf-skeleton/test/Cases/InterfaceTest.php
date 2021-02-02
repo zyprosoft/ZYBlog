@@ -2,6 +2,7 @@
 
 
 namespace HyperfTest\Cases;
+use App\Component\OneSentenceComponent;
 use App\Service\CommonService;
 use Hyperf\Utils\ApplicationContext;
 use PHPUnit\Framework\TestCase;
@@ -277,9 +278,8 @@ class InterfaceTest extends TestCase
 
     public function testGetOneSentence()
     {
-        $interfaceName = 'common.about.getOneSentence';
-        $params = [
-        ];
-        $this->zgwRequest($interfaceName, $params)->assertOk();
+        $component = make(OneSentenceComponent::class);
+        $result = $component->getOneSentence();
+        echo json_encode($result);
     }
 }
