@@ -2,6 +2,7 @@
 
 
 namespace App\Controller\Admin;
+use App\Http\AppAdminRequest;
 use App\Service\CommonService;
 use ZYProSoft\Controller\AbstractController;
 use Hyperf\Di\Annotation\Inject;
@@ -20,7 +21,7 @@ class AboutController extends AbstractController
      */
     private $service;
 
-    public function commitAboutInfo()
+    public function commitAboutInfo(AppAdminRequest $request)
     {
         $params = $this->validate([
             'email' => 'required|string|min:1',
