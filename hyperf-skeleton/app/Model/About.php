@@ -22,8 +22,12 @@ namespace App\Model;
  * @property string $hobby 
  * @property string $work_history 
  * @property string $company 
+ * @property string $music 
  * @property int $sex 
  * @property string $constellation 
+ * @property string $icp 
+ * @property string $qq_code 
+ * @property string $wx_code 
  * @property \Carbon\Carbon $created_at 
  * @property \Carbon\Carbon $updated_at 
  */
