@@ -21,8 +21,12 @@ class CommonService extends BaseService
     public function commitAboutInfo(array $aboutInfo)
     {
         $about = About::query()->where('email', Arr::get($aboutInfo, 'email'))->firstOrFail();
-        unset($aboutInfo['email']);
-        $about->update($aboutInfo);
+        array_map(function ($key,$value) use ($about) {
+            if (isset($value)) {
+                $about->$key = $value;
+            }
+        }, array_keys($aboutInfo), $aboutInfo);
+        $about->save();
         return $this->success();
     }
 }
