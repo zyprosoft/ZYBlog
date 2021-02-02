@@ -8,20 +8,29 @@ use ZYProSoft\Component\BaseComponent;
 class OneSentenceComponent extends BaseComponent
 {
     protected array $options = [
-        "base_uri" => "http://api.youngam.cn/",
+        "base_uri" => "http://v1.hitokoto.cn",
         "timeout" => 3,
     ];
 
-    const INTERFACE_GET_SENTENCE = "api/one.php";
+    const INTERFACE_GET_SENTENCE = "/";
+
+    private array $typeList = ['a','b','c','d','e','f','h','i','j','k','l'];
 
     public function getOneSentence()
     {
-        $result = $this->get(self::INTERFACE_GET_SENTENCE);
+        $type = rand(0,count($this->typeList)-1);
+        $options['query'] = ['c' => Arr::get($this->typeList, $type)];
+        $result = $this->get(self::INTERFACE_GET_SENTENCE, $options);
         if ($result->getStatusCode() != 200) {
             return  $this->success();
         }
-        $sentence = Arr::get(json_decode($result->getBody(), true), 'data.text');
+        $result = json_decode($result->getBody(), true);
+        $sentence = Arr::get($result, 'hitokoto');
+        $from = Arr::get($result, 'from');
 
-        return $this->success($sentence);
+        return $this->success([
+            'sentence' => $sentence,
+            'from' => $from
+        ]);
     }
 }
