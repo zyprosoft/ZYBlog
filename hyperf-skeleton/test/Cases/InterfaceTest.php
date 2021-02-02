@@ -275,8 +275,11 @@ class InterfaceTest extends TestCase
         $service->sendEmail($email);
     }
 
-    public function testGetUploadToken()
+    public function testGetOneSentence()
     {
-
+        $interfaceName = 'common.about.getOneSentence';
+        $params = [
+        ];
+        $this->zgwRequest($interfaceName, $params)->assertOk();
     }
 }
