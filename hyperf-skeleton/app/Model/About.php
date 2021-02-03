@@ -5,9 +5,7 @@ namespace App\Model;
 
 /**
  * @property int $id 
- * @property string $nickname 
- * @property string $username 
- * @property string $email 
+ * @property int $user_id 
  * @property string $qq 
  * @property string $wx 
  * @property string $wb 
@@ -50,5 +48,5 @@ class About extends Model
      *
      * @var array
      */
-    protected $casts = ['id' => 'integer', 'sex' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+    protected $casts = ['id' => 'integer', 'user_id' => 'integer', 'sex' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
 }
