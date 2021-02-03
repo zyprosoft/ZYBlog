@@ -25,9 +25,10 @@ class CommonService extends BaseService
     {
         $user = User::findOrFail($this->userId());
         $userKeys = ['nickname','avatar','email'];
-        array_map(function ($key) use (&$user, $aboutInfo){
+        array_map(function ($key) use (&$user, &$aboutInfo){
             if (isset($aboutInfo[$key])) {
                 $user->$key = $aboutInfo[$key];
+                unset($aboutInfo[$key]);
             }
         },$userKeys);
         $about = new About();
