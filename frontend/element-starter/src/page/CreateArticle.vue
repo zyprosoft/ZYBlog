@@ -56,8 +56,18 @@ export default {
         mavonEditor
         // or 'mavon-editor': mavonEditor
     },
+    watch: {
+        $route(to, from) {
+            if(to.name !== 'admin-create') {
+                return
+            }
+            this.articleId = to.query.articleId
+            this.getArticleDetail()
+        }
+    },
     data() {
         return {
+            articleId: null,
             fileList: [],
             title: '',
             dynamicTags: ['生活'],
