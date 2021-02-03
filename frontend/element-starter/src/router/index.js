@@ -85,6 +85,7 @@ const routes = [
 
 let router = new Router(
     {
+        mode:'history',
         routes:routes
     }
 )
