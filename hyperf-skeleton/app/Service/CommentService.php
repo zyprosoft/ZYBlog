@@ -154,6 +154,9 @@ class CommentService extends BaseService
         $replay->parent_comment_id = $commentId;
         $replay->user_id = $this->userId();
         $replay->saveOrFail();
+        //清空文章的评论缓存
+        $this->clearListCacheWithMaxPage('CommentListForEach', [$comment->article_id], $this->clearListPageSize);
+        return $this->success();
     }
 
     public function detail(int $commentId)
