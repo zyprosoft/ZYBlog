@@ -12,7 +12,7 @@ class CreateAboutTable extends Migration
     public function up(): void
     {
         Schema::create('about', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->integerIncrements('id');
             $table->string('nickname', 30)->nullable();
             $table->string('username', 30)->nullable();
             $table->string('email', 50);
