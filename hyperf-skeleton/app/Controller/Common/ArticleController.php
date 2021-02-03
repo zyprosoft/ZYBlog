@@ -27,7 +27,7 @@ class ArticleController extends AbstractController
         $categoryId = null;
         if ($this->request->hasParam('categoryId')) {
             $this->validate([
-                'categoryId' => 'string|min:1|exists:category,category_id'
+                'categoryId' => 'integer|min:1|exists:category,category_id'
             ]);
             $categoryId = $this->request->param('categoryId');
         }
