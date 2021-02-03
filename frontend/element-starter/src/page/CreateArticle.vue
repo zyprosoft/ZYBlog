@@ -61,7 +61,7 @@ export default {
             if(to.name !== 'admin-create') {
                 return
             }
-            this.articleId = to.query.articleId
+            this.articleId = to.params.articleId
             this.getArticleDetail()
         }
     },
