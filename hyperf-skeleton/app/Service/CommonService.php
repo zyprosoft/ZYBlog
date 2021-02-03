@@ -32,6 +32,7 @@ class CommonService extends BaseService
             }
         },$userKeys);
         $about = new About();
+        $about->user_id = $user->user_id;
         array_map(function ($key,$value) use ($about) {
             if (isset($value)) {
                 $about->$key = $value;
