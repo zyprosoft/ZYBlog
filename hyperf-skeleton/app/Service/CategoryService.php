@@ -23,7 +23,7 @@ class CategoryService extends BaseService
                                     ->get()
                                     ->keyBy('category_id');
         $list->map(function (Category $category) use ($countList) {
-            $category->total = Arr::get($countList, $category->category_id)->total;
+            $category['total'] = Arr::get($countList, $category->category_id)->total;
         });
         return $list;
     }
