@@ -31,8 +31,11 @@ class CommonService extends BaseService
                 unset($aboutInfo[$key]);
             }
         },$userKeys);
-        $about = $user->about();
-        if(!isset($about)) {
+        $user->saveOrFail();
+
+        //保存扩展信息
+        $about = About::query()->where('user_id', $user->user_id)->first();
+        if(! $about instanceof About) {
             $about = new About();
             $about->user_id = $user->user_id;
         }
@@ -41,12 +44,8 @@ class CommonService extends BaseService
                 $about->$key = $value;
             }
         }, array_keys($aboutInfo), $aboutInfo);
-        if (!isset($user->about)) {
-            $user->about()->save($about);
-        }else{
-            $about->save();
-        }
-        $user->saveOrFail();
+        $about->saveOrFail();
+
         return $this->success();
     }
 }
