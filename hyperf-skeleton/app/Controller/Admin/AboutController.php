@@ -24,7 +24,7 @@ class AboutController extends AbstractController
     public function commitAboutInfo(AppAdminRequest $request)
     {
         $params = $this->validate([
-            'email' => 'string|min:1',
+            'email' => 'string|min:1|email',
             'avatar' => 'string|min:1',
             'nickname' => 'string|min:1',
             'blog_name' => 'string|min:1',
@@ -45,7 +45,7 @@ class AboutController extends AbstractController
             'wx_code' => 'string|min:1',
             'work_history' => 'string|min:1',
             'introduce' => 'string|min:1',
-            'article_id' => 'int|min:1',
+            'article_id' => 'int|min:1|exists:article,article_id',
         ]);
         return $this->success($this->service->commitAboutInfo($params));
     }

@@ -50,4 +50,13 @@ class About extends Model
      * @var array
      */
     protected $casts = ['id' => 'integer', 'user_id' => 'integer', 'sex' => 'integer', 'article_id' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+
+    /**
+     * 关于我的文章
+     * @return \Hyperf\Database\Model\Relations\HasOne
+     */
+    public function article()
+    {
+        return $this->hasOne(Article::class, 'article_id', 'article_id');
+    }
 }

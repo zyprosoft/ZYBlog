@@ -26,6 +26,11 @@ class AboutController extends AbstractController
         return $this->success($this->service->getAboutInfo());
     }
 
+    public function pageInfo()
+    {
+        return $this->success($this->service->getAboutPageInfo());
+    }
+
     public function getOneSentence()
     {
         $component = make(OneSentenceComponent::class);

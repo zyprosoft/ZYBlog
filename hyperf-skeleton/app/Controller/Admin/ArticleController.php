@@ -52,7 +52,7 @@ class ArticleController extends AbstractController
         $this->validate([
             'pageIndex' => 'required|integer|min:0',
             'pageSize' => 'required|integer|min:1|max:30',
-            'categoryId' => 'integer|min:1',
+            'categoryId' => 'integer|min:1|exists:category,category_id',
         ]);
         $pageIndex = $this->request->param('pageIndex');
         $pageSize = $this->request->param('pageSize');

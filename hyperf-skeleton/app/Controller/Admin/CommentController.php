@@ -37,7 +37,7 @@ class CommentController extends AbstractController
     {
         $this->validate([
             'content' => 'string|required|min:1|max:500',
-            'commentId' => 'integer|min:1',
+            'commentId' => 'integer|min:1|exists:comment,comment_id',
         ]);
         $content = $this->request->param('content');
         $commentId = $this->request->param('commentId');

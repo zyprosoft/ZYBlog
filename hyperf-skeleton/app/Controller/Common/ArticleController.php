@@ -26,6 +26,9 @@ class ArticleController extends AbstractController
         $pageSize = $this->request->param('pageSize', 20);
         $categoryId = null;
         if ($this->request->hasParam('categoryId')) {
+            $this->validate([
+                'categoryId' => 'string|min:1|exists:category,category_id'
+            ]);
             $categoryId = $this->request->param('categoryId');
         }
         $articleList = $this->articleService->getArticleList($pageIndex, $pageSize, $categoryId);
@@ -61,7 +64,7 @@ class ArticleController extends AbstractController
         $this->validate([
             'pageIndex' => 'integer|required|min:0',
             'pageSize' => 'integer|max:30|required',
-            'tagId' => 'integer|min:1|required'
+            'tagId' => 'integer|min:1|required|exists:tag,tag_id'
         ]);
         $pageIndex = $this->request->param('pageIndex', 0);
         $pageSize = $this->request->param('pageSize', 20);

@@ -40,7 +40,7 @@ class TagController extends AbstractController
     public function delete(AppAdminRequest $request)
     {
         $this->validate([
-            'tagId' => 'required|int|min:1'
+            'tagId' => 'required|int|min:1|exists:tag,tag_id'
         ]);
         $tagId = $request->param('tagId');
         $this->tagService->delete($tagId);
@@ -51,7 +51,7 @@ class TagController extends AbstractController
     {
         $this->validate([
             'name' => 'required|string|min:1',
-            'tagId' => 'required|int|min:1'
+            'tagId' => 'required|int|min:1|exists:tag,tag_id'
         ]);
         $tagId = $request->param('tagId');
         $name = $request->param('name');

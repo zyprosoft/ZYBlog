@@ -41,7 +41,7 @@ class CategoryController extends AbstractController
     public function delete(AppAdminRequest $request)
     {
         $this->validate([
-            'categoryId' => 'required|int|min:1'
+            'categoryId' => 'required|int|min:1|exists:category,category_id'
         ]);
         $categoryId = $request->param('categoryId');
         $this->categoryService->delete($categoryId);
@@ -53,7 +53,7 @@ class CategoryController extends AbstractController
         $this->validate([
             'name' => 'string|min:1',
             'avatar' => 'string|min:1',
-            'categoryId' => 'required|int|min:1'
+            'categoryId' => 'required|int|min:1|exists:category,category_id'
         ]);
         $categoryId = $request->param('categoryId');
         $name = $request->param('name');

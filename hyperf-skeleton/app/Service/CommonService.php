@@ -4,6 +4,7 @@
 namespace App\Service;
 use App\Constants\Constants;
 use App\Model\About;
+use App\Model\Article;
 use App\Model\User;
 
 class CommonService extends BaseService
@@ -11,6 +12,13 @@ class CommonService extends BaseService
     public function getAboutInfo()
     {
         return User::query()->where('role_id', Constants::USER_ROLE_ADMIN)->with(['about'])->firstOrFail();
+    }
+
+    public function getAboutPageInfo()
+    {
+        $user = $this->getAboutInfo();
+        $article = Article::findOrFail($user->about->article_id);
+        return $this->success($article);
     }
 
     public function clearSystemCache()

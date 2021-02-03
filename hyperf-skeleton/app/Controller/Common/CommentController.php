@@ -24,7 +24,7 @@ class CommentController extends AbstractController
     public function detail()
     {
         $this->validate([
-            'commentId' => 'integer|required'
+            'commentId' => 'integer|min:1|required|exists:comment,comment_id'
         ]);
         $commentId = $this->request->param('commentId');
         return $this->commentService->detail($commentId);
@@ -36,8 +36,8 @@ class CommentController extends AbstractController
         $this->validateCaptcha();
         $this->validate([
             'content' => 'string|required|min:1|max:500',
-            'articleId' => 'integer|required|min:1',
-            'commentId' => 'integer|min:1',
+            'articleId' => 'integer|required|min:1|exists:article,article_id',
+            'commentId' => 'integer|min:1|exists:comment,comment_id',
             'nickname' => 'string|required|min:1|max:30',
             'email' => 'string|required|min:1|max:30',
             'avatar' => 'string|min:1|max:500',
@@ -57,7 +57,7 @@ class CommentController extends AbstractController
     public function userDelete()
     {
         $this->validate([
-            'commentId' => 'integer|required'
+            'commentId' => 'integer|min:1|required|exists:comment,comment_id'
         ]);
         $commentId = $this->request->param('commentId');
         return $this->commentService->userDelete($commentId);
@@ -66,7 +66,7 @@ class CommentController extends AbstractController
     public function list()
     {
         $this->validate([
-            'articleId' => 'integer|required|min:1',
+            'articleId' => 'integer|required|min:1|exists:article,article_id',
             'pageIndex' => 'required|integer|min:0',
             'pageSize' => 'integer|min:1|max:20',
         ]);
@@ -80,7 +80,7 @@ class CommentController extends AbstractController
     public function reply(AuthedRequest $request)
     {
         $this->validate([
-            'commentId' => 'integer|required',
+            'commentId' => 'integer|min:1|required|exists:comment,comment_id',
             'content' => 'string|max:500|required'
         ]);
         $commentId = $request->param('commentId');
