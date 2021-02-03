@@ -59,4 +59,9 @@ class User extends Model implements Authenticatable
     {
         return User::find($key);
     }
+
+    public function about()
+    {
+        return $this->hasOne('about', 'user_id', 'user_id');
+    }
 }

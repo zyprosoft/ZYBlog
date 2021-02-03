@@ -2,7 +2,9 @@
 
 
 namespace App\Service;
+use App\Constants\Constants;
 use App\Model\About;
+use App\Model\User;
 use Hyperf\Utils\Arr;
 use Hyperf\Utils\Str;
 
@@ -10,7 +12,7 @@ class CommonService extends BaseService
 {
     public function getAboutInfo()
     {
-        return About::first();
+        return User::query()->where('role_id', Constants::USER_ROLE_ADMIN)->with(['about'])->firstOrFail();
     }
 
     public function clearSystemCache()
@@ -21,13 +23,14 @@ class CommonService extends BaseService
 
     public function commitAboutInfo(array $aboutInfo)
     {
-        $about = About::query()->where('email', Arr::get($aboutInfo, 'email'))->firstOrFail();
+        $user = User::findOrFail($this->userId());
+        $about = new About();
         array_map(function ($key,$value) use ($about) {
             if (isset($value)) {
                 $about->$key = $value;
             }
         }, array_keys($aboutInfo), $aboutInfo);
-        $about->save();
+        $user->about()->save($about);
         return $this->success();
     }
 }
