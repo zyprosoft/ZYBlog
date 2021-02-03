@@ -38,12 +38,12 @@ class Comment extends Model
 
     public function article()
     {
-        return $this->belongsTo(Article::class,'article_id','article_id');
+        return $this->hasOne(Article::class,'article_id','article_id');
     }
 
     public function author()
     {
-        return $this->belongsTo(User::class,'user_id','user_id');
+        return $this->hasOne(User::class,'user_id','user_id');
     }
 
     public function parent_comment()
