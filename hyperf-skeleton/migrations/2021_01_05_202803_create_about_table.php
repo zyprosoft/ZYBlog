@@ -21,8 +21,8 @@ class CreateAboutTable extends Migration
             $table->string('wb', 30)->nullable();
             $table->string('introduce', 500)->nullable();
             $table->string('github', 100)->nullable();
-            $table->string('birthday', 20)->nullable();
-            $table->string('mobile', 11)->nullable();
+            $table->date('birthday')->nullable();
+            $table->integer('mobile', 11)->nullable();
             $table->string('facebook', 100)->nullable();
             $table->string('twitter', 100)->nullable();
             $table->string('blog_name', 30)->nullable();
