@@ -127,7 +127,7 @@ export default {
 
         postArticle() {
             this.isPosting = true;
-            let articleId = this.$route.query.articleId;
+            let articleId = this.articleId;
             console.log(articleId);
             if (!articleId) {
                 createArticle(this.title, this.content, this.dynamicTags, this.selectCategory).then(res => {
@@ -158,9 +158,9 @@ export default {
         },
 
         getArticleDetail() {
-            let articleId = this.$route.query.articleId;
+            let articleId = this.articleId;
             console.log(articleId);
-            if (!articleId) return;
+            if (articleId === null) return;
             getArticleDetail(articleId).then(res => {
                 this.title = res.data.title;
                 this.dynamicTags = [];
