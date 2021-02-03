@@ -256,7 +256,7 @@ class ArticleService extends BaseService
                                      ->get()
                                      ->keyBy('date');
         $list->map(function (Article $article) use ($countList) {
-            $article['total']= Arr::get($countList, $article->date)->total;
+            $article['total']= Arr::get($countList, $article->date.'.total');
         });
         return $list;
     }
