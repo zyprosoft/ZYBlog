@@ -39,7 +39,7 @@ class TagService extends BaseService
     }
 
     /**
-     * @Cacheable(prefix="tag-all", ttl=3600, listener="tagAllUpdate")
+     * @Cacheable(prefix="hot-tag", ttl=3600, listener="hotTagUpdate")
      * @return Tag[]|\Hyperf\Database\Model\Collection
      */
     public function getHotTags()

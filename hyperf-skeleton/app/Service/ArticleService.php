@@ -45,7 +45,9 @@ class ArticleService extends BaseService
         });
 
         $this->clearCachePrefix('article-list:');
-        $this->clearCachePrefix('article:archive');
+        $this->clearCachePrefix('article-archive');
+        $this->clearCachePrefix('category-all');
+        $this->clearCachePrefix('hot-tag');
     }
 
     /**
@@ -268,6 +270,7 @@ class ArticleService extends BaseService
 
     /**
      * 清除文章详情缓存
+     * @param int $articleId
      */
     public static function clearArticleDetailCache(int $articleId)
     {
