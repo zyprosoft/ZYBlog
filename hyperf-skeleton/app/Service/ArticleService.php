@@ -251,7 +251,7 @@ class ArticleService extends BaseService
         $list = Article::query()->selectRaw("distinct DATE_FORMAT(created_at, '%Y年%m月') as date")
                                 ->orderByDesc('date')
                                 ->get();
-        $countList = Article::query()->selectRaw("DATE_FORMAT(created_at, '%Y年%m月') as date, count(date) as total")
+        $countList = Article::query()->selectRaw("DATE_FORMAT(created_at, '%Y年%m月') as date, count(*) as total")
                                      ->groupBy(['date'])
                                      ->get()
                                      ->keyBy('date');
