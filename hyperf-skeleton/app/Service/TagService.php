@@ -8,6 +8,7 @@ use App\Model\ArticleTag;
 use App\Model\Tag;
 use Hyperf\DbConnection\Db;
 use ZYProSoft\Log\Log;
+use Hyperf\Cache\Annotation\Cacheable;
 
 class TagService extends BaseService
 {
@@ -37,6 +38,10 @@ class TagService extends BaseService
         Tag::query()->select()->where('tag_id', $tagId)->update(['name'=>$name]);
     }
 
+    /**
+     * @Cacheable(prefix="tag-all", ttl=3600, listener="tagAllUpdate")
+     * @return Tag[]|\Hyperf\Database\Model\Collection
+     */
     public function getHotTags()
     {
        $tagList =  ArticleTag::query()->selectRaw("count('distinct article_id') as count, tag_id")

@@ -5,12 +5,27 @@ namespace App\Service;
 use App\Model\Article;
 use App\Model\Category;
 use Hyperf\DbConnection\Db;
+use Hyperf\Cache\Annotation\Cacheable;
+use Hyperf\Utils\Arr;
 
 class CategoryService extends BaseService
 {
+    /**
+     * @Cacheable(prefix="category-all", ttl=3600, listener="categoryAllUpdate")
+     * @return Category[]|\Hyperf\Database\Model\Collection
+     */
     public function getAll()
     {
-        return Category::all();
+        $list = Category::all();
+        //统计每个分类的文章数量
+        $countList = Article::query()->selectRaw("category_id,count(*) as total")
+                                    ->groupBy(['category_id'])
+                                    ->get()
+                                    ->keyBy('category_id');
+        $list->map(function (Category $category) use ($countList) {
+            $category->total = Arr::get($countList, $category->category_id)->total;
+        });
+        return $list;
     }
 
     public function create(string $name, string $icon = null)

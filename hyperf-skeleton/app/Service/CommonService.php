@@ -31,6 +31,10 @@ class CommonService extends BaseService
         //清空评论缓存
         $this->clearCachePrefix('comment-list-each');
 
+        //清空标签，分类缓存
+        $this->clearCachePrefix('category-all');
+        $this->clearCachePrefix('tag-all');
+
         return $this->success();
     }
 

@@ -12,6 +12,7 @@ use App\Model\Tag;
 use Hyperf\Database\Model\Builder;
 use Hyperf\DbConnection\Db;
 use Hyperf\Utils\ApplicationContext;
+use Hyperf\Utils\Arr;
 use ZYProSoft\Log\Log;
 use Hyperf\Cache\Annotation\Cacheable;
 
@@ -247,9 +248,17 @@ class ArticleService extends BaseService
      */
     public function getAllArchivedMonth()
     {
-        return Article::query()->selectRaw("distinct DATE_FORMAT(created_at, '%Y年%m月') as date")
+        $list = Article::query()->selectRaw("distinct DATE_FORMAT(created_at, '%Y年%m月') as date")
                                 ->orderByDesc('date')
                                 ->get();
+        $countList = Article::query()->selectRaw("DATE_FORMAT(created_at, '%Y年%m月') as date, count(date) as total")
+                                     ->groupBy(['date'])
+                                     ->get()
+                                     ->keyBy('date');
+        $list->map(function (Article $article) use ($countList) {
+            $article->total = Arr::get($countList, $article->date)->total;
+        });
+        return $list;
     }
 
     public static function service()
