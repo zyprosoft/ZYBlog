@@ -13,9 +13,7 @@ class CreateAboutTable extends Migration
     {
         Schema::create('about', function (Blueprint $table) {
             $table->integerIncrements('id');
-            $table->string('nickname', 30)->nullable();
-            $table->string('username', 30)->nullable();
-            $table->string('email', 50);
+            $table->integer('user_id');
             $table->string('qq', 30)->nullable();
             $table->string('wx', 30)->nullable();
             $table->string('wb', 30)->nullable();
@@ -36,8 +34,7 @@ class CreateAboutTable extends Migration
             $table->string('icp', 30)->nullable();
             $table->string('qq_code', 128)->nullable();
             $table->string('wx_code', 128)->nullable();
-            $table->unique('username');
-            $table->unique('email');
+            $table->unique('user_id');
             $table->unique('mobile');
             $table->timestamps();
             $table->engine = "InnoDB";
