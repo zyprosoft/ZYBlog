@@ -24,6 +24,12 @@ class CommonService extends BaseService
     public function commitAboutInfo(array $aboutInfo)
     {
         $user = User::findOrFail($this->userId());
+        $userKeys = ['nickname','avatar','email'];
+        array_map(function ($key) use (&$user, $aboutInfo){
+            if (isset($aboutInfo[$key])) {
+                $user->$key = $aboutInfo[$key];
+            }
+        },$userKeys);
         $about = new About();
         array_map(function ($key,$value) use ($about) {
             if (isset($value)) {
@@ -31,6 +37,7 @@ class CommonService extends BaseService
             }
         }, array_keys($aboutInfo), $aboutInfo);
         $user->about()->save($about);
+        $user->saveOrFail();
         return $this->success();
     }
 }

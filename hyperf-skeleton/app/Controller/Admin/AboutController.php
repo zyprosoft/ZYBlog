@@ -24,7 +24,8 @@ class AboutController extends AbstractController
     public function commitAboutInfo(AppAdminRequest $request)
     {
         $params = $this->validate([
-            'email' => 'required|string|min:1',
+            'email' => 'string|min:1',
+            'avatar' => 'string|min:1',
             'nickname' => 'string|min:1',
             'blog_name' => 'string|min:1',
             'birthday' => 'date',
