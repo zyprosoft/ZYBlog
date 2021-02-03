@@ -23,6 +23,7 @@ class SettingController extends AbstractController
 
     public function clearCache(AppAdminRequest $request)
     {
-        return $this->service->clearSystemCache();
+        $this->service->clearSystemCache();
+        return $this->success();
     }
 }
