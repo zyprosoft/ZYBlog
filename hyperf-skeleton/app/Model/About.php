@@ -26,6 +26,7 @@ namespace App\Model;
  * @property string $icp 
  * @property string $qq_code 
  * @property string $wx_code 
+ * @property int $article_id 
  * @property \Carbon\Carbon $created_at 
  * @property \Carbon\Carbon $updated_at 
  */
@@ -48,5 +49,5 @@ class About extends Model
      *
      * @var array
      */
-    protected $casts = ['id' => 'integer', 'user_id' => 'integer', 'sex' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+    protected $casts = ['id' => 'integer', 'user_id' => 'integer', 'sex' => 'integer', 'article_id' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
 }
