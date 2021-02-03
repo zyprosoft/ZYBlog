@@ -291,7 +291,7 @@ export default {
 
 <style lang="scss" scoped>
 .box-card {
-    width: 70%;
+    width: 90%;
     .input-form-box {
         margin-left: 50px;
         width: 90%;
