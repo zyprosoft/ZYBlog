@@ -31,14 +31,21 @@ class CommonService extends BaseService
                 unset($aboutInfo[$key]);
             }
         },$userKeys);
-        $about = new About();
-        $about->user_id = $user->user_id;
+        $about = $user->about();
+        if(!isset($about)) {
+            $about = new About();
+            $about->user_id = $user->user_id;
+        }
         array_map(function ($key,$value) use ($about) {
             if (isset($value)) {
                 $about->$key = $value;
             }
         }, array_keys($aboutInfo), $aboutInfo);
-        $user->about()->save($about);
+        if (!isset($user->about)) {
+            $user->about()->save($about);
+        }else{
+            $about->save();
+        }
         $user->saveOrFail();
         return $this->success();
     }
