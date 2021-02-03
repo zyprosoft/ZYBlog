@@ -103,7 +103,7 @@ export default {
         handleEdit(article) {
             console.log(article);
             this.$router.push({
-                name: 'create',
+                name: 'admin-create',
                 query: {
                     articleId: article.articleId
                 }
