@@ -72,7 +72,7 @@ class ArticleService extends BaseService
     }
 
     /**
-     * @Cacheable (prefix="article:detail", ttl=7200, listener="ArticleDetail")
+     * @Cacheable (prefix="article-detail", ttl=7200, listener="ArticleDetail")
      * @param int $articleId
      * @return Builder|Builder[]|\Hyperf\Database\Model\Collection|\Hyperf\Database\Model\Model|\Hyperf\Database\Query\Builder|null
      */
@@ -242,7 +242,7 @@ class ArticleService extends BaseService
     }
 
     /**
-     * @Cacheable(prefix="article:archive", ttl=72000, listener="ArticleListArchivedMonth")
+     * @Cacheable(prefix="article-archive", ttl=72000, listener="ArticleListArchivedMonth")
      * @return array
      */
     public function getAllArchivedMonth()

@@ -34,6 +34,7 @@ class CreateAboutTable extends Migration
             $table->string('icp', 30)->nullable();
             $table->string('qq_code', 128)->nullable();
             $table->string('wx_code', 128)->nullable();
+            $table->integer('article_id')->nullable()->comment('关于我的详情文章');
             $table->unique('user_id');
             $table->unique('mobile');
             $table->timestamps();

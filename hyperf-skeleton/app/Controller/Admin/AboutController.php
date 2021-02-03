@@ -45,6 +45,7 @@ class AboutController extends AbstractController
             'wx_code' => 'string|min:1',
             'work_history' => 'string|min:1',
             'introduce' => 'string|min:1',
+            'article_id' => 'int|min:1',
         ]);
         return $this->success($this->service->commitAboutInfo($params));
     }

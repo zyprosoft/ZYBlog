@@ -5,8 +5,6 @@ namespace App\Service;
 use App\Constants\Constants;
 use App\Model\About;
 use App\Model\User;
-use Hyperf\Utils\Arr;
-use Hyperf\Utils\Str;
 
 class CommonService extends BaseService
 {
@@ -17,7 +15,14 @@ class CommonService extends BaseService
 
     public function clearSystemCache()
     {
-        $this->clearAllCache();
+        //清空文章缓存
+        $this->clearCachePrefix('article-list');
+        $this->clearCachePrefix('article-detail');
+        $this->clearCachePrefix('article-archive');
+
+        //清空评论缓存
+        $this->clearCachePrefix('comment-list-each');
+
         return $this->success();
     }
 
