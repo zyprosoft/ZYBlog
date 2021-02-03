@@ -7,9 +7,9 @@
                     <el-form-item label="头像">
                         <el-col :span="6">
                             <input ref="uploadInput" type="file" style="display:none" @change="uploadAvatar">
-                            <div v-if="hasAvatar">
+                            <div v-if="form.avatar !== null">
                                 <div @click="addAvatar" class="avatar-holder-box">
-                                    <img class="avatar" :src="user.avatar">
+                                    <img class="avatar" :src="form.avatar">
                                 </div>
                             </div>
                             <div v-else>
@@ -227,20 +227,6 @@ export default {
             }
         }
     },
-    computed: {
-        hasAvatar() {
-            if (this.user === null) {
-                return false
-            }
-            if (this.user.avatar === null) {
-                return false
-            }
-            if (typeof(this.user.avatar) === 'string' && this.user.avatar.length == 0) {
-                return false
-            }
-            return true
-        }
-    },
     props: {
 
     },
@@ -281,6 +267,7 @@ export default {
                 this.user = res.data
                 this.form.nickname = res.data.nickname
                 this.form.email = res.data.email
+                this.form.avatar = res.data.avatar
                 Object.keys(res.data.about).forEach(key => {
                     this.form[key] = res.data.about[key]
                 })
