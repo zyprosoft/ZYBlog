@@ -62,6 +62,6 @@ class User extends Model implements Authenticatable
 
     public function about()
     {
-        return $this->hasOne('about', 'user_id', 'user_id');
+        return $this->hasOne(About::class, 'user_id', 'user_id');
     }
 }
