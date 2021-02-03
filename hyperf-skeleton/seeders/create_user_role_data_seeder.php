@@ -39,6 +39,7 @@ class CreateUserRoleDataSeeder extends Seeder
         ]);
         Db::table('about')->insertOrIgnore([
             [
+                'user_id' => 1,
                 'blog_name' => 'ZYProSoft',
                 'qq' => '1003081775',
                 'wx' => 'zyprosoft',
