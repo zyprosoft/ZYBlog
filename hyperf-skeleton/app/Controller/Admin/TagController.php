@@ -31,7 +31,7 @@ class TagController extends AbstractController
         return $this->success();
     }
 
-    public function getAll()
+    public function getAll(AppAdminRequest $request)
     {
         $list = $this->tagService->getAll();
         return $this->success($list);

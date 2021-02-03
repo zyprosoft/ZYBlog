@@ -33,14 +33,14 @@ class CommentController extends AbstractController
         return $this->success($list);
     }
 
-    public function reply()
+    public function reply(AppAdminRequest $request)
     {
         $this->validate([
             'content' => 'string|required|min:1|max:500',
             'commentId' => 'integer|min:1|exists:comment,comment_id',
         ]);
-        $content = $this->request->param('content');
-        $commentId = $this->request->param('commentId');
+        $content = $request->param('content');
+        $commentId = $request->param('commentId');
         $comment = $this->commentService->reply($commentId, $content);
         return $this->success($comment);
     }

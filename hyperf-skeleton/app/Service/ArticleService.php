@@ -274,4 +274,9 @@ class ArticleService extends BaseService
         $service = ArticleService::service();
         $service->clearCachePrefix($prefix);
     }
+
+    public function getAboutArticleList()
+    {
+        return Article::query()->where('title','like', "%关于我%")->get();
+    }
 }
