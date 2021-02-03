@@ -135,7 +135,7 @@ class CommentService extends BaseService
         Log::info("all parent comment userIds:".$userIds->toJson());
         $userList = User::findMany($userIds)->keyBy('user_id');
         $list->map(function (Comment $comment) use ($userList) {
-            if (!isset($comment->parent_comment_id)) {
+            if (isset($comment->parent_comment_id)) {
                 $comment->parent_comment->author = Arr::get($userList, $comment->parent_comment->user_id);
             }
         });
