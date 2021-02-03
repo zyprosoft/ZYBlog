@@ -86,6 +86,6 @@ class ArticleController extends AbstractController
 
     public function getAboutArticleList(AppAdminRequest $request)
     {
-        return $this->articleService->getAboutArticleList();
+        return $this->success($this->articleService->getAboutArticleList());
     }
 }
