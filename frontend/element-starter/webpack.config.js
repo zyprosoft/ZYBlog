@@ -55,7 +55,13 @@ module.exports = (options = {}) => ({
     }),
     new HtmlWebpackPlugin({
       template: 'src/index.html'
-    })
+    }),
+    new DefinePlugin(
+      {
+        ZGW_APPID:JSON.stringify('devblog'),
+        ZGW_SECRET:JSON.stringify('ilovezy'),
+      }
+    )
   ],
   resolve: {
     alias: {
