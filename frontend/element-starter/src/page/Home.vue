@@ -161,7 +161,7 @@ export default {
     .logo-box {
         color: #00E495;
         font-size: 36px;
-        padding-left: 48px;
+        padding-left: 36px;
         font-family: 'apple chancery';
     }
     .nav-box {
