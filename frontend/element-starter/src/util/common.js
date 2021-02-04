@@ -64,8 +64,8 @@ function deepCopyObject(obj){
 
 export function callSafeService(interfaceName, params) 
 {
-    let AppReqAuthAppId = process.env.ZGW_APPID;
-    let AppReqAuthSecret = process.env.ZGW_SECRET;
+    let AppReqAuthAppId = process.env.VUE_APP_ZGW_APPID;
+    let AppReqAuthSecret = process.env.VUE_APP_ZGW_SECRET;
 
     let timestamp = new Date().getTime()
     timestamp = parseInt(timestamp/1000)
@@ -117,8 +117,8 @@ export function callSafeService(interfaceName, params)
 
 export function callUploadService(interfaceName, params, file) 
 {
-    let AppReqAuthAppId = process.env.ZGW_APPID;
-    let AppReqAuthSecret = process.env.ZGW_SECRET;
+    let AppReqAuthAppId = process.env.VUE_APP_ZGW_APPID;
+    let AppReqAuthSecret = process.env.VUE_APP_ZGW_SECRET;
 
     let timestamp = new Date().getTime()
     timestamp = parseInt(timestamp/1000)
