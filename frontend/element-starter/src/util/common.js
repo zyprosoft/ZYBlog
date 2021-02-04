@@ -9,8 +9,8 @@ export const FeedsTypeRecentComment = 'comment';
 export const FeedsTypeByTagId = 'tag';
 export const FeedsTypeByCategoryId = 'category';
 export const FeedsTypeByArchiveDate = 'archive';
-const AppReqAuthAppId = 'test';
-const AppReqAuthSecret = 'abcdefg';
+const AppReqAuthAppId = process.env.ZGW_APPID;
+const AppReqAuthSecret = process.env.ZGW_SECRET;
 
 export function callService(interfaceName, params) 
 {
