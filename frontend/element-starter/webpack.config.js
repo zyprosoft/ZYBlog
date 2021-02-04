@@ -58,8 +58,8 @@ module.exports = (options = {}) => ({
     }),
     new webpack.DefinePlugin(
       {
-        ZGW_APPID:JSON.stringify('devblog'),
-        ZGW_SECRET:JSON.stringify('ilovezy'),
+        ZGW_APPID:JSON.stringify(process.env.ZGW_APPID),
+        ZGW_SECRET:JSON.stringify(process.env.ZGW_SECRET)
       }
     )
   ],
