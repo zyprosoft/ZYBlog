@@ -56,7 +56,7 @@ module.exports = (options = {}) => ({
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
-    new DefinePlugin(
+    new webpack.DefinePlugin(
       {
         ZGW_APPID:JSON.stringify('devblog'),
         ZGW_SECRET:JSON.stringify('ilovezy'),
