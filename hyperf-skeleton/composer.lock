@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c8b91082a23890319e5fa5593eadc687",
+    "content-hash": "196d32fb91d1f0d9742c54e63400bc69",
     "packages": [
         {
             "name": "96qbhy/hyperf-auth",
@@ -84,6 +84,10 @@
                 "jwt-auth",
                 "php"
             ],
+            "support": {
+                "issues": "https://github.com/qbhy/hyperf-auth/issues",
+                "source": "https://github.com/qbhy/hyperf-auth/tree/v2.3.1"
+            },
             "time": "2020-11-23T15:24:22+00:00"
         },
         {
@@ -1056,6 +1060,10 @@
                 "elasticsearch",
                 "search"
             ],
+            "support": {
+                "issues": "https://github.com/elastic/elasticsearch-php/issues",
+                "source": "https://github.com/elastic/elasticsearch-php/tree/v7.10.0"
+            },
             "time": "2020-11-11T16:31:00+00:00"
         },
         {
@@ -1278,6 +1286,10 @@
                 "request",
                 "response"
             ],
+            "support": {
+                "issues": "https://github.com/php-fig/http-message-util/issues",
+                "source": "https://github.com/php-fig/http-message-util/tree/1.1.5"
+            },
             "time": "2020-11-24T22:02:12+00:00"
         },
         {
@@ -3373,6 +3385,67 @@
             "time": "2021-01-14T01:38:13+00:00"
         },
         {
+            "name": "hyperf/scout",
+            "version": "v2.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/scout.git",
+                "reference": "bac5c93517a985c5a3f28820eba0508626181ca8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/scout/zipball/bac5c93517a985c5a3f28820eba0508626181ca8",
+                "reference": "bac5c93517a985c5a3f28820eba0508626181ca8",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "hyperf/command": "~2.1.0",
+                "hyperf/contract": "~2.1.0",
+                "hyperf/database": "~2.1.0",
+                "hyperf/event": "~2.1.0",
+                "hyperf/model-listener": "~2.1.0",
+                "hyperf/utils": "~2.1.0",
+                "php": ">=7.2",
+                "psr/event-dispatcher": "^1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.14"
+            },
+            "suggest": {
+                "hyperf/elasticsearch": "Required to use elasticsearch driver."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                },
+                "hyperf": {
+                    "config": "Hyperf\\Scout\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyperf\\Scout\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Hyperf Scout provides a driver based solution to searching your Eloquent models. Inspired By Laravel Scout.",
+            "keywords": [
+                "hyperf",
+                "php"
+            ],
+            "time": "2021-01-31T05:11:26+00:00"
+        },
+        {
             "name": "hyperf/server",
             "version": "v2.1.0",
             "source": {
@@ -4042,6 +4115,14 @@
                 "laminas",
                 "stdlib"
             ],
+            "support": {
+                "chat": "https://laminas.dev/chat",
+                "docs": "https://docs.laminas.dev/laminas-stdlib/",
+                "forum": "https://discourse.laminas.dev",
+                "issues": "https://github.com/laminas/laminas-stdlib/issues",
+                "rss": "https://github.com/laminas/laminas-stdlib/releases.atom",
+                "source": "https://github.com/laminas/laminas-stdlib"
+            },
             "funding": [
                 {
                     "url": "https://funding.communitybridge.org/projects/laminas-project",
@@ -4415,6 +4496,10 @@
                 "object",
                 "object graph"
             ],
+            "support": {
+                "issues": "https://github.com/myclabs/DeepCopy/issues",
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.10.2"
+            },
             "funding": [
                 {
                     "url": "https://tidelift.com/funding/github/packagist/myclabs/deep-copy",
@@ -5961,6 +6046,9 @@
                 "container",
                 "dependency injection"
             ],
+            "support": {
+                "source": "https://github.com/silexphp/Pimple/tree/v3.3.1"
+            },
             "time": "2020-11-24T20:35:42+00:00"
         },
         {
@@ -10020,6 +10108,11 @@
                 "validation",
                 "versioning"
             ],
+            "support": {
+                "irc": "irc://irc.freenode.org/composer",
+                "issues": "https://github.com/composer/semver/issues",
+                "source": "https://github.com/composer/semver/tree/3.2.4"
+            },
             "funding": [
                 {
                     "url": "https://packagist.com",
@@ -10084,6 +10177,11 @@
                 "Xdebug",
                 "performance"
             ],
+            "support": {
+                "irc": "irc://irc.freenode.org/composer",
+                "issues": "https://github.com/composer/xdebug-handler/issues",
+                "source": "https://github.com/composer/xdebug-handler/tree/1.4.5"
+            },
             "funding": [
                 {
                     "url": "https://packagist.com",
