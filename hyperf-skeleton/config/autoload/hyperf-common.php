@@ -12,7 +12,7 @@ if (isset($zgwSecretList)) {
         if (Str::contains($item, '&')) {
             $itemArray = explode('&', $item);
             if (count($itemArray) == 2) {
-                $appSecretList[$itemArray[0]] = $appSecretList[$itemArray[1]];
+                $appSecretList[$itemArray[0]] = $itemArray[1];
             }else{
                 Log::error('zgw secret item invalidate & explode count over 2!');
             }
