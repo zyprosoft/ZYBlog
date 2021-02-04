@@ -67,6 +67,10 @@ export function callSafeService(interfaceName, params)
     let AppReqAuthAppId = process.env.VUE_APP_ZGW_APPID;
     let AppReqAuthSecret = process.env.VUE_APP_ZGW_SECRET;
 
+    console.log(process.env)
+    console.log('app req app id:'+AppReqAuthAppId)
+    console.log('app req app secret:'+AppReqAuthSecret)
+
     let timestamp = new Date().getTime()
     timestamp = parseInt(timestamp/1000)
     let nonce = String(timestamp);
