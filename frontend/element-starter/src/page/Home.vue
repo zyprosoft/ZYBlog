@@ -210,7 +210,7 @@ export default {
             background-color: black;
             align-items: center;
             justify-content: space-between;
-            width: 15%;
+            width: 20%;
             height: 100%;
             display: flex;
             flex-direction: column;

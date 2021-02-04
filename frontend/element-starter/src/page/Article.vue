@@ -104,7 +104,7 @@ export default {
             console.log(article);
             this.$router.push({
                 name: 'admin-create',
-                query: {
+                params:{
                     articleId: article.articleId
                 }
             });

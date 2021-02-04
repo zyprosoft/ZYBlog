@@ -58,6 +58,7 @@ export default {
     },
     watch: {
         $route(to, from) {
+            console.log(to.name)
             if(to.name !== 'admin-create') {
                 return
             }
