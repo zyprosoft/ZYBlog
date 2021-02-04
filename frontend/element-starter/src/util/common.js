@@ -9,8 +9,6 @@ export const FeedsTypeRecentComment = 'comment';
 export const FeedsTypeByTagId = 'tag';
 export const FeedsTypeByCategoryId = 'category';
 export const FeedsTypeByArchiveDate = 'archive';
-const AppReqAuthAppId = process.env.ZGW_APPID;
-const AppReqAuthSecret = process.env.ZGW_SECRET;
 
 export function callService(interfaceName, params) 
 {
@@ -66,6 +64,9 @@ function deepCopyObject(obj){
 
 export function callSafeService(interfaceName, params) 
 {
+    let AppReqAuthAppId = process.env.ZGW_APPID;
+    let AppReqAuthSecret = process.env.ZGW_SECRET;
+
     let timestamp = new Date().getTime()
     timestamp = parseInt(timestamp/1000)
     let nonce = String(timestamp);
@@ -116,7 +117,10 @@ export function callSafeService(interfaceName, params)
 
 export function callUploadService(interfaceName, params, file) 
 {
-  let timestamp = new Date().getTime()
+    let AppReqAuthAppId = process.env.ZGW_APPID;
+    let AppReqAuthSecret = process.env.ZGW_SECRET;
+
+    let timestamp = new Date().getTime()
     timestamp = parseInt(timestamp/1000)
     let nonce = String(timestamp);
     let signParam = deepCopyObject(params);
