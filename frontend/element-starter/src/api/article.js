@@ -324,7 +324,7 @@ export function clearCache()
 {
     const param = {
     }
-    const interfaceName = 'common.setting.clearCache'
+    const interfaceName = 'admin.setting.clearCache'
     return callSafeService(interfaceName, param)
 }
 
