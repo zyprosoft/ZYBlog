@@ -10,10 +10,10 @@
                         </el-col>
                     </el-form-item>
                     <el-col :span="20">
-                        <el-form-item label="新密码" prop="pass">
+                        <el-form-item label="新密码">
                             <el-input show-password type="password" v-model="form.passwordFirst" autocomplete="off"></el-input>
                         </el-form-item>
-                        <el-form-item label="确认密码" prop="checkPass">
+                        <el-form-item label="确认密码">
                             <el-input show-password type="password" v-model="form.passwordSecond" autocomplete="off"></el-input>
                         </el-form-item>
                     </el-col>
@@ -30,7 +30,8 @@
 </template>
 
 <script>
-import { clearCache } from '../api/article'
+import { clearCache, updatePassword } from '../api/article'
+import { removeToken } from '../util/auth'
 export default {
     name: 'SettingMore',
     created() {
@@ -54,7 +55,15 @@ export default {
             })
         },
         commitUpdatePassword() {
-
+            if (this.form.passwordFirst !== this.form.passowrdSecond) {
+                this.$message({ type: 'error', message: '两次密码输入不一致' })
+                return
+            }
+            updatePassword(form.passwordFirst).then(res => {
+                this.$message({ type: 'success', message: '更新成功,请重新登陆' })
+                removeToken()
+                this.$router.push({name:'login'})
+            })
         }
     },
 }
