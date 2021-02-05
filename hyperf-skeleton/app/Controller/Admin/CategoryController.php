@@ -3,6 +3,8 @@
 
 namespace App\Controller\Admin;
 use App\Http\AppAdminRequest;
+use App\Model\Comment;
+use App\Service\CommonService;
 use ZYProSoft\Controller\AbstractController;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\Di\Annotation\Inject;
@@ -20,6 +22,12 @@ class CategoryController extends AbstractController
      * @var CategoryService
      */
     private $categoryService;
+
+    /**
+     * @Inject
+     * @var CommonService
+     */
+    private $commonService;
 
     public function getAll(AppAdminRequest $request)
     {
@@ -59,6 +67,8 @@ class CategoryController extends AbstractController
         $name = $request->param('name');
         $avatar = $request->param('avatar');
         $this->categoryService->update($categoryId, $name, $avatar);
+        //清空系统缓存
+        $this->commonService->clearSystemCache();
         return $this->success();
     }
 }
