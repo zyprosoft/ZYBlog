@@ -120,6 +120,9 @@ export default {
         },
         initOneSentence() {
             getOneSentence().then(res => {
+                if(res.data.sentence == null) {
+                    return
+                }
                 this.oneSentence = "”" + res.data.sentence + "“"
             })
         },
