@@ -55,7 +55,7 @@ export default {
             })
         },
         commitUpdatePassword() {
-            if (this.form.passwordFirst !== this.form.passowrdSecond) {
+            if (this.form.passwordFirst != this.form.passowrdSecond) {
                 this.$message({ type: 'error', message: '两次密码输入不一致' })
                 return
             }
