@@ -48,7 +48,7 @@ export default {
         }
     },
     mounted() {
-        let box = this.$refs.feedsList;
+        let box = document.body;
         box.addEventListener("scroll", this.handleScroll, true)
     },
     beforeDestroy() {
