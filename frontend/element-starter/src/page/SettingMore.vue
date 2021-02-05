@@ -62,7 +62,7 @@ export default {
                 this.$message({ type: 'error', message: '两次密码输入不一致' })
                 return
             }
-            updatePassword(form.passwordFirst).then(res => {
+            updatePassword(this.form.passwordFirst).then(res => {
                 this.$message({ type: 'success', message: '更新成功,请重新登陆' })
                 removeToken()
                 this.$router.push({name:'login'})
