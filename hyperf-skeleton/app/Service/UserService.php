@@ -33,7 +33,7 @@ class UserService extends BaseService
     public function updatePassword(string $password)
     {
         $user = User::findOrFail($this->userId());
-        $user->password = $password;
+        $user->password = password_hash($password,PASSWORD_DEFAULT);
         $user->saveOrFail();
     }
 

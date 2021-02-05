@@ -337,3 +337,12 @@ export function adminReply(content, commentId)
     const interfaceName = 'admin.comment.reply'
     return callSafeService(interfaceName, param)
 }
+
+export function updatePassword(content, commentId) 
+{
+    const param = {
+        'password':content,
+    }
+    const interfaceName = 'admin.setting.updatePassword'
+    return callSafeService(interfaceName, param)
+}
