@@ -54,5 +54,15 @@ export function logout(username, password) {
 
 export function isLogin() 
 {
-    return getToken() !== null && getToken().length > 0;
+    let token = getToken()
+    if(token == null) {
+        return false
+    }
+    if(typeof(token) !== 'string'){
+        return false
+    }
+    if(token.length == 0) {
+        return false
+    }
+    return true;
 }

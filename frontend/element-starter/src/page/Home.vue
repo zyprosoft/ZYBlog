@@ -50,23 +50,23 @@
                             </div>
                         </div>
                         <span class="sign-box">
-                                                                                                                                                                                                                    <span class="quote">“</span>
+                                                                                                                                                                                                                            <span class="quote">“</span>
                         <span class="sign">{{aboutInfo.introduce}}</span>
                         <span class="quote">”</span>
                         </span>
                     </div>
                     <div class="icon-part">
-                        <div v-if="aboutInfo.github !== null">
+                        <div v-if="aboutInfo.github != null">
                             <a :href="aboutInfo.github"><img class="github-box" src="../assets/github.jpeg"></a>
                         </div>
                         <div v-else>
                             <a href="http://www.github.com/zyprosoft"><img class="github-box" src="../assets/github.jpeg"></a>
                         </div>
                         <div class="social-box">
-                            <div v-if="aboutInfo.qq_code !== null">
+                            <div v-if="aboutInfo.qq_code != null">
                                 <img class="qrcode" :src="aboutInfo.qq_code">
                             </div>
-                            <div v-if="aboutInfo.wx_code !== null">
+                            <div v-if="aboutInfo.wx_code != null">
                                 <img class="qrcode" :src="aboutInfo.wx_code">
                             </div>
                         </div>
@@ -127,12 +127,12 @@ export default {
             this.$router.push({ name: 'manage' })
         },
         handleSelect() {
-            this.$router.push({ name: 'about' })
+            this.$router.push({ name: 'detail', params: { id: this.aboutInfo.article_id } })
         },
         initAdminInfo() {
             getAboutInfo().then(res => {
-                this.aboutInfo = res.data.about
                 this.user = res.data
+                this.aboutInfo = res.data.about
             })
         }
     },

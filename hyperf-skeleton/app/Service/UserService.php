@@ -30,6 +30,13 @@ class UserService extends BaseService
         return $user;
     }
 
+    public function updatePassword(string $password)
+    {
+        $user = User::findOrFail($this->userId());
+        $user->password = $password;
+        $user->saveOrFail();
+    }
+
     public function logout()
     {
         return Auth::logout();

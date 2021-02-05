@@ -35,12 +35,12 @@
                 </el-table-column>
                 <el-table-column align="center" fixed="right" label="操作" width="180">
                     <template slot-scope="scope">
-                                            <el-tooltip class="item" effect="dark" content="编辑" placement="top">
-                                              <el-button @click="handleEdit(scope.row)" type="primary" icon="iconfont el-icon-edit" size="small"></el-button>
-                                            </el-tooltip>
-                                            <el-tooltip class="item" effect="dark" content="移动至回收站" placement="top">
-                                              <el-button @click="handleDelete(scope.row)" type="danger" icon="iconfont el-icon-ashbin" size="small"></el-button>
-                                            </el-tooltip>
+                                                <el-tooltip class="item" effect="dark" content="编辑" placement="top">
+                                                  <el-button @click="handleEdit(scope.row)" type="primary" icon="iconfont el-icon-edit" size="small"></el-button>
+                                                </el-tooltip>
+                                                <el-tooltip class="item" effect="dark" content="移动至回收站" placement="top">
+                                                  <el-button @click="handleDelete(scope.row)" type="danger" icon="iconfont el-icon-ashbin" size="small"></el-button>
+                                                </el-tooltip>
 </template>
                 </el-table-column>
         </el-table>
@@ -67,7 +67,7 @@ export default {
     },
     data() {
         return {
-            search:'',
+            search: '',
             pageIndex: 0,
             pageSize: 10,
             totalCount: 0,
@@ -101,49 +101,48 @@ export default {
             })
         },
         handleEdit(article) {
-            console.log(article);
+            console.log('article edit:'+JSON.stringify(article));
             this.$router.push({
-                name: 'admin-create',
-                params:{
-                    articleId: article.articleId
+                    name: 'admin-edit',
+                    params: {
+                        articleId:article.articleId
                 }
-            });
-            console.log(this.$refs.manageMenuRef);
-        },
-        handleDelete(article) {
+            })
+         },
+         handleDelete(article) {
             this.$confirm('此操作将文章移动至回收站, 是否继续?', '提示', {
-                confirmButtonText: '确定',
-                cancelButtonText: '取消',
-                type: 'warning',
-                center: true
-            }).then(() => {
-                moveToTrash(article.articleId).then(res => {
-                    //刷新
-                    this.getList();
-                    this.$message({
-                        type: 'success',
-                        message: '删除成功!'
-                    });
-                });
-            }).catch(() => {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning',
+            center: true
+        }).then(() => {
+            moveToTrash(article.articleId).then(res => {
+                //刷新
+                this.getList();
                 this.$message({
-                    type: 'info',
-                    message: '已取消删除'
+                    type: 'success',
+                    message: '删除成功!'
                 });
             });
-        },
-        handleSizeChange(val) {
-            console.log('size change');
-            this.pageSize = val;
-            this.getList();
-        },
-        handleCurrentChange(val) {
-            this.pageIndex = val;
-            this.getList();
-            console.log('current change');
-            console.log(this.pageIndex);
-        }
+        }).catch(() => {
+            this.$message({
+                type: 'info',
+                message: '已取消删除'
+            });
+        });
     },
+    handleSizeChange(val) {
+        console.log('size change');
+        this.pageSize = val;
+        this.getList();
+    },
+    handleCurrentChange(val) {
+        this.pageIndex = val;
+        this.getList();
+        console.log('current change');
+        console.log(this.pageIndex);
+    }
+},
 }
 </script>
 

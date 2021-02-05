@@ -49,17 +49,15 @@ import "mavon-editor/dist/css/index.css";
 
 export default {
     name: 'CreateArticle',
-    created() {
-
-    },
     components: {
         mavonEditor
         // or 'mavon-editor': mavonEditor
     },
     watch: {
         $route(to, from) {
+            console.log(to)
             console.log(to.name)
-            if(to.name !== 'admin-create') {
+            if(to.name !== 'admin-edit') {
                 return
             }
             this.articleId = to.params.articleId
@@ -81,13 +79,16 @@ export default {
             isPosting: false
         }
     },
-    computed: {},
     props: {
 
     },
     created() {
         this.getAllCategory();
-        this.getArticleDetail();
+        console.log(this.$route)
+        if(this.$route.name === 'admin-edit') {
+            this.articleId = this.$route.params.articleId
+            this.getArticleDetail()
+        }
     },
     methods: {
         handleUploadImage(pos, file) {
