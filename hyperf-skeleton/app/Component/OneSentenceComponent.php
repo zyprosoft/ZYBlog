@@ -26,6 +26,9 @@ class OneSentenceComponent extends BaseComponent
         }
         $result = json_decode($result->getBody(), true);
         $sentence = Arr::get($result, 'hitokoto');
+        if (!isset($sentence)) {
+            return  $this->success();
+        }
         $from = Arr::get($result, 'from');
 
         return $this->success([
