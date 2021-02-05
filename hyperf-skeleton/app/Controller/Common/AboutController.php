@@ -34,7 +34,11 @@ class AboutController extends AbstractController
     public function getOneSentence()
     {
         $component = make(OneSentenceComponent::class);
-        $result = $component->getOneSentence()->successOrFailException();
-        return $this->success($result);
+        $result = $component->getOneSentence();
+        if ($result->isSuccess()) {
+            return $this->success($result->data);
+        }else{
+            return  $this->success();
+        }
     }
 }
