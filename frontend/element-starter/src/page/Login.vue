@@ -26,7 +26,7 @@
                     </div>
                     <div class="gap-box"></div>
                     <div class="captcha-box">
-                        <el-input size="medium" placeholder="请输入验证码" class="input-captcha" v-model="form.captcha"></el-input>
+                        <el-input size="medium" placeholder="验证码不区分大小写" class="input-captcha" v-model="form.captcha"></el-input>
                         <img @click="refreshCaptchaAction" class="captcha-img" :src="captcha.url">
                     </div>
                 </div>

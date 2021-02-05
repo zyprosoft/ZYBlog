@@ -134,7 +134,7 @@
                             </el-col>
                         </el-row>
                         <div class="captcha-box">
-                            <el-input class="input-box" placeholder="请输入验证码,区分大小写" v-model="form.captcha" auto-complete="off"></el-input>
+                            <el-input class="input-box" placeholder="请输入验证码,不区分大小写" v-model="form.captcha" auto-complete="off"></el-input>
                             <div v-if="captcha.url.length == 0">
                                 <div class="get-captcha-box">
                                     <span @click="getCaptchAction" class="get-captcha">点击获取验证码</span>
