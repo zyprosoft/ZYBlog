@@ -19,7 +19,7 @@
                     </el-col>
                     <el-col :span="10">
                         <div style="display:flex;flex-direction:row;">
-                            <el-button @click="commitUpdatePassword" type="primary">确认修改</el-button>
+                            <el-button :loading="isCommiting" @click="commitUpdatePassword" type="primary">确认修改</el-button>
                         </div>
                     </el-col>
                 </el-form>
@@ -39,6 +39,7 @@ export default {
     },
     data() {
         return {
+            isCommiting:false,
             form: {
                 passwordFirst: '',
                 passowrdSecond: ''
@@ -62,10 +63,14 @@ export default {
                 this.$message({ type: 'error', message: '两次密码输入不一致' })
                 return
             }
+            this.isCommiting = true
             updatePassword(this.form.passwordFirst).then(res => {
+                this.isCommiting = false
                 this.$message({ type: 'success', message: '更新成功,请重新登陆' })
                 removeToken()
                 this.$router.push({name:'login'})
+            }).catch(error=>{
+                this.isCommiting = false
             })
         }
     },
