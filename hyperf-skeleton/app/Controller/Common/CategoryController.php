@@ -28,13 +28,21 @@ class CategoryController extends AbstractController
      * @Inject
      * @var CategoryService
      */
-    private $service;
+    private CategoryService $service;
 
+    /**
+     * 获取所有分类
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function getAll()
     {
         return $this->success($this->service->getAll());
     }
 
+    /**
+     * 获取所有归档月份
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function getAllArchiveDate()
     {
         return $this->success($this->service->getAllArchiveDate());

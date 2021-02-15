@@ -28,8 +28,12 @@ class ArticleController extends AbstractController
      * @Inject
      * @var ArticleService
      */
-    private $articleService;
+    private ArticleService $articleService;
 
+    /**
+     * 可指定分类进行的文章列表获取
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function list()
     {
         $pageIndex = $this->request->param('pageIndex', 0);
@@ -45,6 +49,10 @@ class ArticleController extends AbstractController
         return $this->success($articleList);
     }
 
+    /**
+     * 获取文章详情
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function detail()
     {
         $this->validate([
@@ -55,6 +63,10 @@ class ArticleController extends AbstractController
         return $this->success($article);
     }
 
+    /**
+     * 按照归档月份获取文章列表
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function getListByDate()
     {
         $this->validate([
@@ -69,6 +81,10 @@ class ArticleController extends AbstractController
         return $this->success($articleList);
     }
 
+    /**
+     * 按照标签获取文章列表
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function getListByTagId()
     {
         $this->validate([
@@ -83,6 +99,10 @@ class ArticleController extends AbstractController
         return $this->success($articleList);
     }
 
+    /**
+     * 按照最近发表获取文章列表
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function getListByRecentPost()
     {
         $this->validate([
@@ -95,6 +115,10 @@ class ArticleController extends AbstractController
         return $this->success($articleList);
     }
 
+    /**
+     * 按照最后回复获取文章列表
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function getListByRecentComment()
     {
         $this->validate([
@@ -107,6 +131,10 @@ class ArticleController extends AbstractController
         return $this->success($articleList);
     }
 
+    /**
+     * 获取所有文章归档月份
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function getArchiveDateList()
     {
         $list = $this->articleService->getAllArchivedMonth();

@@ -19,6 +19,11 @@ use Hyperf\AsyncQueue\Job;
 use Hyperf\DbConnection\Db;
 use ZYProSoft\Log\Log;
 
+/**
+ * 异步刷新文章评论总数
+ * Class RefreshArticleJob
+ * @package App\Job
+ */
 class RefreshArticleJob extends Job
 {
     /**

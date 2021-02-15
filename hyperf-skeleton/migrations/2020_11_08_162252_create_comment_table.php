@@ -14,7 +14,7 @@ class CreateCommentTable extends Migration
         Schema::create('comment', function (Blueprint $table) {
             $table->bigIncrements('comment_id')
                   ->comment("评论ID");
-            $table->string("content",128)
+            $table->string("content",500)
                   ->comment("评论内容");
             $table->bigInteger('parent_comment_id')
                   ->nullable()

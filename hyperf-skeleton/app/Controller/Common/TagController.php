@@ -28,14 +28,22 @@ class TagController extends AbstractController
      * @Inject
      * @var TagService
      */
-    private $tagService;
+    private TagService $tagService;
 
+    /**
+     * 获取所有标签
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function getAll()
     {
        $list = $this->tagService->getAll();
        return $this->success($list);
     }
 
+    /**
+     * 获取热门标签
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function getHotTags() 
     {
         $list = $this->tagService->getHotTags();

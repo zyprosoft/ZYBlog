@@ -30,20 +30,30 @@ class SettingController extends AbstractController
      * @Inject
      * @var CommonService
      */
-    private $service;
+    private CommonService $service;
 
     /**
      * @Inject
      * @var UserService
      */
-    private $userService;
+    private UserService $userService;
 
+    /**
+     * 清除所有缓存
+     * @param AppAdminRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function clearCache(AppAdminRequest $request)
     {
         $this->service->clearSystemCache();
         return $this->success();
     }
 
+    /**
+     * 更新管理员密码
+     * @param AppAdminRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function updatePassword(AppAdminRequest $request)
     {
         $this->validate([

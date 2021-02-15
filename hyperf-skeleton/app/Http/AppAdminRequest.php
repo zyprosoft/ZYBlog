@@ -18,6 +18,11 @@ use ZYProSoft\Facade\Auth;
 use ZYProSoft\Http\AdminRequest;
 use ZYProSoft\Log\Log;
 
+/**
+ * 重载是否管理员方法，实现对接口的管理员访问限制
+ * Class AppAdminRequest
+ * @package App\Http
+ */
 class AppAdminRequest extends AdminRequest
 {
     protected function isAdmin()

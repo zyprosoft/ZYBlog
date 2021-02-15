@@ -18,6 +18,11 @@ use Hyperf\DbConnection\Db;
 use Hyperf\Cache\Annotation\Cacheable;
 use Hyperf\Utils\Arr;
 
+/**
+ * 分类服务
+ * Class CategoryService
+ * @package App\Service
+ */
 class CategoryService extends BaseService
 {
     /**

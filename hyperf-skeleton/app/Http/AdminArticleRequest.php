@@ -13,6 +13,11 @@ declare(strict_types=1);
 
 namespace App\Http;
 
+/**
+ * 文章相关的管理员请求类
+ * Class AdminArticleRequest
+ * @package App\Http
+ */
 class AdminArticleRequest extends AppAdminRequest
 {
     public function rules()

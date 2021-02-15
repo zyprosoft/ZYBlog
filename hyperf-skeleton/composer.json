@@ -39,7 +39,6 @@
         "hyperf/redis": "~2.1.0",
         "hyperf/scout": "^2.1",
         "hyperf/session": "~2.1.0",
-        "hyperf/testing": "~2.1.0",
         "hyperf/tracer": "~2.1.0",
         "hyperf/validation": "~2.1.0",
         "overtrue/flysystem-qiniu": "^1.0",

@@ -29,8 +29,13 @@ class AboutController extends AbstractController
      * @Inject
      * @var CommonService
      */
-    private $service;
+    private CommonService $service;
 
+    /**
+     * 提交应用设置信息接口
+     * @param AppAdminRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function commitAboutInfo(AppAdminRequest $request)
     {
         $params = $this->validate([

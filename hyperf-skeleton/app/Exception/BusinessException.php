@@ -16,6 +16,11 @@ use App\Constants\ErrorCode;
 use Hyperf\Server\Exception\ServerException;
 use Throwable;
 
+/**
+ * 业务逻辑异常类
+ * Class BusinessException
+ * @package App\Exception
+ */
 class BusinessException extends ServerException
 {
     public function __construct(int $code = 0, string $message = null, Throwable $previous = null)

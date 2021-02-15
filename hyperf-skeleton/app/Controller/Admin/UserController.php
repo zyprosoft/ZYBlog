@@ -31,8 +31,12 @@ class UserController extends AbstractController
      * @Inject
      * @var UserService
      */
-    private $userService;
+    private UserService $userService;
 
+    /**
+     * 博主登陆接口
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function login()
     {
         //先校验验证码是否正确
@@ -47,6 +51,11 @@ class UserController extends AbstractController
         return $this->success($userInfo);
     }
 
+    /**
+     * 博主登出接口
+     * @param AppAdminRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function logout(AppAdminRequest $request)
     {
         $this->userService->logout();

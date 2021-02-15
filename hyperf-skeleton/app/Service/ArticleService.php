@@ -25,8 +25,20 @@ use Hyperf\Utils\Arr;
 use ZYProSoft\Log\Log;
 use Hyperf\Cache\Annotation\Cacheable;
 
+/**
+ * 文章服务
+ * Class ArticleService
+ * @package App\Service
+ */
 class ArticleService extends BaseService
 {
+    /**
+     * 创建文章
+     * @param string $title
+     * @param string $content
+     * @param array $tags
+     * @param int $categoryId
+     */
     public function createArticle(string $title, string $content, array $tags, int $categoryId)
     {
         //先创建标签
@@ -95,6 +107,14 @@ class ArticleService extends BaseService
             ->firstOrFail();
     }
 
+    /**
+     * 更新文章
+     * @param int $articleId
+     * @param string|null $title
+     * @param string|null $content
+     * @param array|null $tags
+     * @param int|null $categoryId
+     */
     public function updateArticle(int $articleId, string $title = null, string $content = null, array $tags = null, int $categoryId = null)
     {
         Db::transaction(function () use ($articleId, $title, $content, $categoryId, $tags) {

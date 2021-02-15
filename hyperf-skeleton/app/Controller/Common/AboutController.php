@@ -28,18 +28,30 @@ class AboutController extends AbstractController
      * @Inject
      * @var CommonService
      */
-    private $service;
+    private CommonService $service;
 
+    /**
+     * 获取关于博主的详细信息
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function info()
     {
         return $this->success($this->service->getAboutInfo());
     }
 
+    /**
+     * 获取关于我的文章信息
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function pageInfo()
     {
         return $this->success($this->service->getAboutPageInfo());
     }
 
+    /**
+     * 获取一言的随机一句话
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function getOneSentence()
     {
         $component = make(OneSentenceComponent::class);

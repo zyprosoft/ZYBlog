@@ -29,8 +29,13 @@ class CommentController extends AbstractController
      * @Inject
      * @var CommentService
      */
-    private $commentService;
+    private CommentService $commentService;
 
+    /**
+     * 获取所有的回复
+     * @param AppAdminRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function list(AppAdminRequest $request)
     {
         $this->validate([
@@ -43,6 +48,11 @@ class CommentController extends AbstractController
         return $this->success($list);
     }
 
+    /**
+     * 快速回复某一条评论
+     * @param AppAdminRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function reply(AppAdminRequest $request)
     {
         $this->validate([
@@ -55,6 +65,11 @@ class CommentController extends AbstractController
         return $this->success($comment);
     }
 
+    /**
+     * 删除某条评论
+     * @param AppAdminRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function delete(AppAdminRequest $request)
     {
         $this->validate([

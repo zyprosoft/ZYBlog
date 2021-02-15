@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 use App\Http\AppAdminRequest;
-use App\Model\Comment;
 use App\Service\CommonService;
 use ZYProSoft\Controller\AbstractController;
 use Hyperf\HttpServer\Annotation\AutoController;
@@ -30,19 +29,29 @@ class CategoryController extends AbstractController
      * @Inject
      * @var CategoryService
      */
-    private $categoryService;
+    private CategoryService $categoryService;
 
     /**
      * @Inject
      * @var CommonService
      */
-    private $commonService;
+    private CommonService $commonService;
 
+    /**
+     * 获取所有分类
+     * @param AppAdminRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function getAll(AppAdminRequest $request)
     {
         return $this->success($this->categoryService->getAll());
     }
 
+    /**
+     * 创建一个分类
+     * @param AppAdminRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function create(AppAdminRequest $request)
     {
         $this->validate([
@@ -55,6 +64,11 @@ class CategoryController extends AbstractController
         return $this->success();
     }
 
+    /**
+     * 删除一个分类，删除后，在此分类下的文章自动转移到编号最小的分类
+     * @param AppAdminRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function delete(AppAdminRequest $request)
     {
         $this->validate([
@@ -65,6 +79,11 @@ class CategoryController extends AbstractController
         return $this->success();
     }
 
+    /**
+     * 更新分类信息
+     * @param AppAdminRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function update(AppAdminRequest $request)
     {
         $this->validate([

@@ -39,7 +39,7 @@ class OneSentenceComponent extends BaseComponent
         if ($result->getStatusCode() != 200) {
             return  $this->success();
         }
-        $result = json_decode($result->getBody(), true);
+        $result = json_decode($result->getBody()->getContents(), true);
         $sentence = Arr::get($result, 'hitokoto');
         if (!isset($sentence)) {
             return  $this->success();

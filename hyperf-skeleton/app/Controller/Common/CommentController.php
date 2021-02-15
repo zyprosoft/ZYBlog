@@ -29,8 +29,12 @@ class CommentController extends AbstractController
      * @Inject
      * @var CommentService
      */
-    private $commentService;
+    private CommentService $commentService;
 
+    /**
+     * 获取评论详情
+     * @return \Hyperf\Database\Model\Builder|\Hyperf\Database\Model\Model
+     */
     public function detail()
     {
         $this->validate([
@@ -40,6 +44,10 @@ class CommentController extends AbstractController
         return $this->commentService->detail($commentId);
     }
 
+    /**
+     * 添加评论
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function create()
     {
         //先校验验证码是否正确
@@ -64,6 +72,9 @@ class CommentController extends AbstractController
         return $this->success($comment);
     }
 
+    /**
+     * 用户主动删除评论
+     */
     public function userDelete()
     {
         $this->validate([
@@ -73,6 +84,10 @@ class CommentController extends AbstractController
         return $this->commentService->userDelete($commentId);
     }
 
+    /**
+     * 获取文章的评论列表
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function list()
     {
         $this->validate([
@@ -87,6 +102,11 @@ class CommentController extends AbstractController
         return $this->success($list);
     }
 
+    /**
+     * 回复别人的评论
+     * @param AuthedRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function reply(AuthedRequest $request)
     {
         $this->validate([
