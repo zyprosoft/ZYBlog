@@ -1,10 +1,25 @@
 <?php
+/**
+ * This file is part of ZYProSoft/ZYBlog.
+ *
+ * @link     http://zyprosoft.lulinggushi.com
+ * @document http://zyprosoft.lulinggushi.com
+ * @contact  1003081775@qq.com
+ * @Company  泽湾普罗信息技术有限公司(ZYProSoft)
+ * @license  GPL
+ */
 
+declare(strict_types=1);
 
 namespace App\Component;
 use Hyperf\Utils\Arr;
 use ZYProSoft\Component\BaseComponent;
 
+/**
+ * 获取一言的接口组件
+ * Class OneSentenceComponent
+ * @package App\Component
+ */
 class OneSentenceComponent extends BaseComponent
 {
     protected array $options = [
