@@ -1,5 +1,15 @@
 <?php
+/**
+ * This file is part of ZYProSoft/ZYBlog.
+ *
+ * @link     http://zyprosoft.lulinggushi.com
+ * @document http://zyprosoft.lulinggushi.com
+ * @contact  1003081775@qq.com
+ * @Company  ZYProSoft
+ * @license  MIT
+ */
 
+declare(strict_types=1);
 
 namespace App\Service;
 use App\Model\Article;
@@ -8,6 +18,11 @@ use Hyperf\DbConnection\Db;
 use Hyperf\Cache\Annotation\Cacheable;
 use Hyperf\Utils\Arr;
 
+/**
+ * 分类服务
+ * Class CategoryService
+ * @package App\Service
+ */
 class CategoryService extends BaseService
 {
     /**

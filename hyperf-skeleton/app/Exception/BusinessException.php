@@ -1,20 +1,26 @@
 <?php
+/**
+ * This file is part of ZYProSoft/ZYBlog.
+ *
+ * @link     http://zyprosoft.lulinggushi.com
+ * @document http://zyprosoft.lulinggushi.com
+ * @contact  1003081775@qq.com
+ * @Company  ZYProSoft
+ * @license  MIT
+ */
 
 declare(strict_types=1);
-/**
- * This file is part of Hyperf.
- *
- * @link     https://www.hyperf.io
- * @document https://hyperf.wiki
- * @contact  group@hyperf.io
- * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
- */
 namespace App\Exception;
 
 use App\Constants\ErrorCode;
 use Hyperf\Server\Exception\ServerException;
 use Throwable;
 
+/**
+ * 业务逻辑异常类
+ * Class BusinessException
+ * @package App\Exception
+ */
 class BusinessException extends ServerException
 {
     public function __construct(int $code = 0, string $message = null, Throwable $previous = null)

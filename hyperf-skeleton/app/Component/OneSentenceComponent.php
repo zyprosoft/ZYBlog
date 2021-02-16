@@ -1,10 +1,25 @@
 <?php
+/**
+ * This file is part of ZYProSoft/ZYBlog.
+ *
+ * @link     http://zyprosoft.lulinggushi.com
+ * @document http://zyprosoft.lulinggushi.com
+ * @contact  1003081775@qq.com
+ * @Company  ZYProSoft
+ * @license  MIT
+ */
 
+declare(strict_types=1);
 
 namespace App\Component;
 use Hyperf\Utils\Arr;
 use ZYProSoft\Component\BaseComponent;
 
+/**
+ * 获取一言的接口组件
+ * Class OneSentenceComponent
+ * @package App\Component
+ */
 class OneSentenceComponent extends BaseComponent
 {
     protected array $options = [
@@ -24,7 +39,7 @@ class OneSentenceComponent extends BaseComponent
         if ($result->getStatusCode() != 200) {
             return  $this->success();
         }
-        $result = json_decode($result->getBody(), true);
+        $result = json_decode($result->getBody()->getContents(), true);
         $sentence = Arr::get($result, 'hitokoto');
         if (!isset($sentence)) {
             return  $this->success();

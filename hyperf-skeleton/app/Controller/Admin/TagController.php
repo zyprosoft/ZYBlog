@@ -1,5 +1,14 @@
 <?php
-
+/**
+ * This file is part of ZYProSoft/ZYBlog.
+ *
+ * @link     http://zyprosoft.lulinggushi.com
+ * @document http://zyprosoft.lulinggushi.com
+ * @contact  1003081775@qq.com
+ * @Company  ZYProSoft
+ * @license  MIT
+ */
+declare(strict_types=1);
 
 namespace App\Controller\Admin;
 use App\Http\AppAdminRequest;
@@ -19,8 +28,13 @@ class TagController extends AbstractController
      * @Inject
      * @var TagService
      */
-    private $tagService;
+    private TagService $tagService;
 
+    /**
+     * 创建一个标签
+     * @param AppAdminRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function create(AppAdminRequest $request)
     {
         $this->validate([
@@ -31,12 +45,22 @@ class TagController extends AbstractController
         return $this->success();
     }
 
+    /**
+     * 获取所有标签
+     * @param AppAdminRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function getAll(AppAdminRequest $request)
     {
         $list = $this->tagService->getAll();
         return $this->success($list);
     }
 
+    /**
+     * 删除一个标签
+     * @param AppAdminRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function delete(AppAdminRequest $request)
     {
         $this->validate([
@@ -47,6 +71,11 @@ class TagController extends AbstractController
         return $this->success();
     }
 
+    /**
+     * 更新一个标签
+     * @param AppAdminRequest $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function update(AppAdminRequest  $request)
     {
         $this->validate([

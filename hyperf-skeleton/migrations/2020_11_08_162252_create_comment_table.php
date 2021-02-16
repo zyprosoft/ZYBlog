@@ -1,4 +1,13 @@
 <?php
+/**
+ * This file is part of ZYProSoft/ZYBlog.
+ *
+ * @link     http://zyprosoft.lulinggushi.com
+ * @document http://zyprosoft.lulinggushi.com
+ * @contact  1003081775@qq.com
+ * @Company  ZYProSoft
+ * @license  GPL
+ */
 
 use Hyperf\Database\Schema\Schema;
 use Hyperf\Database\Schema\Blueprint;
@@ -14,7 +23,7 @@ class CreateCommentTable extends Migration
         Schema::create('comment', function (Blueprint $table) {
             $table->bigIncrements('comment_id')
                   ->comment("评论ID");
-            $table->string("content",128)
+            $table->string("content",500)
                   ->comment("评论内容");
             $table->bigInteger('parent_comment_id')
                   ->nullable()
