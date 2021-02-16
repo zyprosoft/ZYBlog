@@ -6,7 +6,7 @@
  * @document http://zyprosoft.lulinggushi.com
  * @contact  1003081775@qq.com
  * @Company  ZYProSoft
- * @license  GPL
+ * @license  MIT
  */
 
 declare(strict_types=1);
