@@ -5,7 +5,7 @@
  * @link     http://zyprosoft.lulinggushi.com
  * @document http://zyprosoft.lulinggushi.com
  * @contact  1003081775@qq.com
- * @Company  泽湾普罗信息技术有限公司(ZYProSoft)
+ * @Company  ZYProSoft
  * @license  GPL
  */
 declare(strict_types=1);
