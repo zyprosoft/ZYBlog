@@ -38,7 +38,7 @@ class TagController extends AbstractController
     public function create(AppAdminRequest $request)
     {
         $this->validate([
-            'name' => 'required|string|min:2'
+            'name' => 'required|string|min:2|max:10'
         ]);
         $name = $request->param('name');
         $this->tagService->create($name);
@@ -79,7 +79,7 @@ class TagController extends AbstractController
     public function update(AppAdminRequest  $request)
     {
         $this->validate([
-            'name' => 'required|string|min:1',
+            'name' => 'required|string|min:1|max:10',
             'tagId' => 'required|int|min:1|exists:tag,tag_id'
         ]);
         $tagId = $request->param('tagId');

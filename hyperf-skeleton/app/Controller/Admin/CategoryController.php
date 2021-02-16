@@ -55,7 +55,7 @@ class CategoryController extends AbstractController
     public function create(AppAdminRequest $request)
     {
         $this->validate([
-            'name' => 'required|string|min:2',
+            'name' => 'required|string|min:2|max:10',
             'icon' => 'string|min:1'
         ]);
         $name = $request->param('name');
@@ -87,7 +87,7 @@ class CategoryController extends AbstractController
     public function update(AppAdminRequest $request)
     {
         $this->validate([
-            'name' => 'string|min:1',
+            'name' => 'string|min:1|max:10',
             'avatar' => 'string|min:1',
             'categoryId' => 'required|int|min:1|exists:category,category_id'
         ]);
