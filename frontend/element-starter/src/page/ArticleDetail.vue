@@ -224,6 +224,9 @@ export default {
     props: {
 
     },
+    activated() {
+        this.setGoIndex()
+    },
     watch: {
         $route(to, from) {
             console.log('to params:' + JSON.stringify(to.params))
@@ -287,8 +290,21 @@ export default {
                 this.isCommentPosting = false;
             });
         },
+        setGoIndex() {
+            if (window.history.length <= 1) {
+                if (location.href.indexOf('?') === -1) {
+                    window.location.href = location.href + '?goindex=true'
+                } else if (location.href.indexOf('?') !== -1 && location.href.indexOf('goindex') === -1) {
+                    window.location.href = location.href + '&goindex=true'
+                }
+            }
+        },
         hanldeGoBack() {
-            this.$router.back(-1)
+            if (this.$route.query.goindex === 'true') {
+                this.$router.push({ name: 'index' })
+            } else {
+                this.$router.back(-1)
+            }
         },
         refreshArticleDetail() {
             if (this.articleId == null) {
