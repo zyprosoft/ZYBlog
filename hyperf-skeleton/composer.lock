@@ -993,16 +993,16 @@
         },
         {
             "name": "elasticsearch/elasticsearch",
-            "version": "v7.10.0",
+            "version": "v7.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elastic/elasticsearch-php.git",
-                "reference": "f4a5741f1d1966a4d0a3a3f68666e6d81432c343"
+                "reference": "277cd5e182827c59c23e146a836a30470c0f879d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/f4a5741f1d1966a4d0a3a3f68666e6d81432c343",
-                "reference": "f4a5741f1d1966a4d0a3a3f68666e6d81432c343",
+                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/277cd5e182827c59c23e146a836a30470c0f879d",
+                "reference": "277cd5e182827c59c23e146a836a30470c0f879d",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1014,17 +1014,17 @@
             "require": {
                 "ext-json": ">=1.3.7",
                 "ezimuel/ringphp": "^1.1.2",
-                "php": "^7.1",
+                "php": "^7.1 || ^8.0",
                 "psr/log": "~1.0"
             },
             "require-dev": {
-                "cpliakas/git-wrapper": "~2.0",
+                "cpliakas/git-wrapper": "~2.0 || ~3.0",
                 "doctrine/inflector": "^1.3",
                 "ext-yaml": "*",
                 "ext-zip": "*",
                 "mockery/mockery": "^1.2",
                 "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^7.5",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.3",
                 "squizlabs/php_codesniffer": "^3.4",
                 "symfony/finder": "~4.0",
                 "symfony/yaml": "~4.0"
@@ -1060,11 +1060,7 @@
                 "elasticsearch",
                 "search"
             ],
-            "support": {
-                "issues": "https://github.com/elastic/elasticsearch-php/issues",
-                "source": "https://github.com/elastic/elasticsearch-php/tree/v7.10.0"
-            },
-            "time": "2020-11-11T16:31:00+00:00"
+            "time": "2021-02-11T11:04:51+00:00"
         },
         {
             "name": "endclothing/prometheus_client_php",
@@ -2254,16 +2250,16 @@
         },
         {
             "name": "hyperf/dispatcher",
-            "version": "v2.1.0",
+            "version": "v2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/dispatcher.git",
-                "reference": "3ed46deaf50a306de9681eb2b505653b97614590"
+                "reference": "b512ec6e99926cb356b9e9483d2ef0b6595a7b25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyperf/dispatcher/zipball/3ed46deaf50a306de9681eb2b505653b97614590",
-                "reference": "3ed46deaf50a306de9681eb2b505653b97614590",
+                "url": "https://api.github.com/repos/hyperf/dispatcher/zipball/b512ec6e99926cb356b9e9483d2ef0b6595a7b25",
+                "reference": "b512ec6e99926cb356b9e9483d2ef0b6595a7b25",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2313,7 +2309,7 @@
                 "php",
                 "swoole"
             ],
-            "time": "2020-12-27T06:12:45+00:00"
+            "time": "2021-02-08T06:23:40+00:00"
         },
         {
             "name": "hyperf/elasticsearch",
@@ -2485,16 +2481,16 @@
         },
         {
             "name": "hyperf/exception-handler",
-            "version": "v2.1.4",
+            "version": "v2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/exception-handler.git",
-                "reference": "301ae7e64f446d411d21a9482d4fb76f82fa6e6a"
+                "reference": "93124739899ac1eae84ca6170589a6826360b7a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyperf/exception-handler/zipball/301ae7e64f446d411d21a9482d4fb76f82fa6e6a",
-                "reference": "301ae7e64f446d411d21a9482d4fb76f82fa6e6a",
+                "url": "https://api.github.com/repos/hyperf/exception-handler/zipball/93124739899ac1eae84ca6170589a6826360b7a8",
+                "reference": "93124739899ac1eae84ca6170589a6826360b7a8",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2536,20 +2532,20 @@
                 "php",
                 "swoole"
             ],
-            "time": "2021-01-20T09:41:26+00:00"
+            "time": "2021-02-08T06:23:40+00:00"
         },
         {
             "name": "hyperf/filesystem",
-            "version": "v2.1.2",
+            "version": "v2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/filesystem.git",
-                "reference": "d61e5f4171e38f79b1b8cd358bea60fad990cf53"
+                "reference": "4c0b44f9689e93993f7b371f6738a951570c5024"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyperf/filesystem/zipball/d61e5f4171e38f79b1b8cd358bea60fad990cf53",
-                "reference": "d61e5f4171e38f79b1b8cd358bea60fad990cf53",
+                "url": "https://api.github.com/repos/hyperf/filesystem/zipball/4c0b44f9689e93993f7b371f6738a951570c5024",
+                "reference": "4c0b44f9689e93993f7b371f6738a951570c5024",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2570,7 +2566,7 @@
                 "hyperf/testing": "~2.1.0",
                 "league/flysystem-aws-s3-v3": "^1.0",
                 "league/flysystem-memory": "^1.0",
-                "overtrue/flysystem-cos": "^2.0",
+                "overtrue/flysystem-cos": "^2.0|^3.0",
                 "overtrue/flysystem-qiniu": "^1.0",
                 "phpstan/phpstan": "^0.10.5",
                 "xxtime/flysystem-aliyun-oss": "^1.5"
@@ -2580,7 +2576,7 @@
                 "hyperf/guzzle": "required to use s3 adapter",
                 "league/flysystem-aws-s3-v3": "required to use s3 adapter",
                 "league/flysystem-memory": "required to use memory adapter",
-                "overtrue/flysystem-cos": "required to use cos adapter",
+                "overtrue/flysystem-cos": "required to use cos adapter (^2.0|^3.0)",
                 "overtrue/flysystem-qiniu": "required to use qiniu adapter",
                 "xxtime/flysystem-aliyun-oss": "required to use aliyun oss adapter"
             },
@@ -2610,7 +2606,7 @@
                 "hyperf",
                 "php"
             ],
-            "time": "2021-01-06T08:01:13+00:00"
+            "time": "2021-02-03T08:29:12+00:00"
         },
         {
             "name": "hyperf/framework",
@@ -4510,16 +4506,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.44.0",
+            "version": "2.45.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "e6ef33cb1f67a4bed831ed6d0f7e156739a5d8cd"
+                "reference": "528783b188bdb853eb21239b1722831e0f000a8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e6ef33cb1f67a4bed831ed6d0f7e156739a5d8cd",
-                "reference": "e6ef33cb1f67a4bed831ed6d0f7e156739a5d8cd",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/528783b188bdb853eb21239b1722831e0f000a8d",
+                "reference": "528783b188bdb853eb21239b1722831e0f000a8d",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4601,7 +4597,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-26T20:46:41+00:00"
+            "time": "2021-02-11T18:30:17+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -5889,16 +5885,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.1",
+            "version": "9.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "e7bdf4085de85a825f4424eae52c99a1cec2f360"
+                "reference": "f661659747f2f87f9e72095bb207bceb0f151cb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e7bdf4085de85a825f4424eae52c99a1cec2f360",
-                "reference": "e7bdf4085de85a825f4424eae52c99a1cec2f360",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f661659747f2f87f9e72095bb207bceb0f151cb4",
+                "reference": "f661659747f2f87f9e72095bb207bceb0f151cb4",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -5990,7 +5986,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-01-17T07:42:25+00:00"
+            "time": "2021-02-02T14:45:58+00:00"
         },
         {
             "name": "pimple/pimple",
@@ -7862,7 +7858,7 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v5.2.2",
+            "version": "v5.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
@@ -8042,16 +8038,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v5.2.2",
+            "version": "v5.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "d62ec79478b55036f65e2602e282822b8eaaff0a"
+                "reference": "89d4b176d12a2946a1ae4e34906a025b7b6b135a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/d62ec79478b55036f65e2602e282822b8eaaff0a",
-                "reference": "d62ec79478b55036f65e2602e282822b8eaaff0a",
+                "url": "https://api.github.com/repos/symfony/console/zipball/89d4b176d12a2946a1ae4e34906a025b7b6b135a",
+                "reference": "89d4b176d12a2946a1ae4e34906a025b7b6b135a",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -8138,7 +8134,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-27T10:15:41+00:00"
+            "time": "2021-01-28T22:06:19+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -8212,7 +8208,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v5.2.2",
+            "version": "v5.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -8446,16 +8442,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v5.2.2",
+            "version": "v5.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "16dfa5acf8103f0394d447f8eea3ea49f9e50855"
+                "reference": "20c554c0f03f7cde5ce230ed248470cccbc34c36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/16dfa5acf8103f0394d447f8eea3ea49f9e50855",
-                "reference": "16dfa5acf8103f0394d447f8eea3ea49f9e50855",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/20c554c0f03f7cde5ce230ed248470cccbc34c36",
+                "reference": "20c554c0f03f7cde5ce230ed248470cccbc34c36",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -8518,7 +8514,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-27T11:19:04+00:00"
+            "time": "2021-02-03T04:42:09+00:00"
         },
         {
             "name": "symfony/polyfill-apcu",
@@ -9441,7 +9437,7 @@
         },
         {
             "name": "symfony/string",
-            "version": "v5.2.2",
+            "version": "v5.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
@@ -9527,7 +9523,7 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v5.2.2",
+            "version": "v5.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
@@ -9704,7 +9700,7 @@
         },
         {
             "name": "symfony/var-exporter",
-            "version": "v5.2.2",
+            "version": "v5.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-exporter.git",
@@ -9973,12 +9969,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zyprosoft/hyperf-common.git",
-                "reference": "74dbfa59140ccfa684fd96a4c0eb80a345cc892d"
+                "reference": "a09557251f4e0efaf3e24fe5a6a6d975ca43e32d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zyprosoft/hyperf-common/zipball/74dbfa59140ccfa684fd96a4c0eb80a345cc892d",
-                "reference": "74dbfa59140ccfa684fd96a4c0eb80a345cc892d",
+                "url": "https://api.github.com/repos/zyprosoft/hyperf-common/zipball/a09557251f4e0efaf3e24fe5a6a6d975ca43e32d",
+                "reference": "a09557251f4e0efaf3e24fe5a6a6d975ca43e32d",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -10038,7 +10034,7 @@
                 "hyperf",
                 "php"
             ],
-            "time": "2021-02-02T11:29:57+00:00"
+            "time": "2021-02-15T14:45:04+00:00"
         }
     ],
     "packages-dev": [
@@ -10358,16 +10354,16 @@
         },
         {
             "name": "hyperf/devtool",
-            "version": "v2.1.3",
+            "version": "v2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyperf/devtool.git",
-                "reference": "baac118c643af62ddf42843796e3ff6342b0ed41"
+                "reference": "6abe253a71714d63b4821f562be3ddc0949b557d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyperf/devtool/zipball/baac118c643af62ddf42843796e3ff6342b0ed41",
-                "reference": "baac118c643af62ddf42843796e3ff6342b0ed41",
+                "url": "https://api.github.com/repos/hyperf/devtool/zipball/6abe253a71714d63b4821f562be3ddc0949b557d",
+                "reference": "6abe253a71714d63b4821f562be3ddc0949b557d",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -10409,7 +10405,7 @@
                 "php",
                 "swoole"
             ],
-            "time": "2021-01-13T01:46:37+00:00"
+            "time": "2021-02-05T02:51:04+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -10544,16 +10540,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.71",
+            "version": "0.12.76",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "d508fa3b0ecc5fc91ac70c6c7ac2862f968ba2b5"
+                "reference": "7aaaf9a759a29795e8f46d48041af1c1f1b23d38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/d508fa3b0ecc5fc91ac70c6c7ac2862f968ba2b5",
-                "reference": "d508fa3b0ecc5fc91ac70c6c7ac2862f968ba2b5",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/7aaaf9a759a29795e8f46d48041af1c1f1b23d38",
+                "reference": "7aaaf9a759a29795e8f46d48041af1c1f1b23d38",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -10602,20 +10598,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-02-01T18:24:00+00:00"
+            "time": "2021-02-13T11:47:44+00:00"
         },
         {
             "name": "swoole/ide-helper",
-            "version": "4.6.2",
+            "version": "4.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swoole/ide-helper.git",
-                "reference": "62d923e3406d4d9c5a4749d810d11e2beb201abe"
+                "reference": "3292fef367a340ffd7b55ec806184d2268379d4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swoole/ide-helper/zipball/62d923e3406d4d9c5a4749d810d11e2beb201abe",
-                "reference": "62d923e3406d4d9c5a4749d810d11e2beb201abe",
+                "url": "https://api.github.com/repos/swoole/ide-helper/zipball/3292fef367a340ffd7b55ec806184d2268379d4a",
+                "reference": "3292fef367a340ffd7b55ec806184d2268379d4a",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -10642,11 +10638,11 @@
                 }
             ],
             "description": "IDE help files for Swoole.",
-            "time": "2021-01-26T00:17:29+00:00"
+            "time": "2021-02-09T23:28:35+00:00"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v5.2.2",
+            "version": "v5.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -10711,7 +10707,7 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v5.2.2",
+            "version": "v5.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
@@ -10854,7 +10850,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v5.2.2",
+            "version": "v5.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -10919,7 +10915,7 @@
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v5.2.2",
+            "version": "v5.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",

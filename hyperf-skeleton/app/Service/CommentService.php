@@ -103,6 +103,18 @@ class CommentService extends BaseService
             $this->asyncSendEmail($emailToReplyUser);
         }
 
+        //清除缓存
+        $this->refreshArticleCache($articleId);
+
+        return $comment;
+    }
+
+    /**
+     * 清除于某个文章相关的缓存
+     * @param int $articleId
+     */
+    protected function refreshArticleCache(int $articleId)
+    {
         //刷新文章评论总数
         $this->push(new RefreshArticleJob($articleId));
 
@@ -114,8 +126,6 @@ class CommentService extends BaseService
 
         //清除文章详情缓存
         ArticleService::clearArticleDetailCache($articleId);
-
-        return $comment;
     }
 
     /**
@@ -194,16 +204,25 @@ class CommentService extends BaseService
 
     public function delete(int $commentId)
     {
-        Db::transaction(function () use ($commentId) {
+        $articleId = null;
+        Db::transaction(function () use ($commentId, &$articleId) {
             $comment = Comment::findOrFail($commentId);
             $comment->article()->decrement('comment_count', 1);
             $comment->delete();
+            $articleId = $comment->article()->article_id;
         });
+
+        if (!isset($articleId)) {
+            return;
+        }
+
+        //清除缓存
+        $this->refreshArticleCache($articleId);
     }
 
     public function userDelete(int $commentId)
     {
-        $comment = Comment::query()->with(['author'])
+        $comment = Comment::query()->with(['author','article'])
                                    ->where('comment_id', $commentId)
                                    ->firstOrFail();
         if ($comment->author->user_id != $this->userId()) {
@@ -211,5 +230,9 @@ class CommentService extends BaseService
         }
 
         Comment::find($commentId)->delete();
+
+        //清除缓存
+        $articleId = $comment->article->article_id;
+        $this->refreshArticleCache($articleId);
     }
 }
