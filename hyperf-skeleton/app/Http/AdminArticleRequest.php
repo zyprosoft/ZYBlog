@@ -24,7 +24,7 @@ class AdminArticleRequest extends AppAdminRequest
     {
         if ($this->hasParam('articleId')) {
             return [
-                'articleId' => 'integer|required',
+                'articleId' => 'integer|required|exists:article,article_id',
                 'title' => 'string|max:50',
                 'content' => 'string|max:20000',
                 'tags' => 'array|max:5',
