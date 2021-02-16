@@ -65,6 +65,15 @@ class ArticleService extends BaseService
 
         });
 
+        //清除缓存
+        $this->clearArticleListCache();
+    }
+
+    /**
+     * 清除与文章相关的缓存
+     */
+    protected function clearArticleListCache()
+    {
         $this->clearCachePrefix('article-list:');
         $this->clearCachePrefix('article-archive');
         $this->clearCachePrefix('category-all');
@@ -151,6 +160,9 @@ class ArticleService extends BaseService
                 $article->tags()->saveMany($tagList);
             }
         });
+
+        //清空文章详情缓存
+        self::clearArticleDetailCache($articleId);
     }
 
     /**
@@ -160,6 +172,7 @@ class ArticleService extends BaseService
     public function moveToTrash(int $articleId)
     {
         Article::find($articleId)->delete();
+        $this->clearArticleListCache();
     }
 
     /**
