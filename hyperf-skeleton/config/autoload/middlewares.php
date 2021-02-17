@@ -17,5 +17,6 @@ return [
         ZYProSoft\Middleware\RequestLimitMiddleware::class,
         ZYProSoft\Middleware\RequestAuthMiddleware::class,
         Hyperf\Validation\Middleware\ValidationMiddleware::class,
+        Hyperf\Metric\Middleware\MetricMiddleware::class,
     ],
 ];
