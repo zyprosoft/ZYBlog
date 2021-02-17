@@ -1,8 +1,10 @@
 #### ZYBlog是一款后台程序员自学前端开发出来的简易博客系统。
 
+一直想写一个属于自己的博客软件，也正好为了学习vue和hyperf框架，锻炼一下自己，就写了这个博客简易的博客软件，以后就用自己的博客软件来记录学习和生活了。
+
 #### 效果如下:
-![截图一](s0.png)
-![截图二](s1.png)
+![截图一](http://static.lulinggushi.com/1613473778.png)
+![截图二](http://static.lulinggushi.com/1613474101.png)
 
 #### 正式环境-ZYProSoft的个人博客
 http://zyprosoft.lulinggushi.com
