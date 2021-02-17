@@ -13,7 +13,7 @@ use Hyperf\Server\Server;
 use Hyperf\Server\Event;
 
 return [
-    'mode' => SWOOLE_PROCESS,
+    'mode' => SWOOLE_IPC_PREEMPTIVE,
     'servers' => [
         [
             'name' => 'http',
@@ -28,7 +28,7 @@ return [
     ],
     'settings' => [
         'enable_coroutine' => true,
-        'worker_num' => swoole_cpu_num(),
+        'worker_num' => swoole_cpu_num()*4,
         'pid_file' => BASE_PATH . '/runtime/hyperf.pid',
         'open_tcp_nodelay' => true,
         'max_coroutine' => 100000,
