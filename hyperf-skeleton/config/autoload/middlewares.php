@@ -11,12 +11,12 @@ declare(strict_types=1);
  */
 return [
     'http' => [
+        Hyperf\Metric\Middleware\MetricMiddleware::class,
         ZYProSoft\Middleware\ValidatePostSizeMiddleware::class,
         Hyperf\Session\Middleware\SessionMiddleware::class,
         ZYProSoft\Middleware\CrossOriginMiddleware::class,
         ZYProSoft\Middleware\RequestLimitMiddleware::class,
         ZYProSoft\Middleware\RequestAuthMiddleware::class,
         Hyperf\Validation\Middleware\ValidationMiddleware::class,
-        Hyperf\Metric\Middleware\MetricMiddleware::class,
     ],
 ];
