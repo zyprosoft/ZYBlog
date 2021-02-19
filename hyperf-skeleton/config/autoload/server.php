@@ -36,7 +36,6 @@ return [
         'max_request' => 100000,
         'socket_buffer_size' => 2 * 1024 * 1024,
         'buffer_output_size' => 2 * 1024 * 1024,
-        'dispatch_mode' => 3, //抢占模式
         // 将 public 替换为上传目录
         'document_root' => BASE_PATH . '/public',
         'enable_static_handler' => true, //走nginx直接代理访问这个公开目录就好了
