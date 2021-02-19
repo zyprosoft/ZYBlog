@@ -29,14 +29,14 @@ function stop()
 		        exit
 		fi
 
-        a=`ps aux|grep ${name}.Master |grep -v 'grep'|grep -v 'service.sh'|wc -l`
+        a=`ps aux|grep ${name} |grep -v 'grep'|grep -v 'service.sh'|wc -l`
         if [ $a -gt 0 ]; then
-            ps -eaf |grep ${name}.Master | grep -v "grep"|grep -v 'service.sh'|awk '{print $2}'|xargs kill -9
+            ps -eaf |grep ${name} | grep -v "grep"|grep -v 'service.sh'|awk '{print $2}'|xargs kill -9
         fi
 
         while true
         do
-        	local a=`ps aux|grep ${name}.Master |grep -v 'grep'|grep -v 'service.sh'|wc -l`
+        	local a=`ps aux|grep ${name} |grep -v 'grep'|grep -v 'service.sh'|wc -l`
         	if [[ $a -gt 0 ]];then
         		sleep 1;
         	else
