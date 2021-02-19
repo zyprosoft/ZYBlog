@@ -27,6 +27,9 @@ class OneSentenceComponent extends BaseComponent
         "timeout" => 3,
     ];
 
+    //不需要重试
+    protected int $retryCount = 0;
+
     const INTERFACE_GET_SENTENCE = "/";
 
     private array $typeList = ['a','b','c','d','e','f','h','i','j','k','l'];
