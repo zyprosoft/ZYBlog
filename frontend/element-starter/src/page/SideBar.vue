@@ -55,15 +55,18 @@
                         <div class="gap-box"></div>
                         <span class="front-use"><a :href="aboutInfo.github"><span class="framework">Github</span></a>
                         </span>
-                        <span><a href="http://https://developer.hitokoto.cn"><span class="framework">一言</span></a></span>
+                        <span><a href="http://https://developer.hitokoto.cn"><span class="framework">一言</span></a>
+                        </span>
                     </div>
                 </div>
             </div>
-            <div class="music-box">
-                <div class="side-box-music">
-                    <div class="side-box-title">音乐盒</div>
-                    <div class="side-box-list-music">
-                        <audio class="audio-player" controls autoplay loop src="http://www.lulinggushi.com/wp-content/uploads/2020/04/梦词-若相惜-Cover：姜帆.mp3">                                                                                             </audio>
+            <div v-if="aboutInfo.music !== null">
+                <div class="music-box">
+                    <div class="side-box-music">
+                        <div class="side-box-title">音乐盒</div>
+                        <div class="side-box-list-music">
+                            <audio class="audio-player" controls autoplay loop :src="aboutInfo.music">                                                                                             </audio>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -86,8 +89,8 @@ export default {
             archiveList: [],
             tagList: [],
             categoryList: [],
-            aboutInfo:{},
-            user:{}
+            aboutInfo: {},
+            user: {}
         }
     },
     props: {
@@ -110,9 +113,9 @@ export default {
             })
         },
         initAboutInfo() {
-            getAboutInfo().then(res=>{
+            getAboutInfo().then(res => {
                 this.aboutInfo = res.data.about
-                this.user = res.data 
+                this.user = res.data
             })
         },
         handleCategoryChoose(categoryId, title) {
